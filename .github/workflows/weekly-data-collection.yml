@@ -1,1 +1,160 @@
+name: Weekly Data Collection
 
+on:
+  schedule:
+    # Run every Tuesday at 10:00 AM UTC (after Monday Night Football)
+    - cron: '0 10 * * 2'
+  workflow_dispatch:
+    # Allow manual triggering for testing
+    inputs:
+      week:
+        description: 'Week number to process (optional)'
+        required: false
+        type: string
+
+jobs:
+  collect-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Create data directories
+      run: |
+        mkdir -p data/weekly_snapshots data/player_histories
+
+    - name: Run data collection
+      id: collect
+      run: |
+        echo "Starting data collection..."
+        python scripts/collect_nfl_data.py
+        
+        # Check if data files were created successfully
+        if [ -f "data/players.json" ] && [ -f "data/weekly_insights.json" ] && [ -f "data/metadata.json" ]; then
+          echo "collection_success=true" >> $GITHUB_OUTPUT
+          echo "Data collection completed successfully"
+          
+          # Get player count for summary
+          PLAYER_COUNT=$(python -c "import json; data=json.load(open('data/players.json')); print(data['metadata']['total_players'])")
+          echo "player_count=$PLAYER_COUNT" >> $GITHUB_OUTPUT
+          
+          # Get data quality score
+          QUALITY_SCORE=$(python -c "import json; data=json.load(open('data/metadata.json')); print(data['data_health']['quality_score'])")
+          echo "quality_score=$QUALITY_SCORE" >> $GITHUB_OUTPUT
+          
+        else
+          echo "collection_success=false" >> $GITHUB_OUTPUT
+          echo "Data collection failed - required files not found"
+          exit 1
+        fi
+
+    - name: Validate data quality
+      if: steps.collect.outputs.collection_success == 'true'
+      run: |
+        python -c "
+        import json
+        import sys
+        
+        # Load and validate metadata
+        with open('data/metadata.json', 'r') as f:
+            metadata = json.load(f)
+        
+        quality_score = metadata['data_health']['quality_score']
+        player_count = metadata['data_health']['total_players']
+        
+        print(f'Data Quality Score: {quality_score}/100')
+        print(f'Total Players: {player_count}')
+        
+        # Validation thresholds
+        if quality_score < 70:
+            print('WARNING: Data quality below 70%')
+            sys.exit(1)
+        
+        if player_count < 250:
+            print('WARNING: Player count below target of 250')
+            sys.exit(1)
+            
+        print('Data validation passed!')
+        "
+
+    - name: Commit updated data
+      if: steps.collect.outputs.collection_success == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add all data files
+        git add data/
+        
+        # Check if there are changes to commit
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          # Create commit message with summary
+          COMMIT_MSG="Weekly data update - ${{ steps.collect.outputs.player_count }} players (Quality: ${{ steps.collect.outputs.quality_score }}/100)"
+          git commit -m "$COMMIT_MSG"
+          git push
+          echo "Data committed successfully"
+        fi
+
+    - name: Create workflow summary
+      if: always()
+      run: |
+        echo "## Weekly Data Collection Summary" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.collect.outputs.collection_success }}" == "true" ]; then
+          echo "✅ **Status**: Success" >> $GITHUB_STEP_SUMMARY
+          echo "📊 **Players Processed**: ${{ steps.collect.outputs.player_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "🎯 **Data Quality**: ${{ steps.collect.outputs.quality_score }}/100" >> $GITHUB_STEP_SUMMARY
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Files Updated:" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/players.json\` - Main player database" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/weekly_insights.json\` - Analysis for story generation" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/metadata.json\` - System health metrics" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/weekly_snapshots/\` - Historical tracking" >> $GITHUB_STEP_SUMMARY
+          
+          # Check if performance data is available
+          HAS_PERFORMANCE=$(python -c "import json; data=json.load(open('data/weekly_insights.json')); print('Yes' if data['metadata']['ready_for_stories'] else 'No')" 2>/dev/null || echo "Unknown")
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🏈 **Performance Data Available**: $HAS_PERFORMANCE" >> $GITHUB_STEP_SUMMARY
+          
+        else
+          echo "❌ **Status**: Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check the workflow logs for error details." >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Next Update**: Next Tuesday at 10:00 AM UTC" >> $GITHUB_STEP_SUMMARY
+
+    - name: Handle failure
+      if: failure()
+      run: |
+        echo "Data collection workflow failed"
+        
+        # Create error summary if possible
+        if [ -f "data/error_report.json" ]; then
+          echo "Error report generated:"
+          cat data/error_report.json
+          
+          # Commit error report for debugging
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/error_report.json
+          git commit -m "Data collection failed - error report" || echo "No error report to commit"
+          git push || echo "Failed to push error report"
+        fi
