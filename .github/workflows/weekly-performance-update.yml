@@ -1,1 +1,571 @@
+name: Weekly Performance Update - Multi-Format Scoring
 
+on:
+  schedule:
+    - cron: '0 14 * * 3'  # Wednesday 2 PM UTC
+  workflow_dispatch:
+    inputs:
+      week:
+        description: 'Week number to update'
+        required: true
+        type: string
+      force_update:
+        description: 'Force update existing data'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  update-performance:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Calculate current week
+      id: week
+      run: |
+        if [ -n "${{ github.event.inputs.week }}" ]; then
+          WEEK=${{ github.event.inputs.week }}
+        else
+          CURRENT_DATE=$(date +%s)
+          SEASON_START=$(date -d "2025-09-04" +%s)
+          
+          if [ $CURRENT_DATE -lt $SEASON_START ]; then
+            WEEK=1
+          else
+            DAYS_SINCE_START=$(( ($CURRENT_DATE - $SEASON_START) / 86400 ))
+            WEEK=$(( ($DAYS_SINCE_START / 7) + 1 ))
+            if [ $WEEK -gt 18 ]; then
+              WEEK=18
+            fi
+          fi
+        fi
+        
+        echo "week=$WEEK" >> $GITHUB_OUTPUT
+        echo "Processing Week $WEEK"
+
+    - name: Update performance data
+      id: update
+      run: |
+        WEEK=${{ steps.week.outputs.week }}
+        FORCE_UPDATE=${{ github.event.inputs.force_update }}
+        
+        # Create comprehensive update script
+        cat > update_multi_format.py << 'EOF'
+        #!/usr/bin/env python3
+        import json
+        import os
+        import sys
+        from datetime import datetime, timezone
+        from typing import Dict, List, Any, Optional
+        
+        def load_existing_players():
+            """Load main player database"""
+            try:
+                with open('data/players.json', 'r') as f:
+                    return json.load(f)
+            except FileNotFoundError:
+                print("Error: No player database found")
+                return None
+        
+        def calculate_fantasy_points(stats: Dict) -> Dict:
+            """Calculate fantasy points for all scoring formats"""
+            # Standard scoring multipliers
+            scoring = {
+                'passing_yards': 0.04,      # 1 pt per 25 yards
+                'passing_tds': 4,           # 4 pts per TD
+                'interceptions': -2,        # -2 pts per INT
+                'rushing_yards': 0.1,       # 1 pt per 10 yards
+                'rushing_tds': 6,           # 6 pts per TD
+                'receiving_yards': 0.1,     # 1 pt per 10 yards
+                'receiving_tds': 6,         # 6 pts per TD
+                'receptions_ppr': 1,        # PPR: 1 pt per reception
+                'receptions_half': 0.5,     # Half PPR: 0.5 pt per reception
+                'fumbles_lost': -2          # -2 pts per fumble lost
+            }
+            
+            # Calculate base points (standard scoring)
+            standard_points = (
+                stats.get('passing_yards', 0) * scoring['passing_yards'] +
+                stats.get('passing_tds', 0) * scoring['passing_tds'] +
+                stats.get('interceptions', 0) * scoring['interceptions'] +
+                stats.get('rushing_yards', 0) * scoring['rushing_yards'] +
+                stats.get('rushing_tds', 0) * scoring['rushing_tds'] +
+                stats.get('receiving_yards', 0) * scoring['receiving_yards'] +
+                stats.get('receiving_tds', 0) * scoring['receiving_tds'] +
+                stats.get('fumbles_lost', 0) * scoring['fumbles_lost']
+            )
+            
+            # Add reception bonuses
+            receptions = stats.get('receptions', 0)
+            half_ppr_points = standard_points + (receptions * scoring['receptions_half'])
+            ppr_points = standard_points + (receptions * scoring['receptions_ppr'])
+            
+            return {
+                'standard': round(standard_points, 2),
+                'half_ppr': round(half_ppr_points, 2),
+                'ppr': round(ppr_points, 2)
+            }
+        
+        def get_week_performance_data(week):
+            """Get NFL performance data for specific week"""
+            try:
+                import nfl_data_py as nfl
+                
+                weekly_data = nfl.import_weekly_data([2025])
+                
+                if weekly_data is None or weekly_data.empty:
+                    print(f"No 2025 data - trying 2024")
+                    weekly_data = nfl.import_weekly_data([2024])
+                
+                if weekly_data is None or weekly_data.empty:
+                    return None
+                
+                if 'week' in weekly_data.columns:
+                    week_data = weekly_data[weekly_data['week'] == week]
+                    if week_data.empty:
+                        latest_week = weekly_data['week'].max()
+                        week_data = weekly_data[weekly_data['week'] == latest_week]
+                        print(f"Using latest available week: {latest_week}")
+                else:
+                    week_data = weekly_data
+                
+                print(f"Loaded {len(week_data)} player performances")
+                return week_data
+                
+            except Exception as e:
+                print(f"Error loading performance data: {e}")
+                return None
+        
+        def load_season_performances():
+            """Load or create season performances file"""
+            filepath = 'data/season_2025_performances.json'
+            
+            if os.path.exists(filepath):
+                try:
+                    with open(filepath, 'r') as f:
+                        return json.load(f)
+                except:
+                    print("Error reading season file, creating new one")
+            
+            return {
+                'metadata': {
+                    'season': 2025,
+                    'created_at': datetime.now(timezone.utc).isoformat(),
+                    'last_updated': None,
+                    'weeks_processed': [],
+                    'total_players': 0
+                },
+                'players': {}
+            }
+        
+        def load_weekly_snapshots():
+            """Load or create weekly snapshots file"""
+            filepath = 'data/weekly_snapshots.json'
+            
+            if os.path.exists(filepath):
+                try:
+                    with open(filepath, 'r') as f:
+                        return json.load(f)
+                except:
+                    print("Error reading snapshots, creating new one")
+            
+            return {
+                'metadata': {
+                    'season': 2025,
+                    'created_at': datetime.now(timezone.utc).isoformat(),
+                    'scoring_formats': ['standard', 'half_ppr', 'ppr']
+                },
+                'snapshots': []
+            }
+        
+        def update_season_performances(season_data, players_db, week_data, week):
+            """Update season performance data with new week"""
+            updated_count = 0
+            
+            # Create performance lookup
+            performance_lookup = {}
+            for _, row in week_data.iterrows():
+                player_name = row.get('player_name', '').strip()
+                if not player_name:
+                    continue
+                
+                stats = {
+                    'passing_yards': float(row.get('passing_yards', 0) or 0),
+                    'passing_tds': int(row.get('passing_tds', 0) or 0),
+                    'interceptions': int(row.get('interceptions', 0) or 0),
+                    'rushing_yards': float(row.get('rushing_yards', 0) or 0),
+                    'rushing_tds': int(row.get('rushing_tds', 0) or 0),
+                    'receiving_yards': float(row.get('receiving_yards', 0) or 0),
+                    'receiving_tds': int(row.get('receiving_tds', 0) or 0),
+                    'receptions': int(row.get('receptions', 0) or 0),
+                    'targets': int(row.get('targets', 0) or 0),
+                    'carries': int(row.get('carries', 0) or 0),
+                    'fumbles_lost': int(row.get('fumbles_lost', 0) or 0)
+                }
+                
+                fantasy_points = calculate_fantasy_points(stats)
+                
+                performance_lookup[player_name] = {
+                    'week': week,
+                    'opponent': row.get('opponent_team', ''),
+                    'stats': stats,
+                    'fantasy_points': fantasy_points
+                }
+            
+            # Update player records
+            for player in players_db.get('players', []):
+                player_id = player.get('sleeper_id') or player.get('player_id')
+                player_name = player.get('name', '')
+                
+                if not player_id or not player_name:
+                    continue
+                
+                # Find performance data
+                performance = performance_lookup.get(player_name)
+                if not performance:
+                    # Try partial matching
+                    for perf_name, perf_data in performance_lookup.items():
+                        if player_name.lower() in perf_name.lower() or perf_name.lower() in player_name.lower():
+                            name_words = set(player_name.lower().split())
+                            perf_words = set(perf_name.lower().split())
+                            if len(name_words & perf_words) >= 1:
+                                performance = perf_data
+                                break
+                
+                if not performance:
+                    continue
+                
+                # Update or create player record
+                if player_id not in season_data['players']:
+                    season_data['players'][player_id] = {
+                        'info': {
+                            'name': player_name,
+                            'position': player.get('position'),
+                            'team': player.get('team'),
+                            'sleeper_id': player_id
+                        },
+                        'weekly_performances': [],
+                        'season_totals': {
+                            'games_played': 0,
+                            'fantasy_points': {'standard': 0, 'half_ppr': 0, 'ppr': 0}
+                        }
+                    }
+                
+                player_record = season_data['players'][player_id]
+                
+                # Remove existing week data if force update
+                player_record['weekly_performances'] = [
+                    p for p in player_record['weekly_performances'] 
+                    if p.get('week') != week
+                ]
+                
+                # Add new performance
+                player_record['weekly_performances'].append(performance)
+                player_record['weekly_performances'].sort(key=lambda x: x['week'])
+                
+                # Recalculate season totals
+                games_played = len(player_record['weekly_performances'])
+                totals = {'standard': 0, 'half_ppr': 0, 'ppr': 0}
+                
+                for perf in player_record['weekly_performances']:
+                    for format_name in totals.keys():
+                        totals[format_name] += perf['fantasy_points'].get(format_name, 0)
+                
+                player_record['season_totals'] = {
+                    'games_played': games_played,
+                    'fantasy_points': {
+                        format_name: round(total, 2) 
+                        for format_name, total in totals.items()
+                    },
+                    'averages': {
+                        format_name: round(total / games_played if games_played > 0 else 0, 2)
+                        for format_name, total in totals.items()
+                    }
+                }
+                
+                updated_count += 1
+            
+            # Update metadata
+            weeks_processed = season_data['metadata'].get('weeks_processed', [])
+            if week not in weeks_processed:
+                weeks_processed.append(week)
+                weeks_processed.sort()
+            
+            season_data['metadata'].update({
+                'last_updated': datetime.now(timezone.utc).isoformat(),
+                'weeks_processed': weeks_processed,
+                'total_players': len(season_data['players'])
+            })
+            
+            return updated_count
+        
+        def create_week_snapshot(week_data, week):
+            """Create comprehensive weekly snapshot"""
+            if week_data is None or week_data.empty:
+                return {
+                    'week': week,
+                    'date': datetime.now(timezone.utc).date().isoformat(),
+                    'data_available': False,
+                    'message': f'No performance data available for Week {week}'
+                }
+            
+            # Calculate multi-format performance for all players
+            player_performances = []
+            for _, row in week_data.iterrows():
+                stats = {
+                    'passing_yards': float(row.get('passing_yards', 0) or 0),
+                    'passing_tds': int(row.get('passing_tds', 0) or 0),
+                    'interceptions': int(row.get('interceptions', 0) or 0),
+                    'rushing_yards': float(row.get('rushing_yards', 0) or 0),
+                    'rushing_tds': int(row.get('rushing_tds', 0) or 0),
+                    'receiving_yards': float(row.get('receiving_yards', 0) or 0),
+                    'receiving_tds': int(row.get('receiving_tds', 0) or 0),
+                    'receptions': int(row.get('receptions', 0) or 0)
+                }
+                
+                fantasy_points = calculate_fantasy_points(stats)
+                
+                player_performances.append({
+                    'name': row.get('player_name', ''),
+                    'position': row.get('position', ''),
+                    'team': row.get('team', ''),
+                    'fantasy_points': fantasy_points
+                })
+            
+            # Create snapshot for each scoring format
+            snapshot = {
+                'week': week,
+                'date': datetime.now(timezone.utc).date().isoformat(),
+                'data_available': True,
+                'total_performances': len(player_performances),
+                'scoring_leaders': {}
+            }
+            
+            # Calculate leaders for each format
+            for format_name in ['standard', 'half_ppr', 'ppr']:
+                sorted_players = sorted(
+                    player_performances, 
+                    key=lambda x: x['fantasy_points'][format_name], 
+                    reverse=True
+                )
+                
+                position_leaders = {}
+                for position in ['QB', 'RB', 'WR', 'TE']:
+                    pos_players = [p for p in sorted_players if p['position'] == position]
+                    if pos_players:
+                        leader = pos_players[0]
+                        position_leaders[position] = {
+                            'name': leader['name'],
+                            'team': leader['team'],
+                            'points': leader['fantasy_points'][format_name]
+                        }
+                
+                # Overall stats for this format
+                format_points = [p['fantasy_points'][format_name] for p in player_performances]
+                
+                snapshot['scoring_leaders'][format_name] = {
+                    'position_leaders': position_leaders,
+                    'overall_leader': {
+                        'name': sorted_players[0]['name'],
+                        'position': sorted_players[0]['position'], 
+                        'team': sorted_players[0]['team'],
+                        'points': sorted_players[0]['fantasy_points'][format_name]
+                    },
+                    'average_points': round(sum(format_points) / len(format_points), 2),
+                    'boom_games_20_plus': len([p for p in format_points if p >= 20])
+                }
+            
+            return snapshot
+        
+        def main():
+            week = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+            force = sys.argv[2].lower() == 'true' if len(sys.argv) > 2 else False
+            
+            print(f"Updating Week {week} performance data (Force: {force})")
+            
+            # Load existing data
+            players_db = load_existing_players()
+            if not players_db:
+                return False
+            
+            season_data = load_season_performances()
+            snapshots_data = load_weekly_snapshots()
+            
+            # Check if week already processed
+            processed_weeks = season_data['metadata'].get('weeks_processed', [])
+            if week in processed_weeks and not force:
+                print(f"Week {week} already processed. Use force=true to override.")
+                return True
+            
+            # Get week performance data
+            week_data = get_week_performance_data(week)
+            
+            if week_data is not None and not week_data.empty:
+                # Update season performances
+                updated_count = update_season_performances(season_data, players_db, week_data, week)
+                print(f"Updated {updated_count} player records")
+                
+                # Create week snapshot
+                snapshot = create_week_snapshot(week_data, week)
+                
+                # Add/update snapshot in snapshots data
+                snapshots_data['snapshots'] = [
+                    s for s in snapshots_data['snapshots'] 
+                    if s.get('week') != week
+                ]
+                snapshots_data['snapshots'].append(snapshot)
+                snapshots_data['snapshots'].sort(key=lambda x: x['week'])
+            else:
+                print(f"No performance data for Week {week} - creating placeholder")
+                snapshot = create_week_snapshot(None, week)
+                snapshots_data['snapshots'].append(snapshot)
+                updated_count = 0
+            
+            # Save updated files
+            with open('data/season_2025_performances.json', 'w') as f:
+                json.dump(season_data, f, indent=2)
+            
+            with open('data/weekly_snapshots.json', 'w') as f:
+                json.dump(snapshots_data, f, indent=2)
+            
+            print(f"Week {week} processing complete")
+            return True
+        
+        if __name__ == "__main__":
+            success = main()
+            exit(0 if success else 1)
+        EOF
+        
+        # Run the update
+        python update_multi_format.py $WEEK $FORCE_UPDATE
+        
+        if [ $? -eq 0 ]; then
+          echo "update_success=true" >> $GITHUB_OUTPUT
+          
+          # Get update statistics
+          if [ -f "data/season_2025_performances.json" ]; then
+            TOTAL_PLAYERS=$(python -c "import json; data=json.load(open('data/season_2025_performances.json')); print(len(data['players']))")
+            echo "total_players=$TOTAL_PLAYERS" >> $GITHUB_OUTPUT
+          fi
+          
+          if [ -f "data/weekly_snapshots.json" ]; then
+            SNAPSHOTS_COUNT=$(python -c "import json; data=json.load(open('data/weekly_snapshots.json')); print(len(data['snapshots']))")
+            echo "snapshots_count=$SNAPSHOTS_COUNT" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "update_success=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Validate data integrity
+      if: steps.update.outputs.update_success == 'true'
+      run: |
+        python -c "
+        import json
+        import sys
+        
+        # Validate season performances
+        try:
+            with open('data/season_2025_performances.json', 'r') as f:
+                season_data = json.load(f)
+            
+            # Check structure
+            assert 'metadata' in season_data
+            assert 'players' in season_data
+            
+            # Check at least one player has multi-format scoring
+            for player_id, player_data in season_data['players'].items():
+                if player_data['weekly_performances']:
+                    perf = player_data['weekly_performances'][0]
+                    assert 'fantasy_points' in perf
+                    assert 'standard' in perf['fantasy_points']
+                    assert 'half_ppr' in perf['fantasy_points']
+                    assert 'ppr' in perf['fantasy_points']
+                    break
+            
+            print('Season performance data validated')
+            
+        except Exception as e:
+            print(f'Season data validation failed: {e}')
+            sys.exit(1)
+        
+        # Validate snapshots
+        try:
+            with open('data/weekly_snapshots.json', 'r') as f:
+                snapshots = json.load(f)
+            
+            assert 'snapshots' in snapshots
+            
+            if snapshots['snapshots']:
+                latest = snapshots['snapshots'][-1]
+                if latest.get('data_available'):
+                    assert 'scoring_leaders' in latest
+                    for format_name in ['standard', 'half_ppr', 'ppr']:
+                        assert format_name in latest['scoring_leaders']
+            
+            print('Snapshots data validated')
+            
+        except Exception as e:
+            print(f'Snapshots validation failed: {e}')
+            sys.exit(1)
+        "
+
+    - name: Commit updated data
+      if: steps.update.outputs.update_success == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        git add data/season_2025_performances.json data/weekly_snapshots.json
+        
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          WEEK=${{ steps.week.outputs.week }}
+          PLAYERS=${{ steps.update.outputs.total_players }}
+          SNAPSHOTS=${{ steps.update.outputs.snapshots_count }}
+          
+          git commit -m "Week $WEEK multi-format performance update - $PLAYERS players, $SNAPSHOTS weeks tracked"
+          git push
+        fi
+
+    - name: Create summary
+      if: always()
+      run: |
+        WEEK=${{ steps.week.outputs.week }}
+        echo "## Week $WEEK Multi-Format Performance Update" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.update.outputs.update_success }}" == "true" ]; then
+          echo "✅ **Status**: Success" >> $GITHUB_STEP_SUMMARY
+          echo "📊 **Players Tracked**: ${{ steps.update.outputs.total_players }}" >> $GITHUB_STEP_SUMMARY
+          echo "📈 **Total Weeks**: ${{ steps.update.outputs.snapshots_count }}" >> $GITHUB_STEP_SUMMARY
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Scoring Formats Updated:" >> $GITHUB_STEP_SUMMARY
+          echo "- **Standard**: Traditional scoring (no PPR bonus)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Half PPR**: 0.5 points per reception" >> $GITHUB_STEP_SUMMARY
+          echo "- **PPR**: 1.0 points per reception" >> $GITHUB_STEP_SUMMARY
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Files Updated:" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/season_2025_performances.json\` - Player performance timelines" >> $GITHUB_STEP_SUMMARY
+          echo "- \`data/weekly_snapshots.json\` - Weekly league snapshots" >> $GITHUB_STEP_SUMMARY
+          
+        else
+          echo "❌ **Status**: Failed" >> $GITHUB_STEP_SUMMARY
+          echo "Check workflow logs for error details" >> $GITHUB_STEP_SUMMARY
+        fi
