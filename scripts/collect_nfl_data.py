@@ -11,13 +11,13 @@ try:
 import pandas as pd
 import nfl_data_py as nfl
 except ImportError as e:
-print(f”Required module not available: {e}”)
+print(f"Required module not available: {e}")
 sys.exit(1)
 
 def load_sleeper_players():
-“”“Load and process Sleeper player database”””
+"""Load and process Sleeper player database"""
 try:
-with open(“players_detailed.json”, “r”) as f:
+with open("players_detailed.json", "r") as f:
 raw_data = json.load(f)
 
 ```
@@ -38,9 +38,9 @@ except json.JSONDecodeError as e:
 ```
 
 def load_adp_data():
-“”“Load ADP data created by generate_draft_database.py”””
+"""Load ADP data created by generate_draft_database.py"""
 try:
-with open(“adp_database.json”, “r”) as f:
+with open("adp_database.json", "r") as f:
 adp_data = json.load(f)
 
 ```
@@ -57,9 +57,9 @@ except json.JSONDecodeError as e:
 ```
 
 def filter_fantasy_players(players_array):
-“”“Filter to fantasy-relevant players with active status”””
-fantasy_positions = [“QB”, “RB”, “WR”, “TE”, “K”, “DEF”]
-inactive_statuses = [“Inactive”, “Reserve/Injured”, “Reserve/PUP”, “Suspended”]
+"""Filter to fantasy-relevant players with active status"""
+fantasy_positions = ["QB", "RB", "WR", "TE", "K", "DEF"]
+inactive_statuses = ["Inactive", "Reserve/Injured", "Reserve/PUP", "Suspended"]
 
 ```
 fantasy_players = []
@@ -109,9 +109,9 @@ return fantasy_players
 ```
 
 def match_players_to_adp(fantasy_players, adp_players):
-“”“Match Sleeper players to ADP data”””
+"""Match Sleeper players to ADP data"""
 if not adp_players:
-print(“No ADP data available for matching”)
+print("No ADP data available for matching")
 return fantasy_players
 
 ```
@@ -168,29 +168,29 @@ return fantasy_players
 ```
 
 def get_adp_tier(adp_position):
-“”“Classify ADP into tiers”””
+"""Classify ADP into tiers"""
 try:
 adp_num = float(adp_position)
 if adp_num <= 12:
-return “Elite (Rounds 1-2)”
+return "Elite (Rounds 1-2)"
 elif adp_num <= 36:
-return “High-End (Rounds 3-6)”
+return "High-End (Rounds 3-6)"
 elif adp_num <= 60:
-return “Mid-Tier (Rounds 7-10)”
+return "Mid-Tier (Rounds 7-10)"
 elif adp_num <= 100:
-return “Late Round (Rounds 11-16)”
+return "Late Round (Rounds 11-16)"
 else:
-return “Waiver Wire”
+return "Waiver Wire"
 except (ValueError, TypeError):
-return “Unknown”
+return "Unknown"
 
 def determine_value_status(position, avg_standard, avg_ppr, standard_adp, ppr_adp):
-“”“Determine if player is outperforming, meeting, or underperforming ADP”””
+"""Determine if player is outperforming, meeting, or underperforming ADP"""
 try:
 primary_avg = float(avg_standard)
 primary_adp = float(standard_adp)
 except (ValueError, TypeError):
-return “Unknown”
+return "Unknown"
 
 ```
 # Position-based performance thresholds (points per game)
@@ -229,13 +229,13 @@ else:
 ```
 
 def calculate_draft_grade(value_status, games_played):
-“”“Calculate overall draft grade A-F”””
+"""Calculate overall draft grade A-F"""
 try:
 games = int(games_played)
 if games < 3:
-return “Incomplete”
+return "Incomplete"
 except (ValueError, TypeError):
-return “Incomplete”
+return "Incomplete"
 
 ```
 grade_map = {
@@ -248,8 +248,8 @@ return grade_map.get(value_status, "C")
 ```
 
 def calculate_adp_value_metrics(player, performance_records):
-“”“Calculate value metrics comparing performance to ADP expectations”””
-adp_data = player.get(“adp_data”)
+"""Calculate value metrics comparing performance to ADP expectations"""
+adp_data = player.get("adp_data")
 if not adp_data or not isinstance(adp_data, dict):
 return {}
 
@@ -318,9 +318,9 @@ return {
 ```
 
 def collect_nfl_stats(year=2025, weeks=None):
-“”“Collect NFL weekly statistics via nfl_data_py”””
+"""Collect NFL weekly statistics via nfl_data_py"""
 try:
-print(f”Attempting to collect NFL stats for {year}…”)
+print(f"Attempting to collect NFL stats for {year}…")
 
 ```
     # Define required columns
@@ -358,25 +358,25 @@ except Exception as e:
 ```
 
 def safe_int_conversion(value, default=0):
-“”“Safely convert value to int”””
+"""Safely convert value to int"""
 try:
-if value is None or value == “”:
+if value is None or value == "":
 return default
 return int(float(value))
 except (ValueError, TypeError):
 return default
 
 def safe_float_conversion(value, default=0.0):
-“”“Safely convert value to float”””
+"""Safely convert value to float"""
 try:
-if value is None or value == “”:
+if value is None or value == "":
 return default
 return float(value)
 except (ValueError, TypeError):
 return default
 
 def match_sleeper_to_nfl(fantasy_players, nfl_stats):
-“”“Match Sleeper players to NFL statistics using multiple methods”””
+"""Match Sleeper players to NFL statistics using multiple methods"""
 
 ```
 if nfl_stats.empty:
@@ -488,20 +488,20 @@ return matched_records, list(unmatched_nfl), unmatched_sleeper
 ```
 
 def generate_narrative_insights(fantasy_players, matched_records):
-“”“Generate narrative insights for story templates”””
+"""Generate narrative insights for story templates"""
 insights = {
-“draft_analysis”: {
-“steals”: [],
-“busts”: [],
-“surprises”: []
+"draft_analysis": {
+"steals": [],
+"busts": [],
+"surprises": []
 },
-“value_trends”: {
-“overperformers”: [],
-“underperformers”: [],
-“consistent”: []
+"value_trends": {
+"overperformers": [],
+"underperformers": [],
+"consistent": []
 },
-“positional_analysis”: {},
-“adp_accuracy”: {}
+"positional_analysis": {},
+"adp_accuracy": {}
 }
 
 ```
@@ -582,8 +582,8 @@ return insights
 ```
 
 def save_performance_data(matched_records):
-“”“Save performance data with deduplication”””
-performance_file = “season_2025_performances.json”
+"""Save performance data with deduplication"""
+performance_file = "season_2025_performances.json"
 existing_records = []
 
 ```
@@ -653,9 +653,9 @@ return len(new_records)
 ```
 
 def create_weekly_snapshots(matched_records):
-“”“Create individual week snapshots for Pipedream consumption”””
+"""Create individual week snapshots for Pipedream consumption"""
 if not matched_records:
-print(“No performance data to snapshot”)
+print("No performance data to snapshot")
 return
 
 ```
@@ -750,8 +750,8 @@ for week, week_records in weeks_data.items():
 ```
 
 def create_output_files(fantasy_players, matched_records, narrative_insights):
-“”“Create the data files expected by the workflow”””
-os.makedirs(“data”, exist_ok=True)
+"""Create the data files expected by the workflow"""
+os.makedirs("data", exist_ok=True)
 
 ```
 # Calculate metrics for reporting
