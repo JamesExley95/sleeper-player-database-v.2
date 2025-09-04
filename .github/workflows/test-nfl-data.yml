@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+
+import json
+import sys
+
+def test_player_loading():
+“”“Test that we can load and parse players_detailed.json”””
+try:
+with open(‘players_detailed.json’, ‘r’) as f:
+players_data = json.load(f)
+print(f”✓ Loaded {len(players_data)} players from players_detailed.json”)
+
+```
+    # Test a few player entries
+    sample_ids = list(players_data.keys())[:3]
+    for player_id in sample_ids:
+        player = players_data[player_id]
+        print(f"  Sample: {player_id} = {player.get('player_name', 'NO_NAME')} ({player.get('position', 'NO_POS')})")
+    
+    return players_data
+except Exception as e:
+    print(f"✗ Error loading players: {e}")
+    sys.exit(1)
+```
+
+def test_nfl_data_import():
+“”“Test that nfl_data_py works”””
+try:
+import nfl_data_py as nfl
+print(“✓ nfl_data_py imported successfully”)
+
+```
+    # Try to get a small sample of data
+    sample_data = nfl.import_weekly_data([2024], columns=['player_name', 'position', 'week'], rows=10)
+    print(f"✓ Retrieved {len(sample_data)} sample records from NFL API")
+    
+    return True
+except Exception as e:
+    print(f"✗ NFL data import failed: {e}")
+    return False
+```
+
+def main():
+print(”=== TESTING BYLINE DATA PIPELINE ===\n”)
+
+```
+# Test 1: Player data loading
+print("1. Testing player data loading...")
+players_data = test_player_loading()
+
+# Test 2: NFL data API
+print("\n2. Testing NFL data API...")
+nfl_success = test_nfl_data_import()
+
+# Test 3: Player filtering
+print("\n3. Testing player filtering...")
+relevant_positions = ['QB', 'RB', 'WR', 'TE', 'K', 'DEF']
+fantasy_count = 0
+
+for player_id, player_info in players_data.items():
+    if player_info.get('position') in relevant_positions and player_info.get('team'):
+        fantasy_count += 1
+
+print(f"✓ Found {fantasy_count} fantasy-relevant players with teams")
+
+print(f"\n=== TEST RESULTS ===")
+print(f"Player data: ✓")
+print(f"NFL API: {'✓' if nfl_success else '✗'}")
+print(f"Fantasy filtering: ✓")
+print(f"Ready for full collection: {'✓' if nfl_success else '✗'}")
+```
+
+if **name** == “**main**”:
+main()
