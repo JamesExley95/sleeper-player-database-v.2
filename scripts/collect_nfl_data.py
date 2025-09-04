@@ -14,7 +14,7 @@ import pandas as pd
 
 SCRIPT_VERSION = "MVP_1.1_Fixed"
 CURRENT_YEAR = 2025
-SLEEPER_URL = "https://raw.githubusercontent.com/JamesExley95/sleeper-player-database/refs/heads/main/players_detailed.json"
+SLEEPER_URL = "https://raw.githubusercontent.com/JamesExley95/sleeper-player-database-v2/refs/heads/main/players_detailed.json"
 
 def setup_directories():
     """Create necessary directories"""
