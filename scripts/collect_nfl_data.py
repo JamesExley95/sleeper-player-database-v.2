@@ -9,7 +9,7 @@ import sys
 
 def load_players():
 try:
-with open(‘players_detailed.json’, ‘r’) as f:
+with open(“players_detailed.json”, “r”) as f:
 players_data = json.load(f)
 print(f”Loaded {len(players_data)} players from players_detailed.json”)
 return players_data
@@ -21,30 +21,30 @@ print(f”Error decoding players_detailed.json: {e}”)
 sys.exit(1)
 
 def get_fantasy_relevant_players(players_data):
-relevant_positions = [‘QB’, ‘RB’, ‘WR’, ‘TE’, ‘K’, ‘DEF’]
+relevant_positions = [“QB”, “RB”, “WR”, “TE”, “K”, “DEF”]
 fantasy_players = []
 
 ```
 for player_id, player_info in players_data.items():
-    if not player_info.get('position') or player_info['position'] not in relevant_positions:
+    if not player_info.get("position") or player_info["position"] not in relevant_positions:
         continue
         
-    status = player_info.get('status', 'Active')
-    if status in ['Inactive', 'Reserve/Injured', 'Reserve/PUP']:
+    status = player_info.get("status", "Active")
+    if status in ["Inactive", "Reserve/Injured", "Reserve/PUP"]:
         continue
         
-    if not player_info.get('team'):
+    if not player_info.get("team"):
         continue
         
     fantasy_players.append({
-        'sleeper_id': player_id,
-        'player_name': player_info.get('player_name', ''),
-        'position': player_info['position'],
-        'team': player_info['team'],
-        'status': status,
-        'first_name': player_info.get('first_name', ''),
-        'last_name': player_info.get('last_name', ''),
-        'years_exp': player_info.get('years_exp', 0)
+        "sleeper_id": player_id,
+        "player_name": player_info.get("player_name", ""),
+        "position": player_info["position"],
+        "team": player_info["team"],
+        "status": status,
+        "first_name": player_info.get("first_name", ""),
+        "last_name": player_info.get("last_name", ""),
+        "years_exp": player_info.get("years_exp", 0)
     })
 
 print(f"Filtered to {len(fantasy_players)} fantasy-relevant players")
@@ -57,19 +57,19 @@ print(f”Collecting weekly stats for {year}…”)
 
 ```
     weekly_stats = nfl.import_weekly_data([year], columns=[
-        'player_id', 'player_name', 'player_display_name', 
-        'position', 'position_group', 'team', 'week',
-        'completions', 'attempts', 'passing_yards', 'passing_tds', 'interceptions',
-        'carries', 'rushing_yards', 'rushing_tds', 
-        'targets', 'receptions', 'receiving_yards', 'receiving_tds',
-        'fantasy_points', 'fantasy_points_ppr'
+        "player_id", "player_name", "player_display_name", 
+        "position", "position_group", "team", "week",
+        "completions", "attempts", "passing_yards", "passing_tds", "interceptions",
+        "carries", "rushing_yards", "rushing_tds", 
+        "targets", "receptions", "receiving_yards", "receiving_tds",
+        "fantasy_points", "fantasy_points_ppr"
     ])
     
     if weeks is not None:
         if isinstance(weeks, (list, tuple)):
-            weekly_stats = weekly_stats[weekly_stats['week'].isin(weeks)]
+            weekly_stats = weekly_stats[weekly_stats["week"].isin(weeks)]
         else:
-            weekly_stats = weekly_stats[weekly_stats['week'] == weeks]
+            weekly_stats = weekly_stats[weekly_stats["week"] == weeks]
     
     print(f"Collected {len(weekly_stats)} stat records")
     return weekly_stats
@@ -92,16 +92,16 @@ if weekly_stats.empty:
     print("Creating empty performance file for future use")
     
     empty_data = {
-        'metadata': {
-            'season': 2025,
-            'last_updated': datetime.now().isoformat(),
-            'total_records': 0,
-            'message': 'No 2025 NFL data available yet'
+        "metadata": {
+            "season": 2025,
+            "last_updated": datetime.now().isoformat(),
+            "total_records": 0,
+            "message": "No 2025 NFL data available yet"
         },
-        'performances': []
+        "performances": []
     }
     
-    with open('season_2025_performances.json', 'w') as f:
+    with open("season_2025_performances.json", "w") as f:
         json.dump(empty_data, f, indent=2)
         
     print("Empty performance file created successfully")
