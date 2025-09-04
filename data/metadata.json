@@ -1,1 +1,14 @@
-{"data_health": {"quality_score": 95, "total_players": 11400}}
+{
+  "data_health": {
+    "quality_score": 70,
+    "total_players": 1016,
+    "data_coverage_pct": 0.0,
+    "performance_records": 0,
+    "weeks_with_data": 0
+  },
+  "collection_info": {
+    "last_updated": "2025-09-04T11:50:17.364721",
+    "season": 2025,
+    "source": "Sleeper + nfl_data_py"
+  }
+}
