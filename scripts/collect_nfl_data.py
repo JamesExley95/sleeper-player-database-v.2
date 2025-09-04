@@ -5,7 +5,7 @@ print("Debug script starting")
 try:
     with open("players_detailed.json", "r") as f:
         data = json.load(f)
-    print(f"Success: Loaded {len(data)}
+    print(f"Success: Loaded {len(data)} players")
 except Exception as e:
     print(f"Error: {e}")
     sys.exit(1)
