@@ -42,7 +42,7 @@ for player_id, player_info in players_data.items():
         continue
         
     fantasy_players.append({
-        'sleeper_id': player_id,  # Keep as string to match JSON structure
+        'sleeper_id': player_id,
         'player_name': player_info.get('player_name', ''),
         'position': player_info['position'],
         'team': player_info['team'],
@@ -62,27 +62,16 @@ try:
 print(f”Collecting weekly stats for {year}…”)
 
 ```
-    # Get current week if not specified
-    if weeks is None:
-        # For now, collect all available weeks
-        weekly_stats = nfl.import_weekly_data([year], columns=[
-            'player_id', 'player_name', 'player_display_name', 
-            'position', 'position_group', 'team', 'week',
-            'completions', 'attempts', 'passing_yards', 'passing_tds', 'interceptions',
-            'carries', 'rushing_yards', 'rushing_tds', 
-            'targets', 'receptions', 'receiving_yards', 'receiving_tds',
-            'fantasy_points', 'fantasy_points_ppr'
-        ])
-    else:
-        weekly_stats = nfl.import_weekly_data([year], columns=[
-            'player_id', 'player_name', 'player_display_name', 
-            'position', 'position_group', 'team', 'week',
-            'completions', 'attempts', 'passing_yards', 'passing_tds', 'interceptions',
-            'carries', 'rushing_yards', 'rushing_tds', 
-            'targets', 'receptions', 'receiving_yards', 'receiving_tds',
-            'fantasy_points', 'fantasy_points_ppr'
-        ])
-        # Filter to specific weeks if provided
+    weekly_stats = nfl.import_weekly_data([year], columns=[
+        'player_id', 'player_name', 'player_display_name', 
+        'position', 'position_group', 'team', 'week',
+        'completions', 'attempts', 'passing_yards', 'passing_tds', 'interceptions',
+        'carries', 'rushing_yards', 'rushing_tds', 
+        'targets', 'receptions', 'receiving_yards', 'receiving_tds',
+        'fantasy_points', 'fantasy_points_ppr'
+    ])
+    
+    if weeks is not None:
         if isinstance(weeks, (list, tuple)):
             weekly_stats = weekly_stats[weekly_stats['week'].isin(weeks)]
         else:
@@ -100,7 +89,7 @@ def match_players_to_stats(fantasy_players, weekly_stats):
 “”“Match Sleeper players to NFL stats using multiple methods”””
 matched_data = []
 unmatched_sleeper = []
-unmatched_nfl = set(weekly_stats[‘player_name’].unique())
+unmatched_nfl = set(weekly_stats[‘player_name’].unique()) if not weekly_stats.empty else set()
 
 ```
 # Create lookup dictionaries for better matching
@@ -286,15 +275,31 @@ fantasy_players = get_fantasy_relevant_players(players_data)
 weekly_stats = collect_weekly_stats(2025)
 
 if weekly_stats.empty:
-    print("No NFL stats collected, exiting")
-    sys.exit(1)
+    print("No NFL stats collected - likely no 2025 data available yet")
+    print("Creating empty performance file for future use")
+    
+    # Create empty performance file with structure
+    empty_data = {
+        'metadata': {
+            'season': 2025,
+            'last_updated': datetime.now().isoformat(),
+            'total_records': 0,
+            'message': 'No 2025 NFL data available yet'
+        },
+        'performances': []
+    }
+    
+    with open('season_2025_performances.json', 'w') as f:
+        json.dump(empty_data, f, indent=2)
+        
+    print("Empty performance file created successfully")
+    return
 
 # Match players to stats
 matched_data, unmatched_nfl, unmatched_sleeper = match_players_to_stats(fantasy_players, weekly_stats)
 
 if not matched_data:
-    print("No players matched, exiting")
-    sys.exit(1)
+    print("No players matched, but continuing to save structure")
 
 # Save performance data
 new_records = save_performance_data(matched_data)
