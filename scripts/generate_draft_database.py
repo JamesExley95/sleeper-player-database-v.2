@@ -1,496 +1,381 @@
 #!/usr/bin/env python3
-“””
-Generate Draft Database - NFL Draft Analysis
-Creates ADP analysis, value picks, and bust warnings for fantasy drafts
-Uses historical performance and current projections
-“””
+"""
+Generate ADP Database for Byline Content MVP
+Fetches ADP data from Fantasy Football Calculator API for all scoring formats
+Creates adp_database.json that integrates with the production NFL data collection script
+"""
 
 import json
 import os
 import sys
-import argparse
-from datetime import datetime, timezone
-from typing import Dict, List, Any, Optional, Tuple
-import statistics
 import requests
+from datetime import datetime
+import time
 
-# Import availability checks
-
-try:
-import pandas as pd
-PANDAS_AVAILABLE = True
-except ImportError:
-PANDAS_AVAILABLE = False
-pd = None
-
-SCRIPT_VERSION = “Draft_Analysis_v1.0”
-CURRENT_SEASON = 2025
-
-# ADP data sources
-
-ADP_SOURCES = {
-‘fantasyfootballcalculator’: ‘https://fantasyfootballcalculator.com/api/v1/adp/ppr’,
-‘fantasyfootballcalculator_standard’: ‘https://fantasyfootballcalculator.com/api/v1/adp/standard’,
-‘fantasyfootballcalculator_half’: ‘https://fantasyfootballcalculator.com/api/v1/adp/half-ppr’
+# FFC API endpoints for all 3 scoring formats
+FFC_API_ENDPOINTS = {
+    "standard": "https://fantasyfootballcalculator.com/api/v1/adp/standard",
+    "half_ppr": "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr", 
+    "ppr": "https://fantasyfootballcalculator.com/api/v1/adp/ppr"
 }
 
-def safe_float(value, default=0.0):
-“”“Safely convert value to float with fallback”””
-try:
-if pd and pd.isna(value) or value is None:
-return default
-return float(value)
-except (ValueError, TypeError):
-return default
-
-def safe_int(value, default=0):
-“”“Safely convert value to int with fallback”””
-try:
-if pd and pd.isna(value) or value is None:
-return default
-return int(float(value))
-except (ValueError, TypeError):
-return default
-
-def load_existing_players() -> Optional[Dict]:
-“”“Load the main player database for draft analysis”””
-try:
-with open(‘data/players.json’, ‘r’) as f:
-data = json.load(f)
-if ‘players’ not in data:
-print(“Error: Invalid players.json structure - missing ‘players’ key”)
-return None
-return data
-except FileNotFoundError:
-print(“Error: data/players.json not found - run collect_nfl_data.py first”)
-return None
-except json.JSONDecodeError as e:
-print(f”Error: Invalid JSON in players.json - {e}”)
-return None
-
-def load_season_performances() -> Optional[Dict]:
-“”“Load season performance data for historical analysis”””
-filepath = ‘data/season_2025_performances.json’
-
-```
-if not os.path.exists(filepath):
-    print(f"Warning: {filepath} not found - using limited analysis")
-    return None
-
-try:
-    with open(filepath, 'r') as f:
-        data = json.load(f)
-        if 'players' not in data:
-            print("Error: Invalid season performances structure")
+def load_sleeper_players():
+    """Load Sleeper players for name matching"""
+    try:
+        with open("players_detailed.json", "r") as f:
+            raw_data = json.load(f)
+        
+        if "players" not in raw_data:
+            print("Error: Invalid players_detailed.json structure")
             return None
-        return data
-except json.JSONDecodeError as e:
-    print(f"Error: Invalid JSON in season performances - {e}")
-    return None
-```
-
-def simulate_adp_data(players: List[Dict]) -> Dict:
-“””
-Simulate ADP data since real APIs require authentication
-In production, this would fetch from actual ADP sources
-“””
-print(“Simulating ADP data (replace with real API calls in production)”)
-
-```
-adp_data = {}
-
-# Position-based ADP ranges
-position_adp_ranges = {
-    'QB': (48, 144),    # QBs typically go rounds 4-12
-    'RB': (12, 84),     # RBs go early, rounds 1-7
-    'WR': (6, 96),      # WRs throughout, rounds 1-8
-    'TE': (36, 120),    # TEs typically rounds 3-10
-    'K': (144, 180),    # Kickers very late
-    'DEF': (132, 168)   # Defenses late
-}
-
-# Create simulated ADP based on position and some randomness
-import random
-random.seed(42)  # Consistent results for testing
-
-for i, player in enumerate(players):
-    position = player.get('position', 'WR')
-    if position in position_adp_ranges:
-        min_adp, max_adp = position_adp_ranges[position]
+            
+        players_array = raw_data["players"]
+        print(f"Loaded {len(players_array)} Sleeper players for matching")
+        return players_array
         
-        # Add some variance based on player quality indicators
-        base_adp = random.uniform(min_adp, max_adp)
+    except FileNotFoundError:
+        print("Error: players_detailed.json not found")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"Error parsing Sleeper data: {e}")
+        return None
+
+def fetch_ffc_adp_data(format_name):
+    """Fetch ADP data from Fantasy Football Calculator API"""
+    url = FFC_API_ENDPOINTS.get(format_name)
+    if not url:
+        print(f"Unknown format: {format_name}")
+        return None
+    
+    try:
+        print(f"Fetching {format_name} ADP data from FFC...")
         
-        # Simulate some elite players with better ADP
-        if i < 50 and position in ['RB', 'WR']:  # Top 50 skill players
-            base_adp = max(6, base_adp * 0.7)  # Push toward earlier rounds
-        
-        adp_data[player.get('name', '')] = {
-            'adp': round(base_adp, 1),
-            'min_pick': max(1, round(base_adp - 12)),
-            'max_pick': min(200, round(base_adp + 12)),
-            'std_dev': round(random.uniform(8, 20), 1),
-            'source': 'simulated'
+        # Add headers to mimic browser request
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Accept': 'application/json',
+            'Accept-Language': 'en-US,en;q=0.9'
         }
+        
+        response = requests.get(url, headers=headers, timeout=30)
+        response.raise_for_status()
+        
+        data = response.json()
+        
+        # Validate response structure
+        if not isinstance(data, dict) or "players" not in data:
+            print(f"Invalid response structure for {format_name}")
+            return None
+            
+        players_data = data["players"]
+        print(f"Successfully fetched {len(players_data)} {format_name} ADP records")
+        return players_data
+        
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to fetch {format_name} ADP data: {e}")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"Invalid JSON response for {format_name}: {e}")
+        return None
+    except Exception as e:
+        print(f"Unexpected error fetching {format_name} data: {e}")
+        return None
 
-print(f"Generated simulated ADP for {len(adp_data)} players")
-return adp_data
-```
-
-def fetch_real_adp_data() -> Dict:
-“””
-Fetch real ADP data from fantasy platforms
-This is a placeholder - actual implementation would need API keys
-“””
-print(“Real ADP fetching not implemented - using simulated data”)
-return {}
-
-def calculate_projected_points(player: Dict, performance_data: Optional[Dict] = None) -> Dict:
-“”“Calculate projected fantasy points for different scoring formats”””
-
-```
-# If we have performance data, use it for projections
-if performance_data and player.get('sleeper_id') in performance_data.get('players', {}):
-    player_perf = performance_data['players'][player.get('sleeper_id')]
-    season_totals = player_perf.get('season_totals', {})
-    games_played = season_totals.get('games_played', 1)
+def normalize_player_name(name):
+    """Normalize player names for matching"""
+    if not name:
+        return ""
     
-    if games_played > 0:
-        # Project based on per-game averages over 17 games
-        averages = season_totals.get('averages', {})
-        return {
-            'standard': round(averages.get('standard', 0) * 17, 1),
-            'half_ppr': round(averages.get('half_ppr', 0) * 17, 1),
-            'ppr': round(averages.get('ppr', 0) * 17, 1),
-            'confidence': min(100, games_played * 20)  # Higher confidence with more games
-        }
-
-# Fallback to position-based projections
-position = player.get('position', '')
-
-position_projections = {
-    'QB': {'standard': 280, 'half_ppr': 280, 'ppr': 280},
-    'RB': {'standard': 180, 'half_ppr': 200, 'ppr': 220},
-    'WR': {'standard': 160, 'half_ppr': 180, 'ppr': 200},
-    'TE': {'standard': 120, 'half_ppr': 140, 'ppr': 160},
-    'K': {'standard': 140, 'half_ppr': 140, 'ppr': 140},
-    'DEF': {'standard': 120, 'half_ppr': 120, 'ppr': 120}
-}
-
-base_projection = position_projections.get(position, 
-                                         {'standard': 100, 'half_ppr': 110, 'ppr': 120})
-
-return {
-    'standard': base_projection['standard'],
-    'half_ppr': base_projection['half_ppr'],
-    'ppr': base_projection['ppr'],
-    'confidence': 50  # Low confidence for position-based projections
-}
-```
-
-def analyze_draft_value(player: Dict, adp: float, projections: Dict) -> Dict:
-“”“Analyze if player provides good draft value”””
-
-```
-position = player.get('position', '')
-
-# Convert ADP to expected points based on draft position
-# This is simplified - real analysis would use VBD (Value Based Drafting)
-if adp <= 12:       # Round 1
-    expected_points = 250
-elif adp <= 24:     # Round 2
-    expected_points = 200
-elif adp <= 36:     # Round 3
-    expected_points = 170
-elif adp <= 48:     # Round 4
-    expected_points = 150
-elif adp <= 72:     # Rounds 5-6
-    expected_points = 130
-elif adp <= 96:     # Rounds 7-8
-    expected_points = 110
-elif adp <= 120:    # Rounds 9-10
-    expected_points = 95
-else:               # Late rounds
-    expected_points = 80
-
-# Compare projected points to expected points for draft position
-projected_ppr = projections.get('ppr', 0)
-value_difference = projected_ppr - expected_points
-value_percentage = (value_difference / expected_points * 100) if expected_points > 0 else 0
-
-# Determine value category
-if value_percentage >= 15:
-    value_tier = 'value'
-    tier_description = 'Strong Value Pick'
-elif value_percentage >= 8:
-    value_tier = 'slight_value'
-    tier_description = 'Slight Value'
-elif value_percentage <= -15:
-    value_tier = 'bust'
-    tier_description = 'Bust Risk'
-elif value_percentage <= -8:
-    value_tier = 'slight_bust'
-    tier_description = 'Slight Reach'
-else:
-    value_tier = 'fair'
-    tier_description = 'Fair Value'
-
-return {
-    'value_tier': value_tier,
-    'tier_description': tier_description,
-    'expected_points': expected_points,
-    'projected_points': projected_ppr,
-    'value_difference': round(value_difference, 1),
-    'value_percentage': round(value_percentage, 1),
-    'draft_round': (adp - 1) // 12 + 1,
-    'confidence_score': projections.get('confidence', 50)
-}
-```
-
-def create_draft_insights(draft_players: List[Dict]) -> Dict:
-“”“Create actionable draft insights and recommendations”””
-
-```
-# Categorize players by value tiers
-value_picks = [p for p in draft_players if p['analysis']['value_tier'] == 'value']
-bust_risks = [p for p in draft_players if p['analysis']['value_tier'] == 'bust']
-sleepers = [p for p in draft_players 
-           if p['adp']['adp'] > 100 and p['analysis']['value_tier'] in ['value', 'slight_value']]
-
-# Sort by value for recommendations
-value_picks.sort(key=lambda x: x['analysis']['value_percentage'], reverse=True)
-bust_risks.sort(key=lambda x: x['analysis']['value_percentage'])
-sleepers.sort(key=lambda x: x['analysis']['value_percentage'], reverse=True)
-
-# Position scarcity analysis
-position_depth = {}
-for player in draft_players:
-    pos = player['info']['position']
-    if pos not in position_depth:
-        position_depth[pos] = {'total': 0, 'high_value': 0, 'early_round': 0}
+    # Convert to lowercase and strip whitespace
+    normalized = str(name).lower().strip()
     
-    position_depth[pos]['total'] += 1
-    if player['analysis']['value_tier'] in ['value', 'slight_value']:
-        position_depth[pos]['high_value'] += 1
-    if player['adp']['adp'] <= 72:  # First 6 rounds
-        position_depth[pos]['early_round'] += 1
-
-# Create strategic insights
-strategic_insights = []
-
-# Position scarcity insights
-for pos, depth in position_depth.items():
-    scarcity_ratio = depth['early_round'] / max(depth['total'], 1)
-    if scarcity_ratio < 0.3 and depth['total'] > 5:
-        strategic_insights.append({
-            'type': 'position_scarcity',
-            'message': f"{pos} position is deep - wait on drafting {pos}s until later rounds",
-            'position': pos,
-            'early_options': depth['early_round'],
-            'total_options': depth['total']
-        })
-
-return {
-    'value_picks': value_picks[:10],  # Top 10 value picks
-    'bust_warnings': bust_risks[:10],  # Top 10 bust risks
-    'sleepers': sleepers[:15],  # Top 15 sleepers
-    'position_depth': position_depth,
-    'strategic_insights': strategic_insights,
-    'draft_strategy_notes': [
-        "Focus on value picks in rounds 3-6 where ADP inefficiencies are common",
-        "Avoid bust risks unless they fall significantly below their ADP",
-        "Target sleepers in rounds 10+ for upside potential"
-    ]
-}
-```
-
-def create_draft_database(players: List[Dict], performance_data: Optional[Dict] = None, use_real_adp: bool = False) -> Dict:
-“”“Create comprehensive draft database”””
-print(“Creating draft analysis database…”)
-
-```
-# Get ADP data
-if use_real_adp:
-    adp_data = fetch_real_adp_data()
-    if not adp_data:
-        print("Failed to fetch real ADP - falling back to simulated")
-        adp_data = simulate_adp_data(players)
-else:
-    adp_data = simulate_adp_data(players)
-
-draft_players = []
-
-for player in players:
-    player_name = player.get('name', '')
+    # Remove common suffixes
+    suffixes = [" jr.", " sr.", " iii", " ii", " iv"]
+    for suffix in suffixes:
+        if normalized.endswith(suffix):
+            normalized = normalized[:-len(suffix)].strip()
     
-    # Skip players without ADP data (likely not fantasy relevant for drafts)
-    if player_name not in adp_data:
-        continue
-    
-    # Calculate projections
-    projections = calculate_projected_points(player, performance_data)
-    
-    # Get ADP info
-    adp_info = adp_data[player_name]
-    
-    # Analyze draft value
-    analysis = analyze_draft_value(player, adp_info['adp'], projections)
-    
-    # Compile player draft profile
-    draft_player = {
-        'info': {
-            'name': player_name,
-            'position': player.get('position'),
-            'team': player.get('team'),
-            'sleeper_id': player.get('sleeper_id')
-        },
-        'adp': adp_info,
-        'projections': projections,
-        'analysis': analysis
+    # Handle common name variations
+    name_replacements = {
+        "d.j.": "dj",
+        "t.j.": "tj", 
+        "j.j.": "jj",
+        "d'": "d",
+        "'": ""
     }
     
-    draft_players.append(draft_player)
+    for old, new in name_replacements.items():
+        normalized = normalized.replace(old, new)
+    
+    return normalized
 
-# Sort by ADP
-draft_players.sort(key=lambda x: x['adp']['adp'])
+def create_player_lookup(sleeper_players):
+    """Create lookup dictionaries for player matching"""
+    name_lookup = {}
+    alt_name_lookup = {}
+    
+    for player in sleeper_players:
+        if not isinstance(player, dict):
+            continue
+            
+        player_name = player.get("name", "")
+        if not player_name:
+            continue
+            
+        # Primary lookup by normalized name
+        normalized_name = normalize_player_name(player_name)
+        if normalized_name:
+            name_lookup[normalized_name] = player
+        
+        # Alternative lookups
+        first_name = player.get("first_name", "")
+        last_name = player.get("last_name", "")
+        
+        if first_name and last_name:
+            # "Last, First" format common in some data sources
+            last_first = normalize_player_name(f"{last_name}, {first_name}")
+            alt_name_lookup[last_first] = player
+            
+            # "First Last" format
+            first_last = normalize_player_name(f"{first_name} {last_name}")
+            alt_name_lookup[first_last] = player
+    
+    print(f"Created lookup for {len(name_lookup)} primary names, {len(alt_name_lookup)} alternative names")
+    return name_lookup, alt_name_lookup
 
-# Create insights
-insights = create_draft_insights(draft_players)
-
-# Compile final database
-database = {
-    'metadata': {
-        'version': SCRIPT_VERSION,
-        'generated_at': datetime.now(timezone.utc).isoformat(),
-        'season': CURRENT_SEASON,
-        'total_players': len(draft_players),
-        'scoring_formats': ['standard', 'half_ppr', 'ppr'],
-        'adp_source': 'simulated' if not use_real_adp else 'real_apis'
-    },
-    'players': draft_players,
-    'insights': insights,
-    'usage_notes': {
-        'value_picks': 'Players projected to outperform their ADP by 15%+',
-        'bust_warnings': 'Players projected to underperform their ADP by 15%+',
-        'sleepers': 'Late-round picks (ADP 100+) with value potential',
-        'confidence_scores': 'Based on available performance data (0-100)'
-    }
-}
-
-print(f"Generated draft database with {len(draft_players)} players")
-return database
-```
-
-def save_draft_database(database: Dict) -> bool:
-“”“Save draft database with validation”””
-try:
-os.makedirs(‘data’, exist_ok=True)
-
-```
-    draft_file = 'data/NFL_draft_database.json'
-    temp_file = draft_file + '.tmp'
+def match_adp_to_sleeper(adp_data, sleeper_lookup, alt_lookup):
+    """Match ADP data to Sleeper players"""
+    matched_players = {}
+    unmatched_adp = []
     
-    # Write to temporary file first
-    with open(temp_file, 'w') as f:
-        json.dump(database, f, indent=2, ensure_ascii=False)
-    
-    # Validate temporary file
-    with open(temp_file, 'r') as f:
-        test_load = json.load(f)
-        assert 'metadata' in test_load
-        assert 'players' in test_load
-        assert 'insights' in test_load
-        assert isinstance(test_load['players'], list)
-    
-    # Atomic replacement
-    if os.path.exists(draft_file):
-        os.replace(temp_file, draft_file)
-    else:
-        os.rename(temp_file, draft_file)
-    
-    file_size_kb = os.path.getsize(draft_file) / 1024
-    
-    print(f"Successfully saved draft database:")
-    print(f"  - {draft_file} ({len(database['players'])} players, {file_size_kb:.1f} KB)")
-    print(f"  - {len(database['insights']['value_picks'])} value picks identified")
-    print(f"  - {len(database['insights']['bust_warnings'])} bust warnings created")
-    print(f"  - {len(database['insights']['sleepers'])} sleeper candidates found")
-    
-    return True
-    
-except Exception as e:
-    # Clean up temporary file
-    if 'temp_file' in locals() and os.path.exists(temp_file):
+    for adp_player in adp_data:
+        if not isinstance(adp_player, dict):
+            continue
+            
+        # Get player name from ADP data
+        adp_name = adp_player.get("name", "") or adp_player.get("player_name", "")
+        if not adp_name:
+            continue
+            
+        # Get ADP value
+        adp_value = adp_player.get("adp") or adp_player.get("average_pick")
+        if not adp_value:
+            continue
+            
         try:
-            os.remove(temp_file)
-        except:
-            pass
-    
-    print(f"Error saving draft database: {e}")
-    return False
-```
-
-def main():
-“”“Main execution function”””
-parser = argparse.ArgumentParser(description=‘Generate NFL draft analysis database’)
-parser.add_argument(’–real-adp’, action=‘store_true’,
-help=‘Attempt to fetch real ADP data (requires API access)’)
-parser.add_argument(’–verbose’, action=‘store_true’, help=‘Enable verbose output’)
-
-```
-args = parser.parse_args()
-
-print(f"=== Draft Database Generator v{SCRIPT_VERSION} ===")
-print(f"Season: {CURRENT_SEASON}")
-print(f"ADP Source: {'Real APIs' if args.real_adp else 'Simulated'}")
-print()
-
-try:
-    # Load required data
-    print("Loading player data...")
-    players_db = load_existing_players()
-    if not players_db:
-        return False
-    
-    players_list = players_db.get('players', [])
-    if not players_list:
-        print("Error: No players found in database")
-        return False
-    
-    print(f"Loaded {len(players_list)} players")
-    
-    # Load performance data if available
-    print("Loading performance data...")
-    performance_data = load_season_performances()
-    
-    # Generate draft database
-    database = create_draft_database(players_list, performance_data, args.real_adp)
-    
-    # Save database
-    if save_draft_database(database):
-        print(f"\n✅ Draft database generation completed successfully")
+            adp_value = float(adp_value)
+        except (ValueError, TypeError):
+            continue
         
-        # Display summary statistics
-        insights = database['insights']
-        print(f"\n📊 Draft Analysis Summary:")
-        print(f"  Value Picks: {len(insights['value_picks'])}")
-        print(f"  Bust Warnings: {len(insights['bust_warnings'])}")
-        print(f"  Sleeper Picks: {len(insights['sleepers'])}")
-        print(f"  Strategic Insights: {len(insights['strategic_insights'])}")
+        # Try to match with Sleeper players
+        normalized_adp_name = normalize_player_name(adp_name)
+        matched_sleeper = None
+        match_method = None
+        
+        # Primary lookup
+        if normalized_adp_name in sleeper_lookup:
+            matched_sleeper = sleeper_lookup[normalized_adp_name]
+            match_method = "exact"
+        elif normalized_adp_name in alt_lookup:
+            matched_sleeper = alt_lookup[normalized_adp_name]
+            match_method = "alternative"
+        else:
+            # Fuzzy matching for missed cases
+            adp_words = set(normalized_adp_name.split())
+            for sleeper_name, sleeper_player in sleeper_lookup.items():
+                sleeper_words = set(sleeper_name.split())
+                
+                # If they share at least 2 significant words
+                if len(adp_words & sleeper_words) >= 2 and len(adp_words) >= 2:
+                    matched_sleeper = sleeper_player
+                    match_method = "fuzzy"
+                    break
+        
+        if matched_sleeper:
+            sleeper_name = matched_sleeper.get("name", "")
+            if sleeper_name:
+                matched_players[sleeper_name] = {
+                    "adp": adp_value,
+                    "sleeper_data": matched_sleeper,
+                    "adp_name": adp_name,
+                    "match_method": match_method
+                }
+        else:
+            unmatched_adp.append({
+                "name": adp_name,
+                "adp": adp_value
+            })
+    
+    print(f"Matched {len(matched_players)} players, {len(unmatched_adp)} unmatched")
+    return matched_players, unmatched_adp
+
+def combine_adp_formats(standard_matches, half_ppr_matches, ppr_matches):
+    """Combine ADP data from all formats into final structure"""
+    combined_players = {}
+    
+    # Start with all players from any format
+    all_player_names = set()
+    all_player_names.update(standard_matches.keys())
+    all_player_names.update(half_ppr_matches.keys())
+    all_player_names.update(ppr_matches.keys())
+    
+    for player_name in all_player_names:
+        player_data = {
+            "name": player_name,
+            "standard": {},
+            "half_ppr": {}, 
+            "ppr": {}
+        }
+        
+        # Add standard ADP if available
+        if player_name in standard_matches:
+            standard_data = standard_matches[player_name]
+            player_data["standard"] = {"adp": standard_data["adp"]}
+            # Use sleeper data from first available match
+            if "sleeper_data" not in player_data:
+                player_data["sleeper_data"] = standard_data["sleeper_data"]
+        
+        # Add half PPR ADP if available
+        if player_name in half_ppr_matches:
+            half_ppr_data = half_ppr_matches[player_name]
+            player_data["half_ppr"] = {"adp": half_ppr_data["adp"]}
+            # Use sleeper data if we don't have it yet
+            if "sleeper_data" not in player_data:
+                player_data["sleeper_data"] = half_ppr_data["sleeper_data"]
+        
+        # Add PPR ADP if available
+        if player_name in ppr_matches:
+            ppr_data = ppr_matches[player_name]
+            player_data["ppr"] = {"adp": ppr_data["adp"]}
+            # Use sleeper data if we don't have it yet
+            if "sleeper_data" not in player_data:
+                player_data["sleeper_data"] = ppr_data["sleeper_data"]
+        
+        combined_players[player_name] = player_data
+    
+    print(f"Combined data for {len(combined_players)} players across all formats")
+    return combined_players
+
+def save_adp_database(combined_players):
+    """Save ADP database in the format expected by production script"""
+    
+    # Create the structure expected by collect_nfl_data.py
+    adp_database = {
+        "metadata": {
+            "generated_at": datetime.now().isoformat(),
+            "source": "Fantasy Football Calculator API",
+            "formats": ["standard", "half_ppr", "ppr"],
+            "total_players": len(combined_players),
+            "version": "1.0"
+        },
+        "players": {}
+    }
+    
+    # Convert to the expected format
+    for player_name, player_data in combined_players.items():
+        # Use player name as key (matching production script expectation)
+        adp_database["players"][player_name] = {
+            "name": player_name,
+            "standard": player_data.get("standard", {}),
+            "half_ppr": player_data.get("half_ppr", {}),
+            "ppr": player_data.get("ppr", {})
+        }
+    
+    # Save to root directory (where production script expects it)
+    output_file = "adp_database.json"
+    
+    try:
+        with open(output_file, "w") as f:
+            json.dump(adp_database, f, indent=2)
+        
+        file_size_kb = os.path.getsize(output_file) / 1024
+        print(f"Successfully saved ADP database:")
+        print(f"  - {output_file} ({file_size_kb:.1f} KB)")
+        print(f"  - {len(adp_database['players'])} players with ADP data")
+        
+        # Show format coverage
+        standard_count = sum(1 for p in adp_database["players"].values() if p.get("standard", {}).get("adp"))
+        half_ppr_count = sum(1 for p in adp_database["players"].values() if p.get("half_ppr", {}).get("adp"))
+        ppr_count = sum(1 for p in adp_database["players"].values() if p.get("ppr", {}).get("adp"))
+        
+        print(f"  - Standard ADP: {standard_count} players")
+        print(f"  - Half PPR ADP: {half_ppr_count} players")
+        print(f"  - PPR ADP: {ppr_count} players")
         
         return True
-    else:
-        print(f"\n❌ Failed to save draft database")
-        return False
         
-except Exception as e:
-    print(f"\n❌ Draft database generation failed: {str(e)}")
-    if args.verbose:
+    except Exception as e:
+        print(f"Error saving ADP database: {e}")
+        return False
+
+def main():
+    """Main execution function"""
+    print("=== ADP Database Generator for Byline Content ===")
+    print("Fetching data from Fantasy Football Calculator API...")
+    print()
+    
+    try:
+        # Load Sleeper players for matching
+        sleeper_players = load_sleeper_players()
+        if not sleeper_players:
+            print("Cannot proceed without Sleeper player data")
+            return False
+        
+        # Create lookup dictionaries
+        sleeper_lookup, alt_lookup = create_player_lookup(sleeper_players)
+        
+        # Fetch ADP data for all formats
+        format_matches = {}
+        
+        for format_name in ["standard", "half_ppr", "ppr"]:
+            print(f"\nProcessing {format_name} format...")
+            
+            # Fetch ADP data
+            adp_data = fetch_ffc_adp_data(format_name)
+            if not adp_data:
+                print(f"Warning: Could not fetch {format_name} ADP data")
+                format_matches[format_name] = {}
+                continue
+            
+            # Add small delay between API calls to be respectful
+            time.sleep(1)
+            
+            # Match to Sleeper players
+            matches, unmatched = match_adp_to_sleeper(adp_data, sleeper_lookup, alt_lookup)
+            format_matches[format_name] = matches
+            
+            if unmatched and len(unmatched) < 20:  # Show first few unmatched
+                print(f"Sample unmatched {format_name} players:")
+                for player in unmatched[:5]:
+                    print(f"  - {player['name']} (ADP: {player['adp']})")
+        
+        # Combine all formats
+        print(f"\nCombining data from all formats...")
+        combined_players = combine_adp_formats(
+            format_matches.get("standard", {}),
+            format_matches.get("half_ppr", {}),
+            format_matches.get("ppr", {})
+        )
+        
+        if not combined_players:
+            print("No ADP data successfully processed")
+            return False
+        
+        # Save database
+        if save_adp_database(combined_players):
+            print(f"\nADP database generation completed successfully!")
+            print(f"Your production script can now use ADP analysis features.")
+            return True
+        else:
+            print(f"\nFailed to save ADP database")
+            return False
+            
+    except Exception as e:
+        print(f"ADP database generation failed: {e}")
         import traceback
         traceback.print_exc()
-    return False
-```
+        return False
 
-if **name** == “**main**”:
-success = main()
-sys.exit(0 if success else 1)
+if __name__ == "__main__":
+    success = main()
+    sys.exit(0 if success else 1)
