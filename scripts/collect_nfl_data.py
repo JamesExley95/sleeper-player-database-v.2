@@ -3,6 +3,7 @@
 import json
 import os
 import sys
+import requests  # Added for ADP API calls
 from datetime import datetime
 
 # Import with error handling
@@ -35,20 +36,100 @@ def load_sleeper_players():
         sys.exit(1)
 
 def load_adp_data():
-    """Load ADP data created by generate_draft_database.py"""
-    try:
-        with open("adp_database.json", "r") as f:
-            adp_data = json.load(f)
+    """Collect live ADP data from Fantasy Football Calculator API"""
+    print("Collecting live ADP data from Fantasy Football Calculator...")
+    
+    # API endpoints for different scoring formats
+    api_endpoints = {
+        "standard": "https://fantasyfootballcalculator.com/api/v1/adp/standard?teams=12&year=2024",
+        "ppr": "https://fantasyfootballcalculator.com/api/v1/adp/ppr?teams=12&year=2024",
+        "half_ppr": "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?teams=12&year=2024"
+    }
+    
+    adp_database = {
+        "last_updated": datetime.now().isoformat(),
+        "source": "fantasyfootballcalculator.com",
+        "players": {}
+    }
+    
+    successful_formats = 0
+    
+    for format_name, api_url in api_endpoints.items():
+        try:
+            print(f"  Fetching {format_name} ADP...")
+            
+            headers = {'User-Agent': 'Byline-Content-MVP/1.0'}
+            response = requests.get(api_url, headers=headers, timeout=15)
+            response.raise_for_status()
+            
+            api_data = response.json()
+            players_data = api_data.get("players", [])
+            
+            if not players_data:
+                print(f"    ⚠️  {format_name}: No players data returned")
+                continue
+            
+            # Process each player
+            for player_data in players_data:
+                player_name = player_data.get("name", "").strip()
+                if not player_name:
+                    continue
+                
+                # Initialize player entry if first time seeing them
+                if player_name not in adp_database["players"]:
+                    adp_database["players"][player_name] = {
+                        "name": player_name,
+                        "position": player_data.get("position", ""),
+                        "team": player_data.get("team", "")
+                    }
+                
+                # Add this format's ADP data
+                adp_database["players"][player_name][format_name] = {
+                    "adp": float(player_data.get("adp", 999)),
+                    "rank": int(player_data.get("rank", 999)),
+                    "times_drafted": int(player_data.get("times_drafted", 0))
+                }
+            
+            successful_formats += 1
+            print(f"    ✅ {format_name}: {len(players_data)} players collected")
+            
+        except requests.exceptions.RequestException as e:
+            print(f"    ❌ {format_name}: API request failed - {str(e)}")
+            continue
+        except json.JSONDecodeError as e:
+            print(f"    ❌ {format_name}: Invalid JSON response - {str(e)}")
+            continue
+        except Exception as e:
+            print(f"    ❌ {format_name}: Unexpected error - {str(e)}")
+            continue
+    
+    # Calculate average ADP across formats for each player
+    for player_name, player_data in adp_database["players"].items():
+        adp_values = []
+        for format_name in ["standard", "ppr", "half_ppr"]:
+            format_data = player_data.get(format_name, {})
+            if isinstance(format_data, dict):
+                adp_val = format_data.get("adp", 999)
+                if adp_val < 999:
+                    adp_values.append(adp_val)
         
-        adp_players = adp_data.get("players", {})
-        print(f"Loaded ADP data for {len(adp_players)} players")
-        return adp_data, adp_players
+        if adp_values:
+            player_data["average_adp"] = round(sum(adp_values) / len(adp_values), 1)
+        else:
+            player_data["average_adp"] = 999
+    
+    total_players = len(adp_database["players"])
+    print(f"ADP collection complete: {total_players} players across {successful_formats} formats")
+    
+    if successful_formats > 0:
+        # Save ADP database for future use/debugging
+        with open("adp_database.json", "w") as f:
+            json.dump(adp_database, f, indent=2)
+        print(f"ADP database saved to adp_database.json")
         
-    except FileNotFoundError:
-        print("Warning: adp_database.json not found - ADP analysis will be skipped")
-        return None, {}
-    except json.JSONDecodeError as e:
-        print(f"Error parsing ADP data: {e}")
+        return adp_database, adp_database["players"]
+    else:
+        print("Warning: ADP collection failed - proceeding without ADP data")
         return None, {}
 
 def filter_fantasy_players(players_array):
@@ -102,7 +183,7 @@ def filter_fantasy_players(players_array):
     return fantasy_players
 
 def match_players_to_adp(fantasy_players, adp_players):
-    """Match Sleeper players to ADP data"""
+    """Match Sleeper players to ADP data with enhanced matching"""
     if not adp_players:
         print("No ADP data available for matching")
         return fantasy_players
@@ -110,46 +191,54 @@ def match_players_to_adp(fantasy_players, adp_players):
     matched_count = 0
     adp_lookup = {}
     
-    # Create lookup from ADP data (try multiple name formats)
+    # Create comprehensive lookup from ADP data
     for adp_id, adp_player in adp_players.items():
         if not isinstance(adp_player, dict):
             continue
             
         name = str(adp_player.get("name", "")).lower().strip()
         if name:
-            adp_lookup[name] = adp_player
+            # Multiple name variations for better matching
+            name_variations = [
+                name,
+                name.replace(".", ""),
+                name.replace(" jr", "").replace(" sr", ""),
+                name.replace("'", "")
+            ]
             
-            # Also try "First Last" to "Last, First" conversion
-            name_parts = name.split()
-            if len(name_parts) >= 2:
-                last_first = f"{name_parts[-1]}, {' '.join(name_parts[:-1])}"
-                adp_lookup[last_first] = adp_player
+            for variation in name_variations:
+                if variation and variation not in adp_lookup:
+                    adp_lookup[variation] = adp_player
     
-    # Match players
+    # Match players with multiple strategies
     for player in fantasy_players:
         player_name = str(player["player_name"]).lower().strip()
+        first_name = str(player["first_name"]).lower().strip()
+        last_name = str(player["last_name"]).lower().strip()
         
-        # Try exact match first
-        adp_match = adp_lookup.get(player_name)
+        # Try different name combinations
+        name_candidates = [
+            player_name,
+            f"{first_name} {last_name}",
+            player_name.replace(".", ""),
+            player_name.replace(" jr", "").replace(" sr", ""),
+            player_name.replace("'", "")
+        ]
         
-        # Try partial matching if no exact match
-        if not adp_match:
-            for adp_name, adp_player in adp_lookup.items():
-                # Simple fuzzy matching - check if names have common words
-                player_words = set(player_name.split())
-                adp_words = set(adp_name.split())
-                
-                # If they share at least 2 words (first+last usually), consider it a match
-                if len(player_words & adp_words) >= 2:
-                    adp_match = adp_player
-                    break
+        adp_match = None
+        for candidate in name_candidates:
+            if candidate in adp_lookup:
+                adp_match = adp_lookup[candidate]
+                break
         
         # Add ADP data to player if found
         if adp_match and isinstance(adp_match, dict):
             player["adp_data"] = {
+                "source": "fantasyfootballcalculator.com",
                 "standard": adp_match.get("standard", {}),
                 "half_ppr": adp_match.get("half_ppr", {}),
-                "ppr": adp_match.get("ppr", {})
+                "ppr": adp_match.get("ppr", {}),
+                "average_adp": adp_match.get("average_adp", 999)
             }
             matched_count += 1
         else:
@@ -842,8 +931,11 @@ def create_output_files(fantasy_players, matched_records, narrative_insights):
     with open("data/weekly_insights.json", "w") as f:
         json.dump(insights_data, f, indent=2)
     
-    # data/metadata.json - System health metrics
-    quality_score = min(95, 70 + (data_coverage / 100 * 15) + (adp_coverage / 100 * 10))
+    # data/metadata.json - System health metrics with enhanced ADP scoring
+    base_score = 70  # Your current score
+    adp_bonus = min(15, (adp_coverage / 100) * 15)  # Up to 15 points for ADP coverage
+    data_bonus = min(10, (data_coverage / 100) * 10)  # Up to 10 points for data coverage
+    quality_score = min(100, base_score + adp_bonus + data_bonus)
     
     metadata = {
         "data_health": {
@@ -858,7 +950,7 @@ def create_output_files(fantasy_players, matched_records, narrative_insights):
         "collection_info": {
             "last_updated": datetime.now().isoformat(),
             "season": 2025,
-            "source": "Sleeper + nfl_data_py + FFC_ADP"
+            "source": "Sleeper + nfl_data_py + FantasyFootballCalculator_ADP"
         }
     }
     
@@ -869,20 +961,20 @@ def create_output_files(fantasy_players, matched_records, narrative_insights):
     return total_players
 
 def main():
-    """Main execution function"""
+    """Main execution function with enhanced ADP integration"""
     print("Starting NFL data collection with ADP analysis for Byline Content MVP...")
     
     try:
         # Load player database
         sleeper_players = load_sleeper_players()
         
-        # Load ADP data
+        # Load live ADP data (enhanced function)
         adp_data, adp_players = load_adp_data()
         
         # Filter to fantasy-relevant players
         fantasy_players = filter_fantasy_players(sleeper_players)
         
-        # Match players to ADP data
+        # Match players to ADP data (enhanced matching)
         fantasy_players = match_players_to_adp(fantasy_players, adp_players)
         
         # Attempt NFL data collection
@@ -905,7 +997,7 @@ def main():
         # Create workflow output files
         total_players = create_output_files(fantasy_players, matched_records, narrative_insights)
         
-        # Summary report
+        # Enhanced summary report
         print(f"\n=== COLLECTION COMPLETE ===")
         print(f"Fantasy players processed: {len(fantasy_players)}")
         
@@ -943,7 +1035,7 @@ def main():
             weeks.sort()
             print(f"Weeks with data: {weeks}")
         
-        # Show sample insights
+        # Show sample insights if available
         if steals_count > 0:
             print(f"\nTop draft steals:")
             draft_analysis = narrative_insights.get("draft_analysis", {})
@@ -959,6 +1051,13 @@ def main():
                         adp = metrics.get("adp_standard", "N/A")
                         avg_pts = metrics.get("avg_points_standard", "N/A")
                         print(f"  {name} ({position}) - ADP {adp}, Avg {avg_pts} pts")
+        
+        # Show ADP coverage stats
+        if players_with_adp > 0:
+            adp_coverage_pct = (players_with_adp / len(fantasy_players)) * 100
+            print(f"\nADP Integration Success:")
+            print(f"  Coverage: {players_with_adp}/{len(fantasy_players)} players ({adp_coverage_pct:.1f}%)")
+            print(f"  Quality boost: 70 → {70 + min(15, adp_coverage_pct * 0.15):.0f} points")
         
         # Show sample unmatched for debugging
         if unmatched_sleeper:
