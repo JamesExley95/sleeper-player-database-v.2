@@ -22,25 +22,45 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests pandas nfl_data_py
         
-    - name: Collect NFL performance data
-      run: python scripts/collect_nfl_data.py
+    - name: Create data directory
+      run: mkdir -p data/generated_content
+        
+    - name: Refresh player database
+      run: python scripts/refresh_player_database.py
+      continue-on-error: false
       
-    - name: Update weekly performance tracking
-      run: python scripts/weekly_performance_tracker.py
-      
-    - name: Collect updated ADP data
+    - name: Collect ADP data
       run: python scripts/collect_adp_data.py
+      continue-on-error: false
       
-    - name: Generate weekly content
+    - name: Generate draft database
+      run: python scripts/generate_draft_database.py
+      continue-on-error: false
+      
+    - name: Collect NFL data
+      run: python scripts/collect_nfl_data.py
+      continue-on-error: true
+      
+    - name: Update performance tracking
+      run: python scripts/weekly_performance_tracker.py
+      continue-on-error: true
+      
+    - name: Generate content
       run: python scripts/recap_content_generator.py
+      continue-on-error: false
       
     - name: Validate all data
       run: python scripts/validate_data.py
+      continue-on-error: true
       
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add data/
-        git diff --staged --quiet || git commit -m "Weekly update: NFL data, ADP, and content generation $(date '+%Y-%m-%d')"
-        git push
+        if ! git diff --staged --quiet; then
+          git commit -m "Weekly update: $(date '+%Y-%m-%d %H:%M UTC')"
+          git push
+        else
+          echo "No changes to commit"
+        fi
