@@ -1,0 +1,2824 @@
+{
+  "meta": {
+    "season": 2025,
+    "tracking_started": "2025-09-05T17:58:40.643725"
+  },
+  "snapshots": [
+    {
+      "date": "2025-09-05T17:58:40.643730",
+      "total_players": 233,
+      "source_meta": {
+        "created_at": "2025-09-05T17:58:40.638016",
+        "season": 2025,
+        "primary_scoring": "ppr",
+        "total_players": 233,
+        "source_meta": {
+          "type": "PPR",
+          "teams": 12,
+          "rounds": 15,
+          "total_drafts": 5886,
+          "start_date": "2025-08-29",
+          "end_date": "2025-09-05"
+        }
+      }
+    }
+  ],
+  "players": {
+    "5177": {
+      "name": "Ja'Marr Chase",
+      "position": "WR",
+      "team": "CIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643736",
+          "ppr_adp": 1.6,
+          "times_drafted": 1008
+        }
+      ]
+    },
+    "5670": {
+      "name": "Bijan Robinson",
+      "position": "RB",
+      "team": "ATL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643739",
+          "ppr_adp": 2.1,
+          "times_drafted": 675
+        }
+      ]
+    },
+    "2860": {
+      "name": "Saquon Barkley",
+      "position": "RB",
+      "team": "PHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643742",
+          "ppr_adp": 2.4,
+          "times_drafted": 365
+        }
+      ]
+    },
+    "4876": {
+      "name": "Justin Jefferson",
+      "position": "WR",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643744",
+          "ppr_adp": 4.4,
+          "times_drafted": 550
+        }
+      ]
+    },
+    "4869": {
+      "name": "CeeDee Lamb",
+      "position": "WR",
+      "team": "DAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643746",
+          "ppr_adp": 4.9,
+          "times_drafted": 824
+        }
+      ]
+    },
+    "5672": {
+      "name": "Jahmyr Gibbs",
+      "position": "RB",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643748",
+          "ppr_adp": 5.1,
+          "times_drafted": 1523
+        }
+      ]
+    },
+    "2434": {
+      "name": "Christian McCaffrey",
+      "position": "RB",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643750",
+          "ppr_adp": 7.5,
+          "times_drafted": 998
+        }
+      ]
+    },
+    "6183": {
+      "name": "Malik Nabers",
+      "position": "WR",
+      "team": "NYG",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643756",
+          "ppr_adp": 7.6,
+          "times_drafted": 495
+        }
+      ]
+    },
+    "5207": {
+      "name": "Nico Collins",
+      "position": "WR",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643759",
+          "ppr_adp": 9.7,
+          "times_drafted": 701
+        }
+      ]
+    },
+    "5714": {
+      "name": "Puka Nacua",
+      "position": "WR",
+      "team": "LAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643762",
+          "ppr_adp": 10.2,
+          "times_drafted": 427
+        }
+      ]
+    },
+    "5182": {
+      "name": "Amon-Ra St. Brown",
+      "position": "WR",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643764",
+          "ppr_adp": 10.6,
+          "times_drafted": 917
+        }
+      ]
+    },
+    "2350": {
+      "name": "Derrick Henry",
+      "position": "RB",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643766",
+          "ppr_adp": 10.8,
+          "times_drafted": 1307
+        }
+      ]
+    },
+    "6500": {
+      "name": "Ashton Jeanty",
+      "position": "RB",
+      "team": "LV",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643768",
+          "ppr_adp": 11.9,
+          "times_drafted": 1220
+        }
+      ]
+    },
+    "5683": {
+      "name": "De'Von Achane",
+      "position": "RB",
+      "team": "MIA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643770",
+          "ppr_adp": 13.9,
+          "times_drafted": 558
+        }
+      ]
+    },
+    "6175": {
+      "name": "Brian Thomas Jr.",
+      "position": "WR",
+      "team": "JAX",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643774",
+          "ppr_adp": 15.0,
+          "times_drafted": 881
+        }
+      ]
+    },
+    "5574": {
+      "name": "Drake London",
+      "position": "WR",
+      "team": "ATL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643806",
+          "ppr_adp": 15.2,
+          "times_drafted": 738
+        }
+      ]
+    },
+    "3255": {
+      "name": "Josh Jacobs",
+      "position": "RB",
+      "team": "GB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643808",
+          "ppr_adp": 16.4,
+          "times_drafted": 825
+        }
+      ]
+    },
+    "3247": {
+      "name": "A.J. Brown",
+      "position": "WR",
+      "team": "PHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643810",
+          "ppr_adp": 17.8,
+          "times_drafted": 583
+        }
+      ]
+    },
+    "4864": {
+      "name": "Jonathan Taylor",
+      "position": "RB",
+      "team": "IND",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643812",
+          "ppr_adp": 18.9,
+          "times_drafted": 798
+        }
+      ]
+    },
+    "6190": {
+      "name": "Bucky Irving",
+      "position": "RB",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643814",
+          "ppr_adp": 19.2,
+          "times_drafted": 970
+        }
+      ]
+    },
+    "5706": {
+      "name": "Chase Brown",
+      "position": "RB",
+      "team": "CIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643816",
+          "ppr_adp": 19.7,
+          "times_drafted": 1516
+        }
+      ]
+    },
+    "4870": {
+      "name": "Tee Higgins",
+      "position": "WR",
+      "team": "CIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643818",
+          "ppr_adp": 22.1,
+          "times_drafted": 254
+        }
+      ]
+    },
+    "5623": {
+      "name": "Kyren Williams",
+      "position": "RB",
+      "team": "LAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643820",
+          "ppr_adp": 23.3,
+          "times_drafted": 774
+        }
+      ]
+    },
+    "2888": {
+      "name": "Lamar Jackson",
+      "position": "QB",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643822",
+          "ppr_adp": 23.3,
+          "times_drafted": 821
+        }
+      ]
+    },
+    "6281": {
+      "name": "Ladd McConkey",
+      "position": "WR",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643823",
+          "ppr_adp": 23.4,
+          "times_drafted": 729
+        }
+      ]
+    },
+    "2885": {
+      "name": "Josh Allen",
+      "position": "QB",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643825",
+          "ppr_adp": 24.4,
+          "times_drafted": 790
+        }
+      ]
+    },
+    "6178": {
+      "name": "Brock Bowers",
+      "position": "TE",
+      "team": "LV",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643827",
+          "ppr_adp": 26.5,
+          "times_drafted": 1450
+        }
+      ]
+    },
+    "2390": {
+      "name": "Tyreek Hill",
+      "position": "WR",
+      "team": "MIA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643829",
+          "ppr_adp": 26.8,
+          "times_drafted": 531
+        }
+      ]
+    },
+    "2125": {
+      "name": "Davante Adams",
+      "position": "WR",
+      "team": "LAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643831",
+          "ppr_adp": 28.5,
+          "times_drafted": 267
+        }
+      ]
+    },
+    "2111": {
+      "name": "Mike Evans",
+      "position": "WR",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643832",
+          "ppr_adp": 29.3,
+          "times_drafted": 584
+        }
+      ]
+    },
+    "2439": {
+      "name": "Alvin Kamara",
+      "position": "RB",
+      "team": "NO",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643834",
+          "ppr_adp": 30.0,
+          "times_drafted": 637
+        }
+      ]
+    },
+    "5854": {
+      "name": "Jayden Daniels",
+      "position": "QB",
+      "team": "WAS",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643836",
+          "ppr_adp": 30.6,
+          "times_drafted": 595
+        }
+      ]
+    },
+    "4882": {
+      "name": "Joe Burrow",
+      "position": "QB",
+      "team": "CIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643838",
+          "ppr_adp": 30.8,
+          "times_drafted": 540
+        }
+      ]
+    },
+    "5656": {
+      "name": "Trey McBride",
+      "position": "TE",
+      "team": "ARI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643840",
+          "ppr_adp": 32.5,
+          "times_drafted": 934
+        }
+      ]
+    },
+    "5671": {
+      "name": "Jaxon Smith-Njigba",
+      "position": "WR",
+      "team": "SEA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643842",
+          "ppr_adp": 32.6,
+          "times_drafted": 1090
+        }
+      ]
+    },
+    "5652": {
+      "name": "James Cook",
+      "position": "RB",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643844",
+          "ppr_adp": 34.2,
+          "times_drafted": 1339
+        }
+      ]
+    },
+    "3449": {
+      "name": "Terry McLaurin",
+      "position": "WR",
+      "team": "WAS",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643846",
+          "ppr_adp": 35.9,
+          "times_drafted": 929
+        }
+      ]
+    },
+    "3239": {
+      "name": "DK Metcalf",
+      "position": "WR",
+      "team": "PIT",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643847",
+          "ppr_adp": 37.6,
+          "times_drafted": 515
+        }
+      ]
+    },
+    "5025": {
+      "name": "Jalen Hurts",
+      "position": "QB",
+      "team": "PHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643849",
+          "ppr_adp": 38.2,
+          "times_drafted": 906
+        }
+      ]
+    },
+    "6193": {
+      "name": "Marvin Harrison Jr.",
+      "position": "WR",
+      "team": "ARI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643851",
+          "ppr_adp": 38.8,
+          "times_drafted": 633
+        }
+      ]
+    },
+    "6538": {
+      "name": "Omarion Hampton",
+      "position": "RB",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643853",
+          "ppr_adp": 39.5,
+          "times_drafted": 1658
+        }
+      ]
+    },
+    "4873": {
+      "name": "Chuba Hubbard",
+      "position": "RB",
+      "team": "CAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643855",
+          "ppr_adp": 40.3,
+          "times_drafted": 530
+        }
+      ]
+    },
+    "5548": {
+      "name": "Garrett Wilson",
+      "position": "WR",
+      "team": "NYJ",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643857",
+          "ppr_adp": 41.3,
+          "times_drafted": 539
+        }
+      ]
+    },
+    "2470": {
+      "name": "James Conner",
+      "position": "RB",
+      "team": "ARI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643859",
+          "ppr_adp": 41.7,
+          "times_drafted": 462
+        }
+      ]
+    },
+    "2499": {
+      "name": "George Kittle",
+      "position": "TE",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643861",
+          "ppr_adp": 43.3,
+          "times_drafted": 956
+        }
+      ]
+    },
+    "2876": {
+      "name": "DJ Moore",
+      "position": "WR",
+      "team": "CHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643863",
+          "ppr_adp": 43.9,
+          "times_drafted": 308
+        }
+      ]
+    },
+    "5625": {
+      "name": "Kenneth Walker III",
+      "position": "RB",
+      "team": "SEA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643865",
+          "ppr_adp": 45.2,
+          "times_drafted": 1122
+        }
+      ]
+    },
+    "6561": {
+      "name": "Tetairoa McMillan",
+      "position": "WR",
+      "team": "CAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643867",
+          "ppr_adp": 47.7,
+          "times_drafted": 912
+        }
+      ]
+    },
+    "4883": {
+      "name": "DeVonta Smith",
+      "position": "WR",
+      "team": "PHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643869",
+          "ppr_adp": 47.7,
+          "times_drafted": 403
+        }
+      ]
+    },
+    "2862": {
+      "name": "Courtland Sutton",
+      "position": "WR",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643870",
+          "ppr_adp": 47.8,
+          "times_drafted": 1268
+        }
+      ]
+    },
+    "5503": {
+      "name": "Breece Hall",
+      "position": "RB",
+      "team": "NYJ",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643872",
+          "ppr_adp": 49.0,
+          "times_drafted": 494
+        }
+      ]
+    },
+    "6490": {
+      "name": "TreVeyon Henderson",
+      "position": "RB",
+      "team": "NE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643874",
+          "ppr_adp": 50.2,
+          "times_drafted": 1586
+        }
+      ]
+    },
+    "6172": {
+      "name": "Xavier Worthy",
+      "position": "WR",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643876",
+          "ppr_adp": 50.9,
+          "times_drafted": 650
+        }
+      ]
+    },
+    "2462": {
+      "name": "Patrick Mahomes",
+      "position": "QB",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643878",
+          "ppr_adp": 53.3,
+          "times_drafted": 434
+        }
+      ]
+    },
+    "2886": {
+      "name": "Baker Mayfield",
+      "position": "QB",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643880",
+          "ppr_adp": 53.7,
+          "times_drafted": 248
+        }
+      ]
+    },
+    "3435": {
+      "name": "Tony Pollard",
+      "position": "RB",
+      "team": "TEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643881",
+          "ppr_adp": 56.5,
+          "times_drafted": 593
+        }
+      ]
+    },
+    "2866": {
+      "name": "Calvin Ridley",
+      "position": "WR",
+      "team": "TEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643883",
+          "ppr_adp": 57.2,
+          "times_drafted": 1288
+        }
+      ]
+    },
+    "4861": {
+      "name": "Jerry Jeudy",
+      "position": "WR",
+      "team": "CLE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643885",
+          "ppr_adp": 57.9,
+          "times_drafted": 306
+        }
+      ]
+    },
+    "5675": {
+      "name": "Zay Flowers",
+      "position": "WR",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643887",
+          "ppr_adp": 58.0,
+          "times_drafted": 564
+        }
+      ]
+    },
+    "4862": {
+      "name": "D'Andre Swift",
+      "position": "RB",
+      "team": "CHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643889",
+          "ppr_adp": 58.5,
+          "times_drafted": 696
+        }
+      ]
+    },
+    "5576": {
+      "name": "George Pickens",
+      "position": "WR",
+      "team": "DAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643891",
+          "ppr_adp": 59.3,
+          "times_drafted": 1187
+        }
+      ]
+    },
+    "3238": {
+      "name": "David Montgomery",
+      "position": "RB",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643893",
+          "ppr_adp": 61.1,
+          "times_drafted": 325
+        }
+      ]
+    },
+    "5643": {
+      "name": "Jameson Williams",
+      "position": "WR",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643895",
+          "ppr_adp": 62.0,
+          "times_drafted": 1056
+        }
+      ]
+    },
+    "6530": {
+      "name": "RJ Harvey",
+      "position": "RB",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643897",
+          "ppr_adp": 62.3,
+          "times_drafted": 647
+        }
+      ]
+    },
+    "5564": {
+      "name": "Sam LaPorta",
+      "position": "TE",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643899",
+          "ppr_adp": 63.3,
+          "times_drafted": 617
+        }
+      ]
+    },
+    "2507": {
+      "name": "Aaron Jones Sr.",
+      "position": "RB",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643900",
+          "ppr_adp": 63.9,
+          "times_drafted": 283
+        }
+      ]
+    },
+    "1989": {
+      "name": "Travis Kelce",
+      "position": "TE",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643902",
+          "ppr_adp": 65.2,
+          "times_drafted": 366
+        }
+      ]
+    },
+    "5178": {
+      "name": "Jaylen Waddle",
+      "position": "WR",
+      "team": "MIA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643904",
+          "ppr_adp": 65.6,
+          "times_drafted": 754
+        }
+      ]
+    },
+    "6253": {
+      "name": "Bo Nix",
+      "position": "QB",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643906",
+          "ppr_adp": 67.3,
+          "times_drafted": 551
+        }
+      ]
+    },
+    "5337": {
+      "name": "Isiah Pacheco",
+      "position": "RB",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643908",
+          "ppr_adp": 67.6,
+          "times_drafted": 1031
+        }
+      ]
+    },
+    "3246": {
+      "name": "Deebo Samuel Sr.",
+      "position": "WR",
+      "team": "WAS",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643910",
+          "ppr_adp": 68.7,
+          "times_drafted": 587
+        }
+      ]
+    },
+    "6563": {
+      "name": "Travis Hunter",
+      "position": "WR",
+      "team": "JAX",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643912",
+          "ppr_adp": 70.6,
+          "times_drafted": 711
+        }
+      ]
+    },
+    "5544": {
+      "name": "Chris Olave",
+      "position": "WR",
+      "team": "NO",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643914",
+          "ppr_adp": 72.4,
+          "times_drafted": 376
+        }
+      ]
+    },
+    "6276": {
+      "name": "Tyrone Tracy Jr.",
+      "position": "RB",
+      "team": "NYG",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643916",
+          "ppr_adp": 72.7,
+          "times_drafted": 328
+        }
+      ]
+    },
+    "3496": {
+      "name": "Jakobi Meyers",
+      "position": "WR",
+      "team": "LV",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643918",
+          "ppr_adp": 73.6,
+          "times_drafted": 396
+        }
+      ]
+    },
+    "3307": {
+      "name": "T.J. Hockenson",
+      "position": "TE",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643920",
+          "ppr_adp": 73.8,
+          "times_drafted": 254
+        }
+      ]
+    },
+    "6199": {
+      "name": "Ricky Pearsall",
+      "position": "WR",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643921",
+          "ppr_adp": 74.3,
+          "times_drafted": 1714
+        }
+      ]
+    },
+    "6523": {
+      "name": "Matthew Golden",
+      "position": "WR",
+      "team": "GB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643923",
+          "ppr_adp": 76.2,
+          "times_drafted": 1150
+        }
+      ]
+    },
+    "2448": {
+      "name": "David Njoku",
+      "position": "TE",
+      "team": "CLE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643925",
+          "ppr_adp": 76.5,
+          "times_drafted": 146
+        }
+      ]
+    },
+    "5443": {
+      "name": "Jaylen Warren",
+      "position": "RB",
+      "team": "PIT",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643927",
+          "ppr_adp": 77.3,
+          "times_drafted": 299
+        }
+      ]
+    },
+    "5648": {
+      "name": "Brock Purdy",
+      "position": "QB",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643929",
+          "ppr_adp": 77.7,
+          "times_drafted": 174
+        }
+      ]
+    },
+    "6194": {
+      "name": "Rome Odunze",
+      "position": "WR",
+      "team": "CHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643931",
+          "ppr_adp": 78.8,
+          "times_drafted": 807
+        }
+      ]
+    },
+    "2316": {
+      "name": "Stefon Diggs",
+      "position": "WR",
+      "team": "NE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643933",
+          "ppr_adp": 79.5,
+          "times_drafted": 739
+        }
+      ]
+    },
+    "6558": {
+      "name": "Kaleb Johnson",
+      "position": "RB",
+      "team": "PIT",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643935",
+          "ppr_adp": 80.1,
+          "times_drafted": 367
+        }
+      ]
+    },
+    "6576": {
+      "name": "Emeka Egbuka",
+      "position": "WR",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643936",
+          "ppr_adp": 82.6,
+          "times_drafted": 1734
+        }
+      ]
+    },
+    "3299": {
+      "name": "Kyler Murray",
+      "position": "QB",
+      "team": "ARI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643939",
+          "ppr_adp": 83.7,
+          "times_drafted": 387
+        }
+      ]
+    },
+    "2625": {
+      "name": "Austin Ekeler",
+      "position": "RB",
+      "team": "WAS",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643941",
+          "ppr_adp": 83.9,
+          "times_drafted": 351
+        }
+      ]
+    },
+    "2377": {
+      "name": "Dak Prescott",
+      "position": "QB",
+      "team": "DAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643943",
+          "ppr_adp": 84.0,
+          "times_drafted": 821
+        }
+      ]
+    },
+    "5636": {
+      "name": "Khalil Shakir",
+      "position": "WR",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643944",
+          "ppr_adp": 85.4,
+          "times_drafted": 247
+        }
+      ]
+    },
+    "4880": {
+      "name": "Michael Pittman Jr.",
+      "position": "WR",
+      "team": "IND",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643946",
+          "ppr_adp": 85.8,
+          "times_drafted": 196
+        }
+      ]
+    },
+    "5020": {
+      "name": "Jauan Jennings",
+      "position": "WR",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643948",
+          "ppr_adp": 86.5,
+          "times_drafted": 143
+        }
+      ]
+    },
+    "2872": {
+      "name": "Mark Andrews",
+      "position": "TE",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643950",
+          "ppr_adp": 87.3,
+          "times_drafted": 329
+        }
+      ]
+    },
+    "2449": {
+      "name": "Cooper Kupp",
+      "position": "WR",
+      "team": "SEA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643952",
+          "ppr_adp": 90.5,
+          "times_drafted": 422
+        }
+      ]
+    },
+    "5696": {
+      "name": "Rashee Rice",
+      "position": "WR",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643953",
+          "ppr_adp": 91.0,
+          "times_drafted": 886
+        }
+      ]
+    },
+    "5680": {
+      "name": "Josh Downs",
+      "position": "WR",
+      "team": "IND",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643955",
+          "ppr_adp": 91.1,
+          "times_drafted": 111
+        }
+      ]
+    },
+    "2451": {
+      "name": "Evan Engram",
+      "position": "TE",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643957",
+          "ppr_adp": 93.4,
+          "times_drafted": 556
+        }
+      ]
+    },
+    "4888": {
+      "name": "J.K. Dobbins",
+      "position": "RB",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643959",
+          "ppr_adp": 95.1,
+          "times_drafted": 676
+        }
+      ]
+    },
+    "1320": {
+      "name": "NY Giants Defense",
+      "position": "DEF",
+      "team": "NYG",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643961",
+          "ppr_adp": 95.8,
+          "times_drafted": 71
+        }
+      ]
+    },
+    "1308": {
+      "name": "Dallas Defense",
+      "position": "DEF",
+      "team": "DAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643962",
+          "ppr_adp": 97.8,
+          "times_drafted": 32
+        }
+      ]
+    },
+    "2351": {
+      "name": "Jared Goff",
+      "position": "QB",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643964",
+          "ppr_adp": 98.4,
+          "times_drafted": 491
+        }
+      ]
+    },
+    "5677": {
+      "name": "Zach Charbonnet",
+      "position": "RB",
+      "team": "SEA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643966",
+          "ppr_adp": 98.5,
+          "times_drafted": 1004
+        }
+      ]
+    },
+    "5673": {
+      "name": "Jordan Addison",
+      "position": "WR",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643967",
+          "ppr_adp": 99.8,
+          "times_drafted": 481
+        }
+      ]
+    },
+    "2465": {
+      "name": "Chris Godwin",
+      "position": "WR",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643969",
+          "ppr_adp": 100.1,
+          "times_drafted": 363
+        }
+      ]
+    },
+    "6173": {
+      "name": "Caleb Williams",
+      "position": "QB",
+      "team": "CHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643971",
+          "ppr_adp": 100.3,
+          "times_drafted": 355
+        }
+      ]
+    },
+    "5119": {
+      "name": "Darnell Mooney",
+      "position": "WR",
+      "team": "ATL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643973",
+          "ppr_adp": 100.7,
+          "times_drafted": 176
+        }
+      ]
+    },
+    "6189": {
+      "name": "Keon Coleman",
+      "position": "WR",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643974",
+          "ppr_adp": 100.9,
+          "times_drafted": 542
+        }
+      ]
+    },
+    "6504": {
+      "name": "Tyler Warren",
+      "position": "TE",
+      "team": "IND",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643976",
+          "ppr_adp": 102.9,
+          "times_drafted": 1309
+        }
+      ]
+    },
+    "6185": {
+      "name": "J.J. McCarthy",
+      "position": "QB",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643978",
+          "ppr_adp": 104.6,
+          "times_drafted": 268
+        }
+      ]
+    },
+    "1309": {
+      "name": "Denver Defense",
+      "position": "DEF",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643980",
+          "ppr_adp": 104.8,
+          "times_drafted": 380
+        }
+      ]
+    },
+    "5330": {
+      "name": "Jordan Mason",
+      "position": "RB",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643982",
+          "ppr_adp": 104.9,
+          "times_drafted": 1364
+        }
+      ]
+    },
+    "4863": {
+      "name": "Travis Etienne Jr.",
+      "position": "RB",
+      "team": "JAX",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643983",
+          "ppr_adp": 105.0,
+          "times_drafted": 898
+        }
+      ]
+    },
+    "5896": {
+      "name": "Rashid Shaheed",
+      "position": "WR",
+      "team": "NO",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643985",
+          "ppr_adp": 105.5,
+          "times_drafted": 119
+        }
+      ]
+    },
+    "4887": {
+      "name": "Justin Herbert",
+      "position": "QB",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643987",
+          "ppr_adp": 107.2,
+          "times_drafted": 313
+        }
+      ]
+    },
+    "6187": {
+      "name": "Drake Maye",
+      "position": "QB",
+      "team": "NE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643989",
+          "ppr_adp": 107.7,
+          "times_drafted": 550
+        }
+      ]
+    },
+    "6595": {
+      "name": "Jacory Croskey-Merritt",
+      "position": "RB",
+      "team": "WAS",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643990",
+          "ppr_adp": 107.8,
+          "times_drafted": 1433
+        }
+      ]
+    },
+    "5707": {
+      "name": "Jayden Reed",
+      "position": "WR",
+      "team": "GB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643992",
+          "ppr_adp": 109.9,
+          "times_drafted": 202
+        }
+      ]
+    },
+    "1323": {
+      "name": "Philadelphia Defense",
+      "position": "DEF",
+      "team": "PHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643994",
+          "ppr_adp": 112.4,
+          "times_drafted": 300
+        }
+      ]
+    },
+    "1324": {
+      "name": "Pittsburgh Defense",
+      "position": "DEF",
+      "team": "PIT",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643996",
+          "ppr_adp": 112.9,
+          "times_drafted": 187
+        }
+      ]
+    },
+    "5185": {
+      "name": "Javonte Williams",
+      "position": "RB",
+      "team": "DAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.643998",
+          "ppr_adp": 113.6,
+          "times_drafted": 614
+        }
+      ]
+    },
+    "5191": {
+      "name": "Justin Fields",
+      "position": "QB",
+      "team": "NYJ",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644000",
+          "ppr_adp": 113.6,
+          "times_drafted": 331
+        }
+      ]
+    },
+    "5718": {
+      "name": "Tucker Kraft",
+      "position": "TE",
+      "team": "GB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644001",
+          "ppr_adp": 114.2,
+          "times_drafted": 536
+        }
+      ]
+    },
+    "1992": {
+      "name": "Keenan Allen",
+      "position": "WR",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644003",
+          "ppr_adp": 116.5,
+          "times_drafted": 447
+        }
+      ]
+    },
+    "5561": {
+      "name": "Jake Ferguson",
+      "position": "TE",
+      "team": "DAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644005",
+          "ppr_adp": 117.3,
+          "times_drafted": 377
+        }
+      ]
+    },
+    "1332": {
+      "name": "Baltimore Defense",
+      "position": "DEF",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644007",
+          "ppr_adp": 117.8,
+          "times_drafted": 175
+        }
+      ]
+    },
+    "2870": {
+      "name": "Christian Kirk",
+      "position": "WR",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644008",
+          "ppr_adp": 117.8,
+          "times_drafted": 371
+        }
+      ]
+    },
+    "5210": {
+      "name": "Rhamondre Stevenson",
+      "position": "RB",
+      "team": "NE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644010",
+          "ppr_adp": 120.0,
+          "times_drafted": 312
+        }
+      ]
+    },
+    "5697": {
+      "name": "Cedric Tillman",
+      "position": "WR",
+      "team": "CLE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644012",
+          "ppr_adp": 120.1,
+          "times_drafted": 163
+        }
+      ]
+    },
+    "4892": {
+      "name": "Jordan Love",
+      "position": "QB",
+      "team": "GB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644014",
+          "ppr_adp": 121.2,
+          "times_drafted": 485
+        }
+      ]
+    },
+    "5186": {
+      "name": "Trevor Lawrence",
+      "position": "QB",
+      "team": "JAX",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644016",
+          "ppr_adp": 122.4,
+          "times_drafted": 207
+        }
+      ]
+    },
+    "5588": {
+      "name": "Wan'Dale Robinson",
+      "position": "WR",
+      "team": "NYG",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644018",
+          "ppr_adp": 124.8,
+          "times_drafted": 75
+        }
+      ]
+    },
+    "5685": {
+      "name": "Marvin Mims Jr.",
+      "position": "WR",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644019",
+          "ppr_adp": 126.9,
+          "times_drafted": 396
+        }
+      ]
+    },
+    "5617": {
+      "name": "Jerome Ford",
+      "position": "RB",
+      "team": "CLE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644021",
+          "ppr_adp": 127.2,
+          "times_drafted": 239
+        }
+      ]
+    },
+    "6509": {
+      "name": "Cam Skattebo",
+      "position": "RB",
+      "team": "NYG",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644023",
+          "ppr_adp": 127.3,
+          "times_drafted": 445
+        }
+      ]
+    },
+    "5586": {
+      "name": "Romeo Doubs",
+      "position": "WR",
+      "team": "GB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644025",
+          "ppr_adp": 129.1,
+          "times_drafted": 82
+        }
+      ]
+    },
+    "5676": {
+      "name": "C.J. Stroud",
+      "position": "QB",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644026",
+          "ppr_adp": 129.2,
+          "times_drafted": 486
+        }
+      ]
+    },
+    "3249": {
+      "name": "Marquise Brown",
+      "position": "WR",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644028",
+          "ppr_adp": 129.2,
+          "times_drafted": 153
+        }
+      ]
+    },
+    "6531": {
+      "name": "Quinshon Judkins",
+      "position": "RB",
+      "team": "CLE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644030",
+          "ppr_adp": 129.4,
+          "times_drafted": 233
+        }
+      ]
+    },
+    "2896": {
+      "name": "Dallas Goedert",
+      "position": "TE",
+      "team": "PHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644032",
+          "ppr_adp": 129.6,
+          "times_drafted": 212
+        }
+      ]
+    },
+    "1303": {
+      "name": "Buffalo Defense",
+      "position": "DEF",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644034",
+          "ppr_adp": 130.2,
+          "times_drafted": 154
+        }
+      ]
+    },
+    "6162": {
+      "name": "Brandon Aubrey",
+      "position": "PK",
+      "team": "DAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644035",
+          "ppr_adp": 130.3,
+          "times_drafted": 928
+        }
+      ]
+    },
+    "6577": {
+      "name": "Jayden Higgins",
+      "position": "WR",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644037",
+          "ppr_adp": 130.5,
+          "times_drafted": 200
+        }
+      ]
+    },
+    "5180": {
+      "name": "Rashod Bateman",
+      "position": "WR",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644039",
+          "ppr_adp": 131.2,
+          "times_drafted": 130
+        }
+      ]
+    },
+    "2863": {
+      "name": "Nick Chubb",
+      "position": "RB",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644041",
+          "ppr_adp": 134.7,
+          "times_drafted": 576
+        }
+      ]
+    },
+    "2438": {
+      "name": "Joe Mixon",
+      "position": "RB",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644042",
+          "ppr_adp": 135.7,
+          "times_drafted": 258
+        }
+      ]
+    },
+    "5688": {
+      "name": "Dalton Kincaid",
+      "position": "TE",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644044",
+          "ppr_adp": 136.3,
+          "times_drafted": 278
+        }
+      ]
+    },
+    "6213": {
+      "name": "Xavier Legette",
+      "position": "WR",
+      "team": "CAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644046",
+          "ppr_adp": 136.9,
+          "times_drafted": 108
+        }
+      ]
+    },
+    "4867": {
+      "name": "Matt Gay",
+      "position": "PK",
+      "team": "WAS",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644048",
+          "ppr_adp": 137.5,
+          "times_drafted": 57
+        }
+      ]
+    },
+    "1311": {
+      "name": "Green Bay Defense",
+      "position": "DEF",
+      "team": "GB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644050",
+          "ppr_adp": 137.5,
+          "times_drafted": 373
+        }
+      ]
+    },
+    "5626": {
+      "name": "Rachaad White",
+      "position": "RB",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644051",
+          "ppr_adp": 137.5,
+          "times_drafted": 106
+        }
+      ]
+    },
+    "5691": {
+      "name": "Tank Bigsby",
+      "position": "RB",
+      "team": "JAX",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644053",
+          "ppr_adp": 137.9,
+          "times_drafted": 380
+        }
+      ]
+    },
+    "1312": {
+      "name": "Houston Defense",
+      "position": "DEF",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644055",
+          "ppr_adp": 138.2,
+          "times_drafted": 341
+        }
+      ]
+    },
+    "4890": {
+      "name": "Tua Tagovailoa",
+      "position": "QB",
+      "team": "MIA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644057",
+          "ppr_adp": 138.5,
+          "times_drafted": 106
+        }
+      ]
+    },
+    "5036": {
+      "name": "Tyler Bass",
+      "position": "PK",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644058",
+          "ppr_adp": 139.3,
+          "times_drafted": 106
+        }
+      ]
+    },
+    "5232": {
+      "name": "Joshua Palmer",
+      "position": "WR",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644060",
+          "ppr_adp": 140.4,
+          "times_drafted": 94
+        }
+      ]
+    },
+    "5978": {
+      "name": "DeMario Douglas",
+      "position": "WR",
+      "team": "NE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644062",
+          "ppr_adp": 140.9,
+          "times_drafted": 108
+        }
+      ]
+    },
+    "5990": {
+      "name": "Trey Benson",
+      "position": "RB",
+      "team": "ARI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644064",
+          "ppr_adp": 141.0,
+          "times_drafted": 251
+        }
+      ]
+    },
+    "6501": {
+      "name": "Colston Loveland",
+      "position": "TE",
+      "team": "CHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644066",
+          "ppr_adp": 141.9,
+          "times_drafted": 537
+        }
+      ]
+    },
+    "5661": {
+      "name": "Isaiah Likely",
+      "position": "TE",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644067",
+          "ppr_adp": 142.3,
+          "times_drafted": 11
+        }
+      ]
+    },
+    "4865": {
+      "name": "Chase McLaughlin",
+      "position": "PK",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644069",
+          "ppr_adp": 144.3,
+          "times_drafted": 116
+        }
+      ]
+    },
+    "2906": {
+      "name": "Mike Gesicki",
+      "position": "TE",
+      "team": "CIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644071",
+          "ppr_adp": 144.8,
+          "times_drafted": 10
+        }
+      ]
+    },
+    "2514": {
+      "name": "Harrison Butker",
+      "position": "PK",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644073",
+          "ppr_adp": 145.0,
+          "times_drafted": 118
+        }
+      ]
+    },
+    "1310": {
+      "name": "Detroit Defense",
+      "position": "DEF",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644075",
+          "ppr_adp": 145.2,
+          "times_drafted": 203
+        }
+      ]
+    },
+    "6557": {
+      "name": "Jaydon Blue",
+      "position": "RB",
+      "team": "DAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644076",
+          "ppr_adp": 146.1,
+          "times_drafted": 232
+        }
+      ]
+    },
+    "6511": {
+      "name": "Dylan Sampson",
+      "position": "RB",
+      "team": "CLE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644078",
+          "ppr_adp": 146.2,
+          "times_drafted": 121
+        }
+      ]
+    },
+    "4891": {
+      "name": "Brandon Aiyuk",
+      "position": "WR",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644080",
+          "ppr_adp": 146.2,
+          "times_drafted": 310
+        }
+      ]
+    },
+    "6055": {
+      "name": "Jake Bates",
+      "position": "PK",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644082",
+          "ppr_adp": 146.2,
+          "times_drafted": 162
+        }
+      ]
+    },
+    "1317": {
+      "name": "Minnesota Defense",
+      "position": "DEF",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644083",
+          "ppr_adp": 146.3,
+          "times_drafted": 370
+        }
+      ]
+    },
+    "5181": {
+      "name": "Kyle Pitts Sr.",
+      "position": "TE",
+      "team": "ATL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644085",
+          "ppr_adp": 146.3,
+          "times_drafted": 205
+        }
+      ]
+    },
+    "5538": {
+      "name": "Cameron Dicker",
+      "position": "PK",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644087",
+          "ppr_adp": 147.9,
+          "times_drafted": 182
+        }
+      ]
+    },
+    "1978": {
+      "name": "Zach Ertz",
+      "position": "TE",
+      "team": "WAS",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644089",
+          "ppr_adp": 148.3,
+          "times_drafted": 124
+        }
+      ]
+    },
+    "6176": {
+      "name": "Braelon Allen",
+      "position": "RB",
+      "team": "NYJ",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644092",
+          "ppr_adp": 148.4,
+          "times_drafted": 324
+        }
+      ]
+    },
+    "1331": {
+      "name": "Washington Defense",
+      "position": "DEF",
+      "team": "WAS",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644094",
+          "ppr_adp": 148.4,
+          "times_drafted": 23
+        }
+      ]
+    },
+    "2529": {
+      "name": "Jake Elliott",
+      "position": "PK",
+      "team": "PHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644095",
+          "ppr_adp": 148.9,
+          "times_drafted": 87
+        }
+      ]
+    },
+    "1980": {
+      "name": "Geno Smith",
+      "position": "QB",
+      "team": "LV",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644097",
+          "ppr_adp": 149.3,
+          "times_drafted": 86
+        }
+      ]
+    },
+    "5605": {
+      "name": "Brian Robinson Jr.",
+      "position": "RB",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644099",
+          "ppr_adp": 149.5,
+          "times_drafted": 80
+        }
+      ]
+    },
+    "5721": {
+      "name": "Michael Wilson",
+      "position": "WR",
+      "team": "ARI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644101",
+          "ppr_adp": 149.8,
+          "times_drafted": 11
+        }
+      ]
+    },
+    "2431": {
+      "name": "Adam Thielen",
+      "position": "WR",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644102",
+          "ppr_adp": 149.9,
+          "times_drafted": 184
+        }
+      ]
+    },
+    "6513": {
+      "name": "Bhayshul Tuten",
+      "position": "RB",
+      "team": "JAX",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644104",
+          "ppr_adp": 150.0,
+          "times_drafted": 108
+        }
+      ]
+    },
+    "2354": {
+      "name": "Hunter Henry",
+      "position": "TE",
+      "team": "NE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644106",
+          "ppr_adp": 150.5,
+          "times_drafted": 50
+        }
+      ]
+    },
+    "1664": {
+      "name": "Matthew Stafford",
+      "position": "QB",
+      "team": "LAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644108",
+          "ppr_adp": 150.5,
+          "times_drafted": 103
+        }
+      ]
+    },
+    "6302": {
+      "name": "Jalen Coker",
+      "position": "WR",
+      "team": "CAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644109",
+          "ppr_adp": 150.6,
+          "times_drafted": 61
+        }
+      ]
+    },
+    "1328": {
+      "name": "LA Rams Defense",
+      "position": "DEF",
+      "team": "LAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644111",
+          "ppr_adp": 151.4,
+          "times_drafted": 140
+        }
+      ]
+    },
+    "5649": {
+      "name": "Michael Penix Jr.",
+      "position": "QB",
+      "team": "ATL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644113",
+          "ppr_adp": 151.5,
+          "times_drafted": 139
+        }
+      ]
+    },
+    "5678": {
+      "name": "Bryce Young",
+      "position": "QB",
+      "team": "CAR",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644115",
+          "ppr_adp": 151.9,
+          "times_drafted": 117
+        }
+      ]
+    },
+    "6529": {
+      "name": "Woody Marks",
+      "position": "RB",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644117",
+          "ppr_adp": 152.3,
+          "times_drafted": 19
+        }
+      ]
+    },
+    "5655": {
+      "name": "Tyler Allgeier",
+      "position": "RB",
+      "team": "ATL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644118",
+          "ppr_adp": 153.9,
+          "times_drafted": 53
+        }
+      ]
+    },
+    "1326": {
+      "name": "San Francisco Defense",
+      "position": "DEF",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644120",
+          "ppr_adp": 154.1,
+          "times_drafted": 141
+        }
+      ]
+    },
+    "6197": {
+      "name": "Ray Davis",
+      "position": "RB",
+      "team": "BUF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644122",
+          "ppr_adp": 154.4,
+          "times_drafted": 53
+        }
+      ]
+    },
+    "6559": {
+      "name": "Luther Burden III",
+      "position": "WR",
+      "team": "CHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644124",
+          "ppr_adp": 154.5,
+          "times_drafted": 136
+        }
+      ]
+    },
+    "6581": {
+      "name": "Dont'e Thornton Jr.",
+      "position": "WR",
+      "team": "LV",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644125",
+          "ppr_adp": 154.7,
+          "times_drafted": 44
+        }
+      ]
+    },
+    "1318": {
+      "name": "New England Defense",
+      "position": "DEF",
+      "team": "NE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644127",
+          "ppr_adp": 154.8,
+          "times_drafted": 16
+        }
+      ]
+    },
+    "5669": {
+      "name": "Evan McPherson",
+      "position": "PK",
+      "team": "CIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644129",
+          "ppr_adp": 154.8,
+          "times_drafted": 141
+        }
+      ]
+    },
+    "1321": {
+      "name": "NY Jets Defense",
+      "position": "DEF",
+      "team": "NYJ",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644130",
+          "ppr_adp": 155.3,
+          "times_drafted": 32
+        }
+      ]
+    },
+    "6525": {
+      "name": "Tre' Harris",
+      "position": "WR",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644132",
+          "ppr_adp": 155.6,
+          "times_drafted": 60
+        }
+      ]
+    },
+    "1329": {
+      "name": "Tampa Bay Defense",
+      "position": "DEF",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644134",
+          "ppr_adp": 155.7,
+          "times_drafted": 26
+        }
+      ]
+    },
+    "1305": {
+      "name": "Chicago Defense",
+      "position": "DEF",
+      "team": "CHI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644136",
+          "ppr_adp": 156.0,
+          "times_drafted": 82
+        }
+      ]
+    },
+    "6535": {
+      "name": "Ollie Gordon II",
+      "position": "RB",
+      "team": "MIA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644138",
+          "ppr_adp": 156.1,
+          "times_drafted": 173
+        }
+      ]
+    },
+    "2884": {
+      "name": "Sam Darnold",
+      "position": "QB",
+      "team": "SEA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644139",
+          "ppr_adp": 156.6,
+          "times_drafted": 39
+        }
+      ]
+    },
+    "1250": {
+      "name": "Arizona Defense",
+      "position": "DEF",
+      "team": "ARI",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644141",
+          "ppr_adp": 156.6,
+          "times_drafted": 67
+        }
+      ]
+    },
+    "6188": {
+      "name": "Cam Little",
+      "position": "PK",
+      "team": "JAX",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644143",
+          "ppr_adp": 157.5,
+          "times_drafted": 66
+        }
+      ]
+    },
+    "6205": {
+      "name": "Tory Horton",
+      "position": "WR",
+      "team": "SEA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644145",
+          "ppr_adp": 157.7,
+          "times_drafted": 45
+        }
+      ]
+    },
+    "6587": {
+      "name": "Tyler Loop",
+      "position": "PK",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644146",
+          "ppr_adp": 158.3,
+          "times_drafted": 109
+        }
+      ]
+    },
+    "2490": {
+      "name": "Jonnu Smith",
+      "position": "TE",
+      "team": "PIT",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644148",
+          "ppr_adp": 158.5,
+          "times_drafted": 25
+        }
+      ]
+    },
+    "6580": {
+      "name": "Isaac TeSlaa",
+      "position": "WR",
+      "team": "DET",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644150",
+          "ppr_adp": 158.6,
+          "times_drafted": 26
+        }
+      ]
+    },
+    "5692": {
+      "name": "Tyjae Spears",
+      "position": "RB",
+      "team": "TEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644152",
+          "ppr_adp": 159.6,
+          "times_drafted": 44
+        }
+      ]
+    },
+    "4872": {
+      "name": "Najee Harris",
+      "position": "RB",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644153",
+          "ppr_adp": 160.1,
+          "times_drafted": 150
+        }
+      ]
+    },
+    "2340": {
+      "name": "Chris Boswell",
+      "position": "PK",
+      "team": "PIT",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644155",
+          "ppr_adp": 160.1,
+          "times_drafted": 62
+        }
+      ]
+    },
+    "6521": {
+      "name": "Kyle Williams",
+      "position": "WR",
+      "team": "NE",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644157",
+          "ppr_adp": 160.3,
+          "times_drafted": 24
+        }
+      ]
+    },
+    "2277": {
+      "name": "Amari Cooper",
+      "position": "WR",
+      "team": "FA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644159",
+          "ppr_adp": 160.7,
+          "times_drafted": 118
+        }
+      ]
+    },
+    "2531": {
+      "name": "Ka'imi Fairbairn",
+      "position": "PK",
+      "team": "HOU",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644160",
+          "ppr_adp": 161.5,
+          "times_drafted": 153
+        }
+      ]
+    },
+    "1975": {
+      "name": "DeAndre Hopkins",
+      "position": "WR",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644162",
+          "ppr_adp": 161.8,
+          "times_drafted": 13
+        }
+      ]
+    },
+    "1315": {
+      "name": "Kansas City Defense",
+      "position": "DEF",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644164",
+          "ppr_adp": 162.0,
+          "times_drafted": 98
+        }
+      ]
+    },
+    "5453": {
+      "name": "Chig Okonkwo",
+      "position": "TE",
+      "team": "TEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644166",
+          "ppr_adp": 162.1,
+          "times_drafted": 42
+        }
+      ]
+    },
+    "1327": {
+      "name": "Seattle Defense",
+      "position": "DEF",
+      "team": "SEA",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644168",
+          "ppr_adp": 162.3,
+          "times_drafted": 78
+        }
+      ]
+    },
+    "1325": {
+      "name": "LA Chargers Defense",
+      "position": "DEF",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644169",
+          "ppr_adp": 163.1,
+          "times_drafted": 14
+        }
+      ]
+    },
+    "2336": {
+      "name": "Brandon McManus",
+      "position": "PK",
+      "team": "GB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644171",
+          "ppr_adp": 164.1,
+          "times_drafted": 67
+        }
+      ]
+    },
+    "2304": {
+      "name": "Tyler Lockett",
+      "position": "WR",
+      "team": "TEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644173",
+          "ppr_adp": 164.3,
+          "times_drafted": 31
+        }
+      ]
+    },
+    "2527": {
+      "name": "Younghoe Koo",
+      "position": "PK",
+      "team": "ATL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644175",
+          "ppr_adp": 164.3,
+          "times_drafted": 85
+        }
+      ]
+    },
+    "2522": {
+      "name": "Wil Lutz",
+      "position": "PK",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644176",
+          "ppr_adp": 165.5,
+          "times_drafted": 101
+        }
+      ]
+    },
+    "1004": {
+      "name": "Aaron Rodgers",
+      "position": "QB",
+      "team": "PIT",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644178",
+          "ppr_adp": 166.5,
+          "times_drafted": 23
+        }
+      ]
+    },
+    "5674": {
+      "name": "Quentin Johnston",
+      "position": "WR",
+      "team": "LAC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644180",
+          "ppr_adp": 166.6,
+          "times_drafted": 13
+        }
+      ]
+    },
+    "6457": {
+      "name": "Cameron Ward",
+      "position": "QB",
+      "team": "TEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644182",
+          "ppr_adp": 166.7,
+          "times_drafted": 65
+        }
+      ]
+    },
+    "3266": {
+      "name": "Justice Hill",
+      "position": "RB",
+      "team": "BAL",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644183",
+          "ppr_adp": 166.8,
+          "times_drafted": 11
+        }
+      ]
+    },
+    "5557": {
+      "name": "Cade Otton",
+      "position": "TE",
+      "team": "TB",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644185",
+          "ppr_adp": 167.5,
+          "times_drafted": 14
+        }
+      ]
+    },
+    "5726": {
+      "name": "Jake Moody",
+      "position": "PK",
+      "team": "SF",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644187",
+          "ppr_adp": 167.9,
+          "times_drafted": 13
+        }
+      ]
+    },
+    "5985": {
+      "name": "Brenton Strange",
+      "position": "TE",
+      "team": "JAX",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644189",
+          "ppr_adp": 168.3,
+          "times_drafted": 45
+        }
+      ]
+    },
+    "2988": {
+      "name": "Daniel Carlson",
+      "position": "PK",
+      "team": "LV",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644191",
+          "ppr_adp": 171.2,
+          "times_drafted": 30
+        }
+      ]
+    },
+    "6542": {
+      "name": "Elic Ayomanor",
+      "position": "WR",
+      "team": "TEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644192",
+          "ppr_adp": 172.1,
+          "times_drafted": 10
+        }
+      ]
+    },
+    "5778": {
+      "name": "Calvin Austin III",
+      "position": "WR",
+      "team": "PIT",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644194",
+          "ppr_adp": 172.3,
+          "times_drafted": 10
+        }
+      ]
+    },
+    "6548": {
+      "name": "Pat Bryant",
+      "position": "WR",
+      "team": "DEN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644196",
+          "ppr_adp": 174.4,
+          "times_drafted": 10
+        }
+      ]
+    },
+    "6296": {
+      "name": "Will Reichard",
+      "position": "PK",
+      "team": "MIN",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644198",
+          "ppr_adp": 174.4,
+          "times_drafted": 29
+        }
+      ]
+    },
+    "3437": {
+      "name": "Darius Slayton",
+      "position": "WR",
+      "team": "NYG",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644199",
+          "ppr_adp": 177.7,
+          "times_drafted": 10
+        }
+      ]
+    },
+    "2450": {
+      "name": "Kareem Hunt",
+      "position": "RB",
+      "team": "KC",
+      "adp_history": [
+        {
+          "date": "2025-09-05T17:58:40.644201",
+          "ppr_adp": 179.5,
+          "times_drafted": 17
+        }
+      ]
+    }
+  }
+}

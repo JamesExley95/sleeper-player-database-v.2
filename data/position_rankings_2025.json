@@ -1,0 +1,2129 @@
+{
+  "WR": [
+    {
+      "player_id": "7564",
+      "name": "Ja'Marr Chase",
+      "team": "CIN",
+      "adp": 1.6,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 1
+    },
+    {
+      "player_id": "6794",
+      "name": "Justin Jefferson",
+      "team": "MIN",
+      "adp": 4.4,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 2
+    },
+    {
+      "player_id": "6786",
+      "name": "CeeDee Lamb",
+      "team": "DAL",
+      "adp": 4.9,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 3
+    },
+    {
+      "player_id": "11632",
+      "name": "Malik Nabers",
+      "team": "NYG",
+      "adp": 7.6,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 4
+    },
+    {
+      "player_id": "7569",
+      "name": "Nico Collins",
+      "team": "HOU",
+      "adp": 9.7,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 5
+    },
+    {
+      "player_id": "9493",
+      "name": "Puka Nacua",
+      "team": "LAR",
+      "adp": 10.2,
+      "volatility": "Stable",
+      "draft_round": 1,
+      "position_rank": 6
+    },
+    {
+      "player_id": "7547",
+      "name": "Amon-Ra St. Brown",
+      "team": "DET",
+      "adp": 10.6,
+      "volatility": "Stable",
+      "draft_round": 1,
+      "position_rank": 7
+    },
+    {
+      "player_id": "ffc_6175",
+      "name": "Brian Thomas Jr.",
+      "team": "JAX",
+      "adp": 15.0,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 8
+    },
+    {
+      "player_id": "8112",
+      "name": "Drake London",
+      "team": "ATL",
+      "adp": 15.2,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 9
+    },
+    {
+      "player_id": "5859",
+      "name": "A.J. Brown",
+      "team": "PHI",
+      "adp": 17.8,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 10
+    },
+    {
+      "player_id": "6801",
+      "name": "Tee Higgins",
+      "team": "CIN",
+      "adp": 22.1,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 11
+    },
+    {
+      "player_id": "11635",
+      "name": "Ladd McConkey",
+      "team": "LAC",
+      "adp": 23.4,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 12
+    },
+    {
+      "player_id": "3321",
+      "name": "Tyreek Hill",
+      "team": "MIA",
+      "adp": 26.8,
+      "volatility": "Stable",
+      "draft_round": 3,
+      "position_rank": 13
+    },
+    {
+      "player_id": "2133",
+      "name": "Davante Adams",
+      "team": "LAR",
+      "adp": 28.5,
+      "volatility": "Stable",
+      "draft_round": 3,
+      "position_rank": 14
+    },
+    {
+      "player_id": "2216",
+      "name": "Mike Evans",
+      "team": "TB",
+      "adp": 29.3,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 15
+    },
+    {
+      "player_id": "9488",
+      "name": "Jaxon Smith-Njigba",
+      "team": "SEA",
+      "adp": 32.6,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 16
+    },
+    {
+      "player_id": "5927",
+      "name": "Terry McLaurin",
+      "team": "WAS",
+      "adp": 35.9,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 17
+    },
+    {
+      "player_id": "5846",
+      "name": "DK Metcalf",
+      "team": "PIT",
+      "adp": 37.6,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 18
+    },
+    {
+      "player_id": "ffc_6193",
+      "name": "Marvin Harrison Jr.",
+      "team": "ARI",
+      "adp": 38.8,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 19
+    },
+    {
+      "player_id": "8146",
+      "name": "Garrett Wilson",
+      "team": "NYJ",
+      "adp": 41.3,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 20
+    },
+    {
+      "player_id": "4983",
+      "name": "DJ Moore",
+      "team": "CHI",
+      "adp": 43.9,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 21
+    },
+    {
+      "player_id": "7525",
+      "name": "DeVonta Smith",
+      "team": "PHI",
+      "adp": 47.7,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 22
+    },
+    {
+      "player_id": "12526",
+      "name": "Tetairoa McMillan",
+      "team": "CAR",
+      "adp": 47.7,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 23
+    },
+    {
+      "player_id": "5045",
+      "name": "Courtland Sutton",
+      "team": "DEN",
+      "adp": 47.8,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 24
+    },
+    {
+      "player_id": "11624",
+      "name": "Xavier Worthy",
+      "team": "KC",
+      "adp": 50.9,
+      "volatility": "Moderate",
+      "draft_round": 5,
+      "position_rank": 25
+    },
+    {
+      "player_id": "4981",
+      "name": "Calvin Ridley",
+      "team": "TEN",
+      "adp": 57.2,
+      "volatility": "Moderate",
+      "draft_round": 5,
+      "position_rank": 26
+    },
+    {
+      "player_id": "6783",
+      "name": "Jerry Jeudy",
+      "team": "CLE",
+      "adp": 57.9,
+      "volatility": "Moderate",
+      "draft_round": 5,
+      "position_rank": 27
+    },
+    {
+      "player_id": "9997",
+      "name": "Zay Flowers",
+      "team": "BAL",
+      "adp": 58.0,
+      "volatility": "Volatile",
+      "draft_round": 5,
+      "position_rank": 28
+    },
+    {
+      "player_id": "8137",
+      "name": "George Pickens",
+      "team": "DAL",
+      "adp": 59.3,
+      "volatility": "Volatile",
+      "draft_round": 5,
+      "position_rank": 29
+    },
+    {
+      "player_id": "8148",
+      "name": "Jameson Williams",
+      "team": "DET",
+      "adp": 62.0,
+      "volatility": "Volatile",
+      "draft_round": 6,
+      "position_rank": 30
+    },
+    {
+      "player_id": "7526",
+      "name": "Jaylen Waddle",
+      "team": "MIA",
+      "adp": 65.6,
+      "volatility": "Volatile",
+      "draft_round": 6,
+      "position_rank": 31
+    },
+    {
+      "player_id": "ffc_3246",
+      "name": "Deebo Samuel Sr.",
+      "team": "WAS",
+      "adp": 68.7,
+      "volatility": "Volatile",
+      "draft_round": 6,
+      "position_rank": 32
+    },
+    {
+      "player_id": "12530",
+      "name": "Travis Hunter",
+      "team": "JAX",
+      "adp": 70.6,
+      "volatility": "Volatile",
+      "draft_round": 6,
+      "position_rank": 33
+    },
+    {
+      "player_id": "8144",
+      "name": "Chris Olave",
+      "team": "NO",
+      "adp": 72.4,
+      "volatility": "Volatile",
+      "draft_round": 6,
+      "position_rank": 34
+    },
+    {
+      "player_id": "5947",
+      "name": "Jakobi Meyers",
+      "team": "LV",
+      "adp": 73.6,
+      "volatility": "Volatile",
+      "draft_round": 7,
+      "position_rank": 35
+    },
+    {
+      "player_id": "11638",
+      "name": "Ricky Pearsall",
+      "team": "SF",
+      "adp": 74.3,
+      "volatility": "Very Volatile",
+      "draft_round": 7,
+      "position_rank": 36
+    },
+    {
+      "player_id": "12501",
+      "name": "Matthew Golden",
+      "team": "GB",
+      "adp": 76.2,
+      "volatility": "Volatile",
+      "draft_round": 7,
+      "position_rank": 37
+    },
+    {
+      "player_id": "11620",
+      "name": "Rome Odunze",
+      "team": "CHI",
+      "adp": 78.8,
+      "volatility": "Very Volatile",
+      "draft_round": 7,
+      "position_rank": 38
+    },
+    {
+      "player_id": "2449",
+      "name": "Stefon Diggs",
+      "team": "NE",
+      "adp": 79.5,
+      "volatility": "Volatile",
+      "draft_round": 7,
+      "position_rank": 39
+    },
+    {
+      "player_id": "12514",
+      "name": "Emeka Egbuka",
+      "team": "TB",
+      "adp": 82.6,
+      "volatility": "Very Volatile",
+      "draft_round": 7,
+      "position_rank": 40
+    },
+    {
+      "player_id": "8134",
+      "name": "Khalil Shakir",
+      "team": "BUF",
+      "adp": 85.4,
+      "volatility": "Very Volatile",
+      "draft_round": 8,
+      "position_rank": 41
+    },
+    {
+      "player_id": "ffc_4880",
+      "name": "Michael Pittman Jr.",
+      "team": "IND",
+      "adp": 85.8,
+      "volatility": "Volatile",
+      "draft_round": 8,
+      "position_rank": 42
+    },
+    {
+      "player_id": "7049",
+      "name": "Jauan Jennings",
+      "team": "SF",
+      "adp": 86.5,
+      "volatility": "Very Volatile",
+      "draft_round": 8,
+      "position_rank": 43
+    },
+    {
+      "player_id": "4039",
+      "name": "Cooper Kupp",
+      "team": "SEA",
+      "adp": 90.5,
+      "volatility": "Very Volatile",
+      "draft_round": 8,
+      "position_rank": 44
+    },
+    {
+      "player_id": "10229",
+      "name": "Rashee Rice",
+      "team": "KC",
+      "adp": 91.0,
+      "volatility": "Very Volatile",
+      "draft_round": 8,
+      "position_rank": 45
+    },
+    {
+      "player_id": "9500",
+      "name": "Josh Downs",
+      "team": "IND",
+      "adp": 91.1,
+      "volatility": "Volatile",
+      "draft_round": 8,
+      "position_rank": 46
+    },
+    {
+      "player_id": "9756",
+      "name": "Jordan Addison",
+      "team": "MIN",
+      "adp": 99.8,
+      "volatility": "Volatile",
+      "draft_round": 9,
+      "position_rank": 47
+    },
+    {
+      "player_id": "4037",
+      "name": "Chris Godwin",
+      "team": "TB",
+      "adp": 100.1,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 48
+    },
+    {
+      "player_id": "7090",
+      "name": "Darnell Mooney",
+      "team": "ATL",
+      "adp": 100.7,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 49
+    },
+    {
+      "player_id": "11637",
+      "name": "Keon Coleman",
+      "team": "BUF",
+      "adp": 100.9,
+      "volatility": "Volatile",
+      "draft_round": 9,
+      "position_rank": 50
+    },
+    {
+      "player_id": "8676",
+      "name": "Rashid Shaheed",
+      "team": "NO",
+      "adp": 105.5,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 51
+    },
+    {
+      "player_id": "10222",
+      "name": "Jayden Reed",
+      "team": "GB",
+      "adp": 109.9,
+      "volatility": "Volatile",
+      "draft_round": 10,
+      "position_rank": 52
+    },
+    {
+      "player_id": "1479",
+      "name": "Keenan Allen",
+      "team": "LAC",
+      "adp": 116.5,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 53
+    },
+    {
+      "player_id": "4950",
+      "name": "Christian Kirk",
+      "team": "HOU",
+      "adp": 117.8,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 54
+    },
+    {
+      "player_id": "10444",
+      "name": "Cedric Tillman",
+      "team": "CLE",
+      "adp": 120.1,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 55
+    },
+    {
+      "player_id": "8126",
+      "name": "Wan'Dale Robinson",
+      "team": "NYG",
+      "adp": 124.8,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 56
+    },
+    {
+      "player_id": "ffc_5685",
+      "name": "Marvin Mims Jr.",
+      "team": "DEN",
+      "adp": 126.9,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 57
+    },
+    {
+      "player_id": "8121",
+      "name": "Romeo Doubs",
+      "team": "GB",
+      "adp": 129.1,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 58
+    },
+    {
+      "player_id": "ffc_3249",
+      "name": "Marquise Brown",
+      "team": "KC",
+      "adp": 129.2,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 59
+    },
+    {
+      "player_id": "12484",
+      "name": "Jayden Higgins",
+      "team": "HOU",
+      "adp": 130.5,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 60
+    },
+    {
+      "player_id": "7571",
+      "name": "Rashod Bateman",
+      "team": "BAL",
+      "adp": 131.2,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 61
+    },
+    {
+      "player_id": "11626",
+      "name": "Xavier Legette",
+      "team": "CAR",
+      "adp": 136.9,
+      "volatility": "Volatile",
+      "draft_round": 12,
+      "position_rank": 62
+    },
+    {
+      "player_id": "7670",
+      "name": "Joshua Palmer",
+      "team": "BUF",
+      "adp": 140.4,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 63
+    },
+    {
+      "player_id": "9501",
+      "name": "DeMario Douglas",
+      "team": "NE",
+      "adp": 140.9,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 64
+    },
+    {
+      "player_id": "6803",
+      "name": "Brandon Aiyuk",
+      "team": "SF",
+      "adp": 146.2,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 65
+    },
+    {
+      "player_id": "10232",
+      "name": "Michael Wilson",
+      "team": "ARI",
+      "adp": 149.8,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 66
+    },
+    {
+      "player_id": "1689",
+      "name": "Adam Thielen",
+      "team": "MIN",
+      "adp": 149.9,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 67
+    },
+    {
+      "player_id": "11646",
+      "name": "Jalen Coker",
+      "team": "CAR",
+      "adp": 150.6,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 68
+    },
+    {
+      "player_id": "ffc_6559",
+      "name": "Luther Burden III",
+      "team": "CHI",
+      "adp": 154.5,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 69
+    },
+    {
+      "player_id": "ffc_6581",
+      "name": "Dont'e Thornton Jr.",
+      "team": "LV",
+      "adp": 154.7,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 70
+    },
+    {
+      "player_id": "12509",
+      "name": "Tre' Harris",
+      "team": "LAC",
+      "adp": 155.6,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 71
+    },
+    {
+      "player_id": "12497",
+      "name": "Tory Horton",
+      "team": "SEA",
+      "adp": 157.7,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 72
+    },
+    {
+      "player_id": "12535",
+      "name": "Isaac TeSlaa",
+      "team": "DET",
+      "adp": 158.6,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 73
+    },
+    {
+      "player_id": "7437",
+      "name": "Kyle Williams",
+      "team": "",
+      "adp": 160.3,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 74
+    },
+    {
+      "player_id": "12547",
+      "name": "Kyle Williams",
+      "team": "NE",
+      "adp": 160.3,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 75
+    },
+    {
+      "player_id": "638",
+      "name": "Kyle Williams",
+      "team": "",
+      "adp": 160.3,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 76
+    },
+    {
+      "player_id": "2309",
+      "name": "Amari Cooper",
+      "team": "",
+      "adp": 160.7,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 77
+    },
+    {
+      "player_id": "1426",
+      "name": "DeAndre Hopkins",
+      "team": "BAL",
+      "adp": 161.8,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 78
+    },
+    {
+      "player_id": "2374",
+      "name": "Tyler Lockett",
+      "team": "TEN",
+      "adp": 164.3,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 79
+    },
+    {
+      "player_id": "9754",
+      "name": "Quentin Johnston",
+      "team": "LAC",
+      "adp": 166.6,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 80
+    },
+    {
+      "player_id": "12499",
+      "name": "Elic Ayomanor",
+      "team": "TEN",
+      "adp": 172.1,
+      "volatility": "Very Volatile",
+      "draft_round": 15,
+      "position_rank": 81
+    },
+    {
+      "player_id": "ffc_5778",
+      "name": "Calvin Austin III",
+      "team": "PIT",
+      "adp": 172.3,
+      "volatility": "Volatile",
+      "draft_round": 15,
+      "position_rank": 82
+    },
+    {
+      "player_id": "12492",
+      "name": "Pat Bryant",
+      "team": "DEN",
+      "adp": 174.4,
+      "volatility": "Very Volatile",
+      "draft_round": 15,
+      "position_rank": 83
+    },
+    {
+      "player_id": "6149",
+      "name": "Darius Slayton",
+      "team": "NYG",
+      "adp": 177.7,
+      "volatility": "Stable",
+      "draft_round": 15,
+      "position_rank": 84
+    }
+  ],
+  "RB": [
+    {
+      "player_id": "9509",
+      "name": "Bijan Robinson",
+      "team": "ATL",
+      "adp": 2.1,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 1
+    },
+    {
+      "player_id": "4866",
+      "name": "Saquon Barkley",
+      "team": "PHI",
+      "adp": 2.4,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 2
+    },
+    {
+      "player_id": "9221",
+      "name": "Jahmyr Gibbs",
+      "team": "DET",
+      "adp": 5.1,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 3
+    },
+    {
+      "player_id": "4034",
+      "name": "Christian McCaffrey",
+      "team": "SF",
+      "adp": 7.5,
+      "volatility": "Very Stable",
+      "draft_round": 1,
+      "position_rank": 4
+    },
+    {
+      "player_id": "3198",
+      "name": "Derrick Henry",
+      "team": "BAL",
+      "adp": 10.8,
+      "volatility": "Stable",
+      "draft_round": 1,
+      "position_rank": 5
+    },
+    {
+      "player_id": "12527",
+      "name": "Ashton Jeanty",
+      "team": "LV",
+      "adp": 11.9,
+      "volatility": "Stable",
+      "draft_round": 1,
+      "position_rank": 6
+    },
+    {
+      "player_id": "9226",
+      "name": "De'Von Achane",
+      "team": "MIA",
+      "adp": 13.9,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 7
+    },
+    {
+      "player_id": "5850",
+      "name": "Josh Jacobs",
+      "team": "GB",
+      "adp": 16.4,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 8
+    },
+    {
+      "player_id": "6813",
+      "name": "Jonathan Taylor",
+      "team": "IND",
+      "adp": 18.9,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 9
+    },
+    {
+      "player_id": "11584",
+      "name": "Bucky Irving",
+      "team": "TB",
+      "adp": 19.2,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 10
+    },
+    {
+      "player_id": "9224",
+      "name": "Chase Brown",
+      "team": "CIN",
+      "adp": 19.7,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 11
+    },
+    {
+      "player_id": "8150",
+      "name": "Kyren Williams",
+      "team": "LAR",
+      "adp": 23.3,
+      "volatility": "Stable",
+      "draft_round": 2,
+      "position_rank": 12
+    },
+    {
+      "player_id": "4035",
+      "name": "Alvin Kamara",
+      "team": "NO",
+      "adp": 30.0,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 13
+    },
+    {
+      "player_id": "8138",
+      "name": "James Cook",
+      "team": "BUF",
+      "adp": 34.2,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 14
+    },
+    {
+      "player_id": "12507",
+      "name": "Omarion Hampton",
+      "team": "LAC",
+      "adp": 39.5,
+      "volatility": "Volatile",
+      "draft_round": 4,
+      "position_rank": 15
+    },
+    {
+      "player_id": "7594",
+      "name": "Chuba Hubbard",
+      "team": "CAR",
+      "adp": 40.3,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 16
+    },
+    {
+      "player_id": "4137",
+      "name": "James Conner",
+      "team": "ARI",
+      "adp": 41.7,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 17
+    },
+    {
+      "player_id": "ffc_5625",
+      "name": "Kenneth Walker III",
+      "team": "SEA",
+      "adp": 45.2,
+      "volatility": "Volatile",
+      "draft_round": 4,
+      "position_rank": 18
+    },
+    {
+      "player_id": "8155",
+      "name": "Breece Hall",
+      "team": "NYJ",
+      "adp": 49.0,
+      "volatility": "Moderate",
+      "draft_round": 5,
+      "position_rank": 19
+    },
+    {
+      "player_id": "12529",
+      "name": "TreVeyon Henderson",
+      "team": "NE",
+      "adp": 50.2,
+      "volatility": "Volatile",
+      "draft_round": 5,
+      "position_rank": 20
+    },
+    {
+      "player_id": "5967",
+      "name": "Tony Pollard",
+      "team": "TEN",
+      "adp": 56.5,
+      "volatility": "Moderate",
+      "draft_round": 5,
+      "position_rank": 21
+    },
+    {
+      "player_id": "6790",
+      "name": "D'Andre Swift",
+      "team": "CHI",
+      "adp": 58.5,
+      "volatility": "Moderate",
+      "draft_round": 5,
+      "position_rank": 22
+    },
+    {
+      "player_id": "5892",
+      "name": "David Montgomery",
+      "team": "DET",
+      "adp": 61.1,
+      "volatility": "Volatile",
+      "draft_round": 6,
+      "position_rank": 23
+    },
+    {
+      "player_id": "12489",
+      "name": "RJ Harvey",
+      "team": "DEN",
+      "adp": 62.3,
+      "volatility": "Moderate",
+      "draft_round": 6,
+      "position_rank": 24
+    },
+    {
+      "player_id": "ffc_2507",
+      "name": "Aaron Jones Sr.",
+      "team": "MIN",
+      "adp": 63.9,
+      "volatility": "Moderate",
+      "draft_round": 6,
+      "position_rank": 25
+    },
+    {
+      "player_id": "8205",
+      "name": "Isiah Pacheco",
+      "team": "KC",
+      "adp": 67.6,
+      "volatility": "Volatile",
+      "draft_round": 6,
+      "position_rank": 26
+    },
+    {
+      "player_id": "ffc_6276",
+      "name": "Tyrone Tracy Jr.",
+      "team": "NYG",
+      "adp": 72.7,
+      "volatility": "Volatile",
+      "draft_round": 6,
+      "position_rank": 27
+    },
+    {
+      "player_id": "8228",
+      "name": "Jaylen Warren",
+      "team": "PIT",
+      "adp": 77.3,
+      "volatility": "Volatile",
+      "draft_round": 7,
+      "position_rank": 28
+    },
+    {
+      "player_id": "12504",
+      "name": "Kaleb Johnson",
+      "team": "PIT",
+      "adp": 80.1,
+      "volatility": "Volatile",
+      "draft_round": 7,
+      "position_rank": 29
+    },
+    {
+      "player_id": "4663",
+      "name": "Austin Ekeler",
+      "team": "WAS",
+      "adp": 83.9,
+      "volatility": "Volatile",
+      "draft_round": 7,
+      "position_rank": 30
+    },
+    {
+      "player_id": "6806",
+      "name": "J.K. Dobbins",
+      "team": "DEN",
+      "adp": 95.1,
+      "volatility": "Very Volatile",
+      "draft_round": 8,
+      "position_rank": 31
+    },
+    {
+      "player_id": "9753",
+      "name": "Zach Charbonnet",
+      "team": "SEA",
+      "adp": 98.5,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 32
+    },
+    {
+      "player_id": "8408",
+      "name": "Jordan Mason",
+      "team": "MIN",
+      "adp": 104.9,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 33
+    },
+    {
+      "player_id": "ffc_4863",
+      "name": "Travis Etienne Jr.",
+      "team": "JAX",
+      "adp": 105.0,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 34
+    },
+    {
+      "player_id": "12533",
+      "name": "Jacory Croskey-Merritt",
+      "team": "WAS",
+      "adp": 107.8,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 35
+    },
+    {
+      "player_id": "7588",
+      "name": "Javonte Williams",
+      "team": "DAL",
+      "adp": 113.6,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 36
+    },
+    {
+      "player_id": "7611",
+      "name": "Rhamondre Stevenson",
+      "team": "NE",
+      "adp": 120.0,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 37
+    },
+    {
+      "player_id": "8143",
+      "name": "Jerome Ford",
+      "team": "CLE",
+      "adp": 127.2,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 38
+    },
+    {
+      "player_id": "12481",
+      "name": "Cam Skattebo",
+      "team": "NYG",
+      "adp": 127.3,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 39
+    },
+    {
+      "player_id": "12512",
+      "name": "Quinshon Judkins",
+      "team": "CLE",
+      "adp": 129.4,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 40
+    },
+    {
+      "player_id": "4988",
+      "name": "Nick Chubb",
+      "team": "HOU",
+      "adp": 134.7,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 41
+    },
+    {
+      "player_id": "4018",
+      "name": "Joe Mixon",
+      "team": "HOU",
+      "adp": 135.7,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 42
+    },
+    {
+      "player_id": "8136",
+      "name": "Rachaad White",
+      "team": "TB",
+      "adp": 137.5,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 43
+    },
+    {
+      "player_id": "9225",
+      "name": "Tank Bigsby",
+      "team": "JAX",
+      "adp": 137.9,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 44
+    },
+    {
+      "player_id": "11589",
+      "name": "Trey Benson",
+      "team": "ARI",
+      "adp": 141.0,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 45
+    },
+    {
+      "player_id": "12457",
+      "name": "Jaydon Blue",
+      "team": "DAL",
+      "adp": 146.1,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 46
+    },
+    {
+      "player_id": "12469",
+      "name": "Dylan Sampson",
+      "team": "CLE",
+      "adp": 146.2,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 47
+    },
+    {
+      "player_id": "11576",
+      "name": "Braelon Allen",
+      "team": "NYJ",
+      "adp": 148.4,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 48
+    },
+    {
+      "player_id": "ffc_5605",
+      "name": "Brian Robinson Jr.",
+      "team": "SF",
+      "adp": 149.5,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 49
+    },
+    {
+      "player_id": "12490",
+      "name": "Bhayshul Tuten",
+      "team": "JAX",
+      "adp": 150.0,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 50
+    },
+    {
+      "player_id": "12474",
+      "name": "Woody Marks",
+      "team": "HOU",
+      "adp": 152.3,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 51
+    },
+    {
+      "player_id": "8132",
+      "name": "Tyler Allgeier",
+      "team": "ATL",
+      "adp": 153.9,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 52
+    },
+    {
+      "player_id": "11575",
+      "name": "Ray Davis",
+      "team": "BUF",
+      "adp": 154.4,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 53
+    },
+    {
+      "player_id": "ffc_6535",
+      "name": "Ollie Gordon II",
+      "team": "MIA",
+      "adp": 156.1,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 54
+    },
+    {
+      "player_id": "9508",
+      "name": "Tyjae Spears",
+      "team": "TEN",
+      "adp": 159.6,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 55
+    },
+    {
+      "player_id": "7528",
+      "name": "Najee Harris",
+      "team": "LAC",
+      "adp": 160.1,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 56
+    },
+    {
+      "player_id": "5995",
+      "name": "Justice Hill",
+      "team": "BAL",
+      "adp": 166.8,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 57
+    },
+    {
+      "player_id": "4098",
+      "name": "Kareem Hunt",
+      "team": "KC",
+      "adp": 179.5,
+      "volatility": "Very Volatile",
+      "draft_round": 15,
+      "position_rank": 58
+    }
+  ],
+  "QB": [
+    {
+      "player_id": "4881",
+      "name": "Lamar Jackson",
+      "team": "BAL",
+      "adp": 23.3,
+      "volatility": "Moderate",
+      "draft_round": 2,
+      "position_rank": 1
+    },
+    {
+      "player_id": "4984",
+      "name": "Josh Allen",
+      "team": "BUF",
+      "adp": 24.4,
+      "volatility": "Moderate",
+      "draft_round": 2,
+      "position_rank": 2
+    },
+    {
+      "player_id": "11566",
+      "name": "Jayden Daniels",
+      "team": "WAS",
+      "adp": 30.6,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 3
+    },
+    {
+      "player_id": "6770",
+      "name": "Joe Burrow",
+      "team": "CIN",
+      "adp": 30.8,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 4
+    },
+    {
+      "player_id": "6904",
+      "name": "Jalen Hurts",
+      "team": "PHI",
+      "adp": 38.2,
+      "volatility": "Moderate",
+      "draft_round": 4,
+      "position_rank": 5
+    },
+    {
+      "player_id": "4046",
+      "name": "Patrick Mahomes",
+      "team": "KC",
+      "adp": 53.3,
+      "volatility": "Volatile",
+      "draft_round": 5,
+      "position_rank": 6
+    },
+    {
+      "player_id": "4892",
+      "name": "Baker Mayfield",
+      "team": "TB",
+      "adp": 53.7,
+      "volatility": "Volatile",
+      "draft_round": 5,
+      "position_rank": 7
+    },
+    {
+      "player_id": "11563",
+      "name": "Bo Nix",
+      "team": "DEN",
+      "adp": 67.3,
+      "volatility": "Very Volatile",
+      "draft_round": 6,
+      "position_rank": 8
+    },
+    {
+      "player_id": "8183",
+      "name": "Brock Purdy",
+      "team": "SF",
+      "adp": 77.7,
+      "volatility": "Very Volatile",
+      "draft_round": 7,
+      "position_rank": 9
+    },
+    {
+      "player_id": "5849",
+      "name": "Kyler Murray",
+      "team": "ARI",
+      "adp": 83.7,
+      "volatility": "Very Volatile",
+      "draft_round": 7,
+      "position_rank": 10
+    },
+    {
+      "player_id": "3294",
+      "name": "Dak Prescott",
+      "team": "DAL",
+      "adp": 84.0,
+      "volatility": "Very Volatile",
+      "draft_round": 7,
+      "position_rank": 11
+    },
+    {
+      "player_id": "3163",
+      "name": "Jared Goff",
+      "team": "DET",
+      "adp": 98.4,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 12
+    },
+    {
+      "player_id": "11560",
+      "name": "Caleb Williams",
+      "team": "CHI",
+      "adp": 100.3,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 13
+    },
+    {
+      "player_id": "11565",
+      "name": "J.J. McCarthy",
+      "team": "MIN",
+      "adp": 104.6,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 14
+    },
+    {
+      "player_id": "6797",
+      "name": "Justin Herbert",
+      "team": "LAC",
+      "adp": 107.2,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 15
+    },
+    {
+      "player_id": "11564",
+      "name": "Drake Maye",
+      "team": "NE",
+      "adp": 107.7,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 16
+    },
+    {
+      "player_id": "7591",
+      "name": "Justin Fields",
+      "team": "NYJ",
+      "adp": 113.6,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 17
+    },
+    {
+      "player_id": "6804",
+      "name": "Jordan Love",
+      "team": "GB",
+      "adp": 121.2,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 18
+    },
+    {
+      "player_id": "7523",
+      "name": "Trevor Lawrence",
+      "team": "JAX",
+      "adp": 122.4,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 19
+    },
+    {
+      "player_id": "9758",
+      "name": "C.J. Stroud",
+      "team": "HOU",
+      "adp": 129.2,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 20
+    },
+    {
+      "player_id": "6768",
+      "name": "Tua Tagovailoa",
+      "team": "MIA",
+      "adp": 138.5,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 21
+    },
+    {
+      "player_id": "1373",
+      "name": "Geno Smith",
+      "team": "LV",
+      "adp": 149.3,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 22
+    },
+    {
+      "player_id": "421",
+      "name": "Matthew Stafford",
+      "team": "LAR",
+      "adp": 150.5,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 23
+    },
+    {
+      "player_id": "ffc_5649",
+      "name": "Michael Penix Jr.",
+      "team": "ATL",
+      "adp": 151.5,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 24
+    },
+    {
+      "player_id": "9228",
+      "name": "Bryce Young",
+      "team": "CAR",
+      "adp": 151.9,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 25
+    },
+    {
+      "player_id": "4943",
+      "name": "Sam Darnold",
+      "team": "SEA",
+      "adp": 156.6,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 26
+    },
+    {
+      "player_id": "96",
+      "name": "Aaron Rodgers",
+      "team": "PIT",
+      "adp": 166.5,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 27
+    },
+    {
+      "player_id": "ffc_6457",
+      "name": "Cameron Ward",
+      "team": "TEN",
+      "adp": 166.7,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 28
+    }
+  ],
+  "TE": [
+    {
+      "player_id": "11604",
+      "name": "Brock Bowers",
+      "team": "LV",
+      "adp": 26.5,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 1
+    },
+    {
+      "player_id": "8130",
+      "name": "Trey McBride",
+      "team": "ARI",
+      "adp": 32.5,
+      "volatility": "Moderate",
+      "draft_round": 3,
+      "position_rank": 2
+    },
+    {
+      "player_id": "4217",
+      "name": "George Kittle",
+      "team": "SF",
+      "adp": 43.3,
+      "volatility": "Volatile",
+      "draft_round": 4,
+      "position_rank": 3
+    },
+    {
+      "player_id": "10859",
+      "name": "Sam LaPorta",
+      "team": "DET",
+      "adp": 63.3,
+      "volatility": "Very Volatile",
+      "draft_round": 6,
+      "position_rank": 4
+    },
+    {
+      "player_id": "1466",
+      "name": "Travis Kelce",
+      "team": "KC",
+      "adp": 65.2,
+      "volatility": "Very Volatile",
+      "draft_round": 6,
+      "position_rank": 5
+    },
+    {
+      "player_id": "5844",
+      "name": "T.J. Hockenson",
+      "team": "MIN",
+      "adp": 73.8,
+      "volatility": "Very Volatile",
+      "draft_round": 7,
+      "position_rank": 6
+    },
+    {
+      "player_id": "4033",
+      "name": "David Njoku",
+      "team": "CLE",
+      "adp": 76.5,
+      "volatility": "Very Volatile",
+      "draft_round": 7,
+      "position_rank": 7
+    },
+    {
+      "player_id": "5012",
+      "name": "Mark Andrews",
+      "team": "BAL",
+      "adp": 87.3,
+      "volatility": "Very Volatile",
+      "draft_round": 8,
+      "position_rank": 8
+    },
+    {
+      "player_id": "4066",
+      "name": "Evan Engram",
+      "team": "DEN",
+      "adp": 93.4,
+      "volatility": "Very Volatile",
+      "draft_round": 8,
+      "position_rank": 9
+    },
+    {
+      "player_id": "12518",
+      "name": "Tyler Warren",
+      "team": "IND",
+      "adp": 102.9,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 10
+    },
+    {
+      "player_id": "9484",
+      "name": "Tucker Kraft",
+      "team": "GB",
+      "adp": 114.2,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 11
+    },
+    {
+      "player_id": "8110",
+      "name": "Jake Ferguson",
+      "team": "DAL",
+      "adp": 117.3,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 12
+    },
+    {
+      "player_id": "5022",
+      "name": "Dallas Goedert",
+      "team": "PHI",
+      "adp": 129.6,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 13
+    },
+    {
+      "player_id": "10236",
+      "name": "Dalton Kincaid",
+      "team": "BUF",
+      "adp": 136.3,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 14
+    },
+    {
+      "player_id": "12517",
+      "name": "Colston Loveland",
+      "team": "CHI",
+      "adp": 141.9,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 15
+    },
+    {
+      "player_id": "8131",
+      "name": "Isaiah Likely",
+      "team": "BAL",
+      "adp": 142.3,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 16
+    },
+    {
+      "player_id": "4993",
+      "name": "Mike Gesicki",
+      "team": "CIN",
+      "adp": 144.8,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 17
+    },
+    {
+      "player_id": "ffc_5181",
+      "name": "Kyle Pitts Sr.",
+      "team": "ATL",
+      "adp": 146.3,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 18
+    },
+    {
+      "player_id": "1339",
+      "name": "Zach Ertz",
+      "team": "WAS",
+      "adp": 148.3,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 19
+    },
+    {
+      "player_id": "3214",
+      "name": "Hunter Henry",
+      "team": "NE",
+      "adp": 150.5,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 20
+    },
+    {
+      "player_id": "4144",
+      "name": "Jonnu Smith",
+      "team": "PIT",
+      "adp": 158.5,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 21
+    },
+    {
+      "player_id": "8210",
+      "name": "Chig Okonkwo",
+      "team": "TEN",
+      "adp": 162.1,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 22
+    },
+    {
+      "player_id": "8111",
+      "name": "Cade Otton",
+      "team": "TB",
+      "adp": 167.5,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 23
+    },
+    {
+      "player_id": "9480",
+      "name": "Brenton Strange",
+      "team": "JAX",
+      "adp": 168.3,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 24
+    }
+  ],
+  "DEF": [
+    {
+      "player_id": "ffc_1320",
+      "name": "NY Giants Defense",
+      "team": "NYG",
+      "adp": 95.8,
+      "volatility": "Very Volatile",
+      "draft_round": 8,
+      "position_rank": 1
+    },
+    {
+      "player_id": "ffc_1308",
+      "name": "Dallas Defense",
+      "team": "DAL",
+      "adp": 97.8,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 2
+    },
+    {
+      "player_id": "ffc_1309",
+      "name": "Denver Defense",
+      "team": "DEN",
+      "adp": 104.8,
+      "volatility": "Very Volatile",
+      "draft_round": 9,
+      "position_rank": 3
+    },
+    {
+      "player_id": "ffc_1323",
+      "name": "Philadelphia Defense",
+      "team": "PHI",
+      "adp": 112.4,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 4
+    },
+    {
+      "player_id": "ffc_1324",
+      "name": "Pittsburgh Defense",
+      "team": "PIT",
+      "adp": 112.9,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 5
+    },
+    {
+      "player_id": "ffc_1332",
+      "name": "Baltimore Defense",
+      "team": "BAL",
+      "adp": 117.8,
+      "volatility": "Very Volatile",
+      "draft_round": 10,
+      "position_rank": 6
+    },
+    {
+      "player_id": "ffc_1303",
+      "name": "Buffalo Defense",
+      "team": "BUF",
+      "adp": 130.2,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 7
+    },
+    {
+      "player_id": "ffc_1311",
+      "name": "Green Bay Defense",
+      "team": "GB",
+      "adp": 137.5,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 8
+    },
+    {
+      "player_id": "ffc_1312",
+      "name": "Houston Defense",
+      "team": "HOU",
+      "adp": 138.2,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 9
+    },
+    {
+      "player_id": "ffc_1310",
+      "name": "Detroit Defense",
+      "team": "DET",
+      "adp": 145.2,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 10
+    },
+    {
+      "player_id": "ffc_1317",
+      "name": "Minnesota Defense",
+      "team": "MIN",
+      "adp": 146.3,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 11
+    },
+    {
+      "player_id": "ffc_1331",
+      "name": "Washington Defense",
+      "team": "WAS",
+      "adp": 148.4,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 12
+    },
+    {
+      "player_id": "ffc_1328",
+      "name": "LA Rams Defense",
+      "team": "LAR",
+      "adp": 151.4,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 13
+    },
+    {
+      "player_id": "ffc_1326",
+      "name": "San Francisco Defense",
+      "team": "SF",
+      "adp": 154.1,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 14
+    },
+    {
+      "player_id": "ffc_1318",
+      "name": "New England Defense",
+      "team": "NE",
+      "adp": 154.8,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 15
+    },
+    {
+      "player_id": "ffc_1321",
+      "name": "NY Jets Defense",
+      "team": "NYJ",
+      "adp": 155.3,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 16
+    },
+    {
+      "player_id": "ffc_1329",
+      "name": "Tampa Bay Defense",
+      "team": "TB",
+      "adp": 155.7,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 17
+    },
+    {
+      "player_id": "ffc_1305",
+      "name": "Chicago Defense",
+      "team": "CHI",
+      "adp": 156.0,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 18
+    },
+    {
+      "player_id": "ffc_1250",
+      "name": "Arizona Defense",
+      "team": "ARI",
+      "adp": 156.6,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 19
+    },
+    {
+      "player_id": "ffc_1315",
+      "name": "Kansas City Defense",
+      "team": "KC",
+      "adp": 162.0,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 20
+    },
+    {
+      "player_id": "ffc_1327",
+      "name": "Seattle Defense",
+      "team": "SEA",
+      "adp": 162.3,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 21
+    },
+    {
+      "player_id": "ffc_1325",
+      "name": "LA Chargers Defense",
+      "team": "LAC",
+      "adp": 163.1,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 22
+    }
+  ],
+  "PK": [
+    {
+      "player_id": "ffc_6162",
+      "name": "Brandon Aubrey",
+      "team": "DAL",
+      "adp": 130.3,
+      "volatility": "Very Volatile",
+      "draft_round": 11,
+      "position_rank": 1
+    },
+    {
+      "player_id": "ffc_4867",
+      "name": "Matt Gay",
+      "team": "WAS",
+      "adp": 137.5,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 2
+    },
+    {
+      "player_id": "ffc_5036",
+      "name": "Tyler Bass",
+      "team": "BUF",
+      "adp": 139.3,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 3
+    },
+    {
+      "player_id": "ffc_4865",
+      "name": "Chase McLaughlin",
+      "team": "TB",
+      "adp": 144.3,
+      "volatility": "Very Volatile",
+      "draft_round": 12,
+      "position_rank": 4
+    },
+    {
+      "player_id": "ffc_2514",
+      "name": "Harrison Butker",
+      "team": "KC",
+      "adp": 145.0,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 5
+    },
+    {
+      "player_id": "ffc_6055",
+      "name": "Jake Bates",
+      "team": "DET",
+      "adp": 146.2,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 6
+    },
+    {
+      "player_id": "ffc_5538",
+      "name": "Cameron Dicker",
+      "team": "LAC",
+      "adp": 147.9,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 7
+    },
+    {
+      "player_id": "ffc_2529",
+      "name": "Jake Elliott",
+      "team": "PHI",
+      "adp": 148.9,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 8
+    },
+    {
+      "player_id": "ffc_5669",
+      "name": "Evan McPherson",
+      "team": "CIN",
+      "adp": 154.8,
+      "volatility": "Very Volatile",
+      "draft_round": 13,
+      "position_rank": 9
+    },
+    {
+      "player_id": "ffc_6188",
+      "name": "Cam Little",
+      "team": "JAX",
+      "adp": 157.5,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 10
+    },
+    {
+      "player_id": "ffc_6587",
+      "name": "Tyler Loop",
+      "team": "BAL",
+      "adp": 158.3,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 11
+    },
+    {
+      "player_id": "ffc_2340",
+      "name": "Chris Boswell",
+      "team": "PIT",
+      "adp": 160.1,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 12
+    },
+    {
+      "player_id": "ffc_2531",
+      "name": "Ka'imi Fairbairn",
+      "team": "HOU",
+      "adp": 161.5,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 13
+    },
+    {
+      "player_id": "ffc_2336",
+      "name": "Brandon McManus",
+      "team": "GB",
+      "adp": 164.1,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 14
+    },
+    {
+      "player_id": "ffc_2527",
+      "name": "Younghoe Koo",
+      "team": "ATL",
+      "adp": 164.3,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 15
+    },
+    {
+      "player_id": "ffc_2522",
+      "name": "Wil Lutz",
+      "team": "DEN",
+      "adp": 165.5,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 16
+    },
+    {
+      "player_id": "ffc_5726",
+      "name": "Jake Moody",
+      "team": "SF",
+      "adp": 167.9,
+      "volatility": "Very Volatile",
+      "draft_round": 14,
+      "position_rank": 17
+    },
+    {
+      "player_id": "ffc_2988",
+      "name": "Daniel Carlson",
+      "team": "LV",
+      "adp": 171.2,
+      "volatility": "Very Volatile",
+      "draft_round": 15,
+      "position_rank": 18
+    },
+    {
+      "player_id": "ffc_6296",
+      "name": "Will Reichard",
+      "team": "MIN",
+      "adp": 174.4,
+      "volatility": "Very Volatile",
+      "draft_round": 15,
+      "position_rank": 19
+    }
+  ]
+}

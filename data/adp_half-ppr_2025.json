@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "type": "Half-PPR",
+    "teams": 12,
+    "rounds": 15,
+    "total_drafts": 194,
+    "start_date": "2025-09-04",
+    "end_date": "2025-09-05"
+  },
+  "players": [
+    {
+      "player_id": 6576,
+      "name": "Emeka Egbuka",
+      "position": "WR",
+      "team": "TB",
+      "adp": 76.2,
+      "adp_formatted": "7.04",
+      "times_drafted": 14,
+      "high": 60,
+      "low": 86,
+      "stdev": 8.4,
+      "bye": 9
+    }
+  ],
+  "collected_at": "2025-09-05T17:58:25.048012",
+  "scoring": "half-ppr",
+  "teams": 12,
+  "position": "all"
+}

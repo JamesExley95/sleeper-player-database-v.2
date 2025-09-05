@@ -1,0 +1,605 @@
+{
+  "generated_at": "2025-09-05T17:58:43.946801",
+  "analysis": {
+    "high_volatility_players": [
+      {
+        "name": "Omarion Hampton",
+        "position": "RB",
+        "team": "LAC",
+        "adp": 39.5,
+        "stdev": 6.6,
+        "volatility_tier": "Volatile",
+        "range": "22-61"
+      },
+      {
+        "name": "Kenneth Walker III",
+        "position": "RB",
+        "team": "SEA",
+        "adp": 45.2,
+        "stdev": 6.1,
+        "volatility_tier": "Volatile",
+        "range": "29-63"
+      },
+      {
+        "name": "George Kittle",
+        "position": "TE",
+        "team": "SF",
+        "adp": 43.3,
+        "stdev": 6.0,
+        "volatility_tier": "Volatile",
+        "range": "27-59"
+      },
+      {
+        "name": "Breece Hall",
+        "position": "RB",
+        "team": "NYJ",
+        "adp": 49.0,
+        "stdev": 5.9,
+        "volatility_tier": "Moderate",
+        "range": "33-61"
+      },
+      {
+        "name": "Tetairoa McMillan",
+        "position": "WR",
+        "team": "CAR",
+        "adp": 47.7,
+        "stdev": 5.8,
+        "volatility_tier": "Moderate",
+        "range": "32-68"
+      },
+      {
+        "name": "Jalen Hurts",
+        "position": "QB",
+        "team": "PHI",
+        "adp": 38.2,
+        "stdev": 5.6,
+        "volatility_tier": "Moderate",
+        "range": "23-55"
+      },
+      {
+        "name": "DeVonta Smith",
+        "position": "WR",
+        "team": "PHI",
+        "adp": 47.7,
+        "stdev": 5.5,
+        "volatility_tier": "Moderate",
+        "range": "33-76"
+      },
+      {
+        "name": "Chuba Hubbard",
+        "position": "RB",
+        "team": "CAR",
+        "adp": 40.3,
+        "stdev": 5.5,
+        "volatility_tier": "Moderate",
+        "range": "26-57"
+      },
+      {
+        "name": "James Conner",
+        "position": "RB",
+        "team": "ARI",
+        "adp": 41.7,
+        "stdev": 5.3,
+        "volatility_tier": "Moderate",
+        "range": "27-52"
+      },
+      {
+        "name": "Courtland Sutton",
+        "position": "WR",
+        "team": "DEN",
+        "adp": 47.8,
+        "stdev": 5.3,
+        "volatility_tier": "Moderate",
+        "range": "33-70"
+      },
+      {
+        "name": "James Cook",
+        "position": "RB",
+        "team": "BUF",
+        "adp": 34.2,
+        "stdev": 5.0,
+        "volatility_tier": "Moderate",
+        "range": "21-46"
+      },
+      {
+        "name": "Garrett Wilson",
+        "position": "WR",
+        "team": "NYJ",
+        "adp": 41.3,
+        "stdev": 4.9,
+        "volatility_tier": "Moderate",
+        "range": "28-64"
+      },
+      {
+        "name": "Jayden Daniels",
+        "position": "QB",
+        "team": "WAS",
+        "adp": 30.6,
+        "stdev": 4.9,
+        "volatility_tier": "Moderate",
+        "range": "17-41"
+      },
+      {
+        "name": "Josh Allen",
+        "position": "QB",
+        "team": "BUF",
+        "adp": 24.4,
+        "stdev": 4.8,
+        "volatility_tier": "Moderate",
+        "range": "11-35"
+      },
+      {
+        "name": "Brock Bowers",
+        "position": "TE",
+        "team": "LV",
+        "adp": 26.5,
+        "stdev": 4.8,
+        "volatility_tier": "Moderate",
+        "range": "13-38"
+      },
+      {
+        "name": "Lamar Jackson",
+        "position": "QB",
+        "team": "BAL",
+        "adp": 23.3,
+        "stdev": 4.7,
+        "volatility_tier": "Moderate",
+        "range": "11-33"
+      },
+      {
+        "name": "Joe Burrow",
+        "position": "QB",
+        "team": "CIN",
+        "adp": 30.8,
+        "stdev": 4.7,
+        "volatility_tier": "Moderate",
+        "range": "18-44"
+      },
+      {
+        "name": "Jaxon Smith-Njigba",
+        "position": "WR",
+        "team": "SEA",
+        "adp": 32.6,
+        "stdev": 4.5,
+        "volatility_tier": "Moderate",
+        "range": "20-52"
+      },
+      {
+        "name": "DJ Moore",
+        "position": "WR",
+        "team": "CHI",
+        "adp": 43.9,
+        "stdev": 4.5,
+        "volatility_tier": "Moderate",
+        "range": "32-65"
+      },
+      {
+        "name": "Marvin Harrison Jr.",
+        "position": "WR",
+        "team": "ARI",
+        "adp": 38.8,
+        "stdev": 4.4,
+        "volatility_tier": "Moderate",
+        "range": "27-53"
+      },
+      {
+        "name": "DK Metcalf",
+        "position": "WR",
+        "team": "PIT",
+        "adp": 37.6,
+        "stdev": 4.2,
+        "volatility_tier": "Moderate",
+        "range": "26-56"
+      },
+      {
+        "name": "Mike Evans",
+        "position": "WR",
+        "team": "TB",
+        "adp": 29.3,
+        "stdev": 4.0,
+        "volatility_tier": "Moderate",
+        "range": "18-47"
+      },
+      {
+        "name": "Trey McBride",
+        "position": "TE",
+        "team": "ARI",
+        "adp": 32.5,
+        "stdev": 4.0,
+        "volatility_tier": "Moderate",
+        "range": "22-44"
+      },
+      {
+        "name": "Terry McLaurin",
+        "position": "WR",
+        "team": "WAS",
+        "adp": 35.9,
+        "stdev": 4.0,
+        "volatility_tier": "Moderate",
+        "range": "25-51"
+      },
+      {
+        "name": "Alvin Kamara",
+        "position": "RB",
+        "team": "NO",
+        "adp": 30.0,
+        "stdev": 4.0,
+        "volatility_tier": "Moderate",
+        "range": "19-41"
+      },
+      {
+        "name": "Tyreek Hill",
+        "position": "WR",
+        "team": "MIA",
+        "adp": 26.8,
+        "stdev": 3.8,
+        "volatility_tier": "Stable",
+        "range": "16-44"
+      },
+      {
+        "name": "Davante Adams",
+        "position": "WR",
+        "team": "LAR",
+        "adp": 28.5,
+        "stdev": 3.7,
+        "volatility_tier": "Stable",
+        "range": "18-38"
+      },
+      {
+        "name": "Tee Higgins",
+        "position": "WR",
+        "team": "CIN",
+        "adp": 22.1,
+        "stdev": 3.4,
+        "volatility_tier": "Stable",
+        "range": "13-32"
+      },
+      {
+        "name": "Ladd McConkey",
+        "position": "WR",
+        "team": "LAC",
+        "adp": 23.4,
+        "stdev": 3.3,
+        "volatility_tier": "Stable",
+        "range": "14-38"
+      },
+      {
+        "name": "Chase Brown",
+        "position": "RB",
+        "team": "CIN",
+        "adp": 19.7,
+        "stdev": 3.2,
+        "volatility_tier": "Stable",
+        "range": "11-35"
+      }
+    ],
+    "stable_picks": [
+      {
+        "name": "Ja'Marr Chase",
+        "position": "WR",
+        "team": "CIN",
+        "adp": 1.6,
+        "stdev": 0.8,
+        "times_drafted": 1008
+      },
+      {
+        "name": "Bijan Robinson",
+        "position": "RB",
+        "team": "ATL",
+        "adp": 2.1,
+        "stdev": 0.8,
+        "times_drafted": 675
+      },
+      {
+        "name": "Saquon Barkley",
+        "position": "RB",
+        "team": "PHI",
+        "adp": 2.4,
+        "stdev": 0.9,
+        "times_drafted": 365
+      },
+      {
+        "name": "Justin Jefferson",
+        "position": "WR",
+        "team": "MIN",
+        "adp": 4.4,
+        "stdev": 1.1,
+        "times_drafted": 550
+      },
+      {
+        "name": "CeeDee Lamb",
+        "position": "WR",
+        "team": "DAL",
+        "adp": 4.9,
+        "stdev": 1.4,
+        "times_drafted": 824
+      },
+      {
+        "name": "Malik Nabers",
+        "position": "WR",
+        "team": "NYG",
+        "adp": 7.6,
+        "stdev": 1.5,
+        "times_drafted": 495
+      },
+      {
+        "name": "Jahmyr Gibbs",
+        "position": "RB",
+        "team": "DET",
+        "adp": 5.1,
+        "stdev": 1.5,
+        "times_drafted": 1523
+      },
+      {
+        "name": "Nico Collins",
+        "position": "WR",
+        "team": "HOU",
+        "adp": 9.7,
+        "stdev": 1.7,
+        "times_drafted": 701
+      },
+      {
+        "name": "Christian McCaffrey",
+        "position": "RB",
+        "team": "SF",
+        "adp": 7.5,
+        "stdev": 1.7,
+        "times_drafted": 998
+      }
+    ],
+    "position_volatility": {
+      "WR": {
+        "avg_stdev": 7.57,
+        "player_count": 70,
+        "volatility_rank": 6
+      },
+      "RB": {
+        "avg_stdev": 10.78,
+        "player_count": 54,
+        "volatility_rank": 4
+      },
+      "QB": {
+        "avg_stdev": 10.66,
+        "player_count": 26,
+        "volatility_rank": 5
+      },
+      "TE": {
+        "avg_stdev": 13.8,
+        "player_count": 18,
+        "volatility_rank": 3
+      },
+      "DEF": {
+        "avg_stdev": 16.08,
+        "player_count": 16,
+        "volatility_rank": 2
+      },
+      "PK": {
+        "avg_stdev": 20.04,
+        "player_count": 16,
+        "volatility_rank": 1
+      }
+    },
+    "round_analysis": {}
+  },
+  "content": {
+    "headline": "Fantasy Draft Risk Assessment: Most Volatile vs Safest Picks",
+    "summary": "\n        Analysis of 39 top fantasy players reveals significant \n        volatility differences in 2025 drafts. 30 early-round picks show \n        high volatility (3+ pick standard deviation), while 9 players \n        demonstrate remarkable draft consensus.\n        ",
+    "key_insights": [
+      "Omarion Hampton (RB) is the most volatile early pick with 6.6 pick standard deviation",
+      "Ja'Marr Chase (WR) is the safest pick with only 0.8 pick standard deviation",
+      "PK is the most volatile position (20.04 avg standard deviation)"
+    ],
+    "sections": {
+      "high_risk_players": {
+        "title": "High-Risk Early Round Picks",
+        "description": "Players with significant draft position volatility",
+        "players": [
+          {
+            "name": "Omarion Hampton",
+            "position": "RB",
+            "team": "LAC",
+            "adp": 39.5,
+            "stdev": 6.6,
+            "volatility_tier": "Volatile",
+            "range": "22-61"
+          },
+          {
+            "name": "Kenneth Walker III",
+            "position": "RB",
+            "team": "SEA",
+            "adp": 45.2,
+            "stdev": 6.1,
+            "volatility_tier": "Volatile",
+            "range": "29-63"
+          },
+          {
+            "name": "George Kittle",
+            "position": "TE",
+            "team": "SF",
+            "adp": 43.3,
+            "stdev": 6.0,
+            "volatility_tier": "Volatile",
+            "range": "27-59"
+          },
+          {
+            "name": "Breece Hall",
+            "position": "RB",
+            "team": "NYJ",
+            "adp": 49.0,
+            "stdev": 5.9,
+            "volatility_tier": "Moderate",
+            "range": "33-61"
+          },
+          {
+            "name": "Tetairoa McMillan",
+            "position": "WR",
+            "team": "CAR",
+            "adp": 47.7,
+            "stdev": 5.8,
+            "volatility_tier": "Moderate",
+            "range": "32-68"
+          },
+          {
+            "name": "Jalen Hurts",
+            "position": "QB",
+            "team": "PHI",
+            "adp": 38.2,
+            "stdev": 5.6,
+            "volatility_tier": "Moderate",
+            "range": "23-55"
+          },
+          {
+            "name": "DeVonta Smith",
+            "position": "WR",
+            "team": "PHI",
+            "adp": 47.7,
+            "stdev": 5.5,
+            "volatility_tier": "Moderate",
+            "range": "33-76"
+          },
+          {
+            "name": "Chuba Hubbard",
+            "position": "RB",
+            "team": "CAR",
+            "adp": 40.3,
+            "stdev": 5.5,
+            "volatility_tier": "Moderate",
+            "range": "26-57"
+          },
+          {
+            "name": "James Conner",
+            "position": "RB",
+            "team": "ARI",
+            "adp": 41.7,
+            "stdev": 5.3,
+            "volatility_tier": "Moderate",
+            "range": "27-52"
+          },
+          {
+            "name": "Courtland Sutton",
+            "position": "WR",
+            "team": "DEN",
+            "adp": 47.8,
+            "stdev": 5.3,
+            "volatility_tier": "Moderate",
+            "range": "33-70"
+          }
+        ]
+      },
+      "safe_picks": {
+        "title": "Consensus Safe Picks",
+        "description": "Players with consistent draft positions",
+        "players": [
+          {
+            "name": "Ja'Marr Chase",
+            "position": "WR",
+            "team": "CIN",
+            "adp": 1.6,
+            "stdev": 0.8,
+            "times_drafted": 1008
+          },
+          {
+            "name": "Bijan Robinson",
+            "position": "RB",
+            "team": "ATL",
+            "adp": 2.1,
+            "stdev": 0.8,
+            "times_drafted": 675
+          },
+          {
+            "name": "Saquon Barkley",
+            "position": "RB",
+            "team": "PHI",
+            "adp": 2.4,
+            "stdev": 0.9,
+            "times_drafted": 365
+          },
+          {
+            "name": "Justin Jefferson",
+            "position": "WR",
+            "team": "MIN",
+            "adp": 4.4,
+            "stdev": 1.1,
+            "times_drafted": 550
+          },
+          {
+            "name": "CeeDee Lamb",
+            "position": "WR",
+            "team": "DAL",
+            "adp": 4.9,
+            "stdev": 1.4,
+            "times_drafted": 824
+          },
+          {
+            "name": "Malik Nabers",
+            "position": "WR",
+            "team": "NYG",
+            "adp": 7.6,
+            "stdev": 1.5,
+            "times_drafted": 495
+          },
+          {
+            "name": "Jahmyr Gibbs",
+            "position": "RB",
+            "team": "DET",
+            "adp": 5.1,
+            "stdev": 1.5,
+            "times_drafted": 1523
+          },
+          {
+            "name": "Nico Collins",
+            "position": "WR",
+            "team": "HOU",
+            "adp": 9.7,
+            "stdev": 1.7,
+            "times_drafted": 701
+          },
+          {
+            "name": "Christian McCaffrey",
+            "position": "RB",
+            "team": "SF",
+            "adp": 7.5,
+            "stdev": 1.7,
+            "times_drafted": 998
+          }
+        ]
+      },
+      "position_analysis": {
+        "title": "Position Volatility Rankings",
+        "description": "Average draft volatility by position",
+        "data": {
+          "WR": {
+            "avg_stdev": 7.57,
+            "player_count": 70,
+            "volatility_rank": 6
+          },
+          "RB": {
+            "avg_stdev": 10.78,
+            "player_count": 54,
+            "volatility_rank": 4
+          },
+          "QB": {
+            "avg_stdev": 10.66,
+            "player_count": 26,
+            "volatility_rank": 5
+          },
+          "TE": {
+            "avg_stdev": 13.8,
+            "player_count": 18,
+            "volatility_rank": 3
+          },
+          "DEF": {
+            "avg_stdev": 16.08,
+            "player_count": 16,
+            "volatility_rank": 2
+          },
+          "PK": {
+            "avg_stdev": 20.04,
+            "player_count": 16,
+            "volatility_rank": 1
+          }
+        }
+      }
+    }
+  }
+}
