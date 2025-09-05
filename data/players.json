@@ -2,10 +2,10 @@
   "metadata": {
     "total_players": 1016,
     "fantasy_relevant": 1016,
-    "players_with_adp": 171,
-    "last_updated": "2025-09-05T05:05:21.071126",
+    "players_with_adp": 191,
+    "last_updated": "2025-09-05T05:18:28.397213",
     "data_coverage_pct": 0.0,
-    "adp_coverage_pct": 16.8
+    "adp_coverage_pct": 18.8
   },
   "players": [
     {
@@ -49,7 +49,8 @@
           "rank": 999,
           "times_drafted": 125
         },
-        "average_adp": 137.4
+        "average_adp": 137.4,
+        "matched_via": "brandon aubrey"
       }
     },
     {
@@ -106,7 +107,8 @@
           "rank": 999,
           "times_drafted": 321
         },
-        "average_adp": 2.7
+        "average_adp": 2.7,
+        "matched_via": "c lamb"
       }
     },
     {
@@ -150,7 +152,8 @@
           "rank": 999,
           "times_drafted": 97
         },
-        "average_adp": 151.2
+        "average_adp": 151.2,
+        "matched_via": "bucky irving"
       }
     },
     {
@@ -194,7 +197,8 @@
           "rank": 999,
           "times_drafted": 51
         },
-        "average_adp": 131.9
+        "average_adp": 131.9,
+        "matched_via": "j. jeudy"
       }
     },
     {
@@ -303,7 +307,8 @@
           "rank": 999,
           "times_drafted": 113
         },
-        "average_adp": 127.5
+        "average_adp": 127.5,
+        "matched_via": "jaleel mclaughlin"
       }
     },
     {
@@ -486,7 +491,26 @@
       "years_exp": 0,
       "height": "69",
       "weight": "188",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 12.1,
+          "rank": 999,
+          "times_drafted": 38
+        },
+        "half_ppr": {
+          "adp": 14.8,
+          "rank": 999,
+          "times_drafted": 57
+        },
+        "ppr": {
+          "adp": 15.9,
+          "rank": 999,
+          "times_drafted": 174
+        },
+        "average_adp": 14.3,
+        "matched_via": "k. williams"
+      }
     },
     {
       "sleeper_id": "6016",
@@ -646,7 +670,8 @@
           "rank": 999,
           "times_drafted": 131
         },
-        "average_adp": 60.9
+        "average_adp": 60.9,
+        "matched_via": "d prescott"
       }
     },
     {
@@ -677,7 +702,8 @@
           "rank": 999,
           "times_drafted": 80
         },
-        "average_adp": 123.7
+        "average_adp": 123.7,
+        "matched_via": "m stafford"
       }
     },
     {
@@ -721,7 +747,8 @@
           "rank": 999,
           "times_drafted": 109
         },
-        "average_adp": 108.0
+        "average_adp": 108.0,
+        "matched_via": "khalil shakir"
       }
     },
     {
@@ -843,7 +870,8 @@
           "rank": 999,
           "times_drafted": 244
         },
-        "average_adp": 29.8
+        "average_adp": 29.8,
+        "matched_via": "james cook"
       }
     },
     {
@@ -879,7 +907,8 @@
           "rank": 999,
           "times_drafted": 22
         },
-        "average_adp": 152.0
+        "average_adp": 152.0,
+        "matched_via": "j. dotson"
       }
     },
     {
@@ -962,7 +991,8 @@
           "rank": 999,
           "times_drafted": 108
         },
-        "average_adp": 27.7
+        "average_adp": 27.7,
+        "matched_via": "r white"
       }
     },
     {
@@ -1071,7 +1101,8 @@
           "rank": 999,
           "times_drafted": 82
         },
-        "average_adp": 62.8
+        "average_adp": 62.8,
+        "matched_via": "jayden reed"
       }
     },
     {
@@ -1098,7 +1129,26 @@
       "years_exp": 0,
       "height": "75",
       "weight": "195",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 80.1,
+          "rank": 999,
+          "times_drafted": 61
+        },
+        "half_ppr": {
+          "adp": 82.7,
+          "rank": 999,
+          "times_drafted": 63
+        },
+        "ppr": {
+          "adp": 85.4,
+          "rank": 999,
+          "times_drafted": 151
+        },
+        "average_adp": 82.7,
+        "matched_via": "j brooks"
+      }
     },
     {
       "sleeper_id": "12981",
@@ -1228,7 +1278,8 @@
           "rank": 999,
           "times_drafted": 63
         },
-        "average_adp": 149.1
+        "average_adp": 149.1,
+        "matched_via": "k. vidal"
       }
     },
     {
@@ -1255,7 +1306,8 @@
           "rank": 999,
           "times_drafted": 30
         },
-        "average_adp": 135.7
+        "average_adp": 135.7,
+        "matched_via": "k. herbert"
       }
     },
     {
@@ -1286,7 +1338,8 @@
           "rank": 999,
           "times_drafted": 117
         },
-        "average_adp": 141.0
+        "average_adp": 141.0,
+        "matched_via": "h butker"
       }
     },
     {
@@ -1343,7 +1396,8 @@
           "rank": 999,
           "times_drafted": 147
         },
-        "average_adp": 94.3
+        "average_adp": 94.3,
+        "matched_via": "jaxon smith-njigba"
       }
     },
     {
@@ -1400,7 +1454,8 @@
           "rank": 999,
           "times_drafted": 295
         },
-        "average_adp": 29.3
+        "average_adp": 29.3,
+        "matched_via": "jaylen waddle"
       }
     },
     {
@@ -1427,7 +1482,26 @@
       "years_exp": 0,
       "height": "72",
       "weight": "218",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 142.1,
+          "rank": 999,
+          "times_drafted": 28
+        },
+        "half_ppr": {
+          "adp": 159.6,
+          "rank": 999,
+          "times_drafted": 28
+        },
+        "ppr": {
+          "adp": 156.6,
+          "rank": 999,
+          "times_drafted": 69
+        },
+        "average_adp": 152.8,
+        "matched_via": "j. wright"
+      }
     },
     {
       "sleeper_id": "12820",
@@ -1522,7 +1596,8 @@
           "rank": 999,
           "times_drafted": 48
         },
-        "average_adp": 152.0
+        "average_adp": 152.0,
+        "matched_via": "y. koo"
       }
     },
     {
@@ -1553,7 +1628,8 @@
           "rank": 999,
           "times_drafted": 46
         },
-        "average_adp": 123.2
+        "average_adp": 123.2,
+        "matched_via": "b cooks"
       }
     },
     {
@@ -1597,7 +1673,8 @@
           "rank": 999,
           "times_drafted": 74
         },
-        "average_adp": 116.9
+        "average_adp": 116.9,
+        "matched_via": "t.j. hockenson"
       }
     },
     {
@@ -1693,7 +1770,8 @@
           "rank": 999,
           "times_drafted": 235
         },
-        "average_adp": 54.7
+        "average_adp": 54.7,
+        "matched_via": "dandre swift"
       }
     },
     {
@@ -1720,7 +1798,8 @@
           "rank": 999,
           "times_drafted": 33
         },
-        "average_adp": 159.6
+        "average_adp": 159.6,
+        "matched_via": "g. smith"
       }
     },
     {
@@ -1764,7 +1843,8 @@
           "rank": 999,
           "times_drafted": 121
         },
-        "average_adp": 86.7
+        "average_adp": 86.7,
+        "matched_via": "t tagovailoa"
       }
     },
     {
@@ -1795,7 +1875,8 @@
           "rank": 999,
           "times_drafted": 114
         },
-        "average_adp": 89.6
+        "average_adp": 89.6,
+        "matched_via": "devin singletary"
       }
     },
     {
@@ -1839,7 +1920,8 @@
           "rank": 999,
           "times_drafted": 219
         },
-        "average_adp": 36.1
+        "average_adp": 36.1,
+        "matched_via": "j hurts"
       }
     },
     {
@@ -1875,7 +1957,8 @@
           "rank": 999,
           "times_drafted": 18
         },
-        "average_adp": 129.8
+        "average_adp": 129.8,
+        "matched_via": "elijah mitchell"
       }
     },
     {
@@ -1902,7 +1985,26 @@
       "years_exp": 12,
       "height": "74",
       "weight": "210",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 87.1,
+          "rank": 999,
+          "times_drafted": 48
+        },
+        "half_ppr": {
+          "adp": 91.7,
+          "rank": 999,
+          "times_drafted": 47
+        },
+        "ppr": {
+          "adp": 104.5,
+          "rank": 999,
+          "times_drafted": 101
+        },
+        "average_adp": 94.4,
+        "matched_via": "d. hopkins"
+      }
     },
     {
       "sleeper_id": "12950",
@@ -1945,7 +2047,8 @@
           "rank": 999,
           "times_drafted": 104
         },
-        "average_adp": 93.3
+        "average_adp": 93.3,
+        "matched_via": "l. mcconkey"
       }
     },
     {
@@ -1959,7 +2062,26 @@
       "years_exp": 0,
       "height": "73",
       "weight": "184",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 25.1,
+          "rank": 999,
+          "times_drafted": 40
+        },
+        "half_ppr": {
+          "adp": 29.1,
+          "rank": 999,
+          "times_drafted": 32
+        },
+        "ppr": {
+          "adp": 29.0,
+          "rank": 999,
+          "times_drafted": 108
+        },
+        "average_adp": 27.7,
+        "matched_via": "r white"
+      }
     },
     {
       "sleeper_id": "8154",
@@ -1972,7 +2094,26 @@
       "years_exp": 3,
       "height": "73",
       "weight": "225",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 2.5,
+          "rank": 999,
+          "times_drafted": 50
+        },
+        "half_ppr": {
+          "adp": 2.0,
+          "rank": 999,
+          "times_drafted": 37
+        },
+        "ppr": {
+          "adp": 4.9,
+          "rank": 999,
+          "times_drafted": 281
+        },
+        "average_adp": 3.1,
+        "matched_via": "b. robinson"
+      }
     },
     {
       "sleeper_id": "11806",
@@ -2093,7 +2234,8 @@
           "rank": 999,
           "times_drafted": 134
         },
-        "average_adp": 119.8
+        "average_adp": 119.8,
+        "matched_via": "r. odunze"
       }
     },
     {
@@ -2124,7 +2266,8 @@
           "rank": 999,
           "times_drafted": 17
         },
-        "average_adp": 167.1
+        "average_adp": 167.1,
+        "matched_via": "michael wilson"
       }
     },
     {
@@ -2194,7 +2337,8 @@
           "rank": 999,
           "times_drafted": 131
         },
-        "average_adp": 72.6
+        "average_adp": 72.6,
+        "matched_via": "j. love"
       }
     },
     {
@@ -2325,7 +2469,26 @@
       "years_exp": 2,
       "height": "72",
       "weight": "186",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 35.1,
+          "rank": 999,
+          "times_drafted": 45
+        },
+        "half_ppr": {
+          "adp": 40.6,
+          "rank": 999,
+          "times_drafted": 68
+        },
+        "ppr": {
+          "adp": 44.2,
+          "rank": 999,
+          "times_drafted": 169
+        },
+        "average_adp": 40.0,
+        "matched_via": "l jackson"
+      }
     },
     {
       "sleeper_id": "4574",
@@ -2394,7 +2557,8 @@
           "rank": 999,
           "times_drafted": 94
         },
-        "average_adp": 86.7
+        "average_adp": 86.7,
+        "matched_via": "c. godwin"
       }
     },
     {
@@ -2456,7 +2620,8 @@
           "rank": 999,
           "times_drafted": 13
         },
-        "average_adp": 165.9
+        "average_adp": 165.9,
+        "matched_via": "d knox"
       }
     },
     {
@@ -2609,7 +2774,8 @@
           "rank": 999,
           "times_drafted": 29
         },
-        "average_adp": 160.0
+        "average_adp": 160.0,
+        "matched_via": "cameron dicker"
       }
     },
     {
@@ -2666,7 +2832,8 @@
           "rank": 999,
           "times_drafted": 285
         },
-        "average_adp": 19.8
+        "average_adp": 19.8,
+        "matched_via": "i pacheco"
       }
     },
     {
@@ -2697,7 +2864,8 @@
           "rank": 999,
           "times_drafted": 64
         },
-        "average_adp": 127.7
+        "average_adp": 127.7,
+        "matched_via": "kirk cousins"
       }
     },
     {
@@ -2741,7 +2909,8 @@
           "rank": 999,
           "times_drafted": 167
         },
-        "average_adp": 92.1
+        "average_adp": 92.1,
+        "matched_via": "j ferguson"
       }
     },
     {
@@ -2785,7 +2954,8 @@
           "rank": 999,
           "times_drafted": 61
         },
-        "average_adp": 115.2
+        "average_adp": 115.2,
+        "matched_via": "curtis samuel"
       }
     },
     {
@@ -2868,7 +3038,8 @@
           "rank": 999,
           "times_drafted": 96
         },
-        "average_adp": 104.7
+        "average_adp": 104.7,
+        "matched_via": "t benson"
       }
     },
     {
@@ -2951,7 +3122,8 @@
           "rank": 999,
           "times_drafted": 24
         },
-        "average_adp": 159.2
+        "average_adp": 159.2,
+        "matched_via": "i likely"
       }
     },
     {
@@ -2982,7 +3154,8 @@
           "rank": 999,
           "times_drafted": 140
         },
-        "average_adp": 31.1
+        "average_adp": 31.1,
+        "matched_via": "p. mahomes"
       }
     },
     {
@@ -3091,7 +3264,8 @@
           "rank": 999,
           "times_drafted": 162
         },
-        "average_adp": 6.7
+        "average_adp": 6.7,
+        "matched_via": "ja'marr chase"
       }
     },
     {
@@ -3200,7 +3374,8 @@
           "rank": 999,
           "times_drafted": 17
         },
-        "average_adp": 148.6
+        "average_adp": 148.6,
+        "matched_via": "evan mcpherson"
       }
     },
     {
@@ -3244,7 +3419,8 @@
           "rank": 999,
           "times_drafted": 43
         },
-        "average_adp": 109.0
+        "average_adp": 109.0,
+        "matched_via": "j herbert"
       }
     },
     {
@@ -3301,7 +3477,8 @@
           "rank": 999,
           "times_drafted": 148
         },
-        "average_adp": 51.3
+        "average_adp": 51.3,
+        "matched_via": "tee higgins"
       }
     },
     {
@@ -3332,7 +3509,8 @@
           "rank": 999,
           "times_drafted": 148
         },
-        "average_adp": 34.6
+        "average_adp": 34.6,
+        "matched_via": "sam laporta"
       }
     },
     {
@@ -3584,7 +3762,8 @@
           "rank": 999,
           "times_drafted": 51
         },
-        "average_adp": 158.3
+        "average_adp": 158.3,
+        "matched_via": "d wicks"
       }
     },
     {
@@ -3641,7 +3820,8 @@
           "rank": 999,
           "times_drafted": 169
         },
-        "average_adp": 40.0
+        "average_adp": 40.0,
+        "matched_via": "l jackson"
       }
     },
     {
@@ -3672,7 +3852,8 @@
           "rank": 999,
           "times_drafted": 34
         },
-        "average_adp": 153.5
+        "average_adp": 153.5,
+        "matched_via": "jake moody"
       }
     },
     {
@@ -3768,7 +3949,8 @@
           "rank": 999,
           "times_drafted": 128
         },
-        "average_adp": 25.9
+        "average_adp": 25.9,
+        "matched_via": "davante adams"
       }
     },
     {
@@ -3799,7 +3981,8 @@
           "rank": 999,
           "times_drafted": 66
         },
-        "average_adp": 122.0
+        "average_adp": 122.0,
+        "matched_via": "a. rodgers"
       }
     },
     {
@@ -3900,7 +4083,8 @@
           "rank": 999,
           "times_drafted": 59
         },
-        "average_adp": 156.0
+        "average_adp": 156.0,
+        "matched_via": "baker mayfield"
       }
     },
     {
@@ -3931,7 +4115,8 @@
           "rank": 999,
           "times_drafted": 194
         },
-        "average_adp": 45.7
+        "average_adp": 45.7,
+        "matched_via": "j. conner"
       }
     },
     {
@@ -4066,7 +4251,8 @@
           "rank": 999,
           "times_drafted": 153
         },
-        "average_adp": 82.1
+        "average_adp": 82.1,
+        "matched_via": "c. watson"
       }
     },
     {
@@ -4093,7 +4279,26 @@
       "years_exp": 4,
       "height": "70",
       "weight": "215",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 8.1,
+          "rank": 999,
+          "times_drafted": 68
+        },
+        "half_ppr": {
+          "adp": 8.3,
+          "rank": 999,
+          "times_drafted": 87
+        },
+        "ppr": {
+          "adp": 8.0,
+          "rank": 999,
+          "times_drafted": 242
+        },
+        "average_adp": 8.1,
+        "matched_via": "j jefferson"
+      }
     },
     {
       "sleeper_id": "12897",
@@ -4162,7 +4367,8 @@
           "rank": 999,
           "times_drafted": 42
         },
-        "average_adp": 152.0
+        "average_adp": 152.0,
+        "matched_via": "j. meyers"
       }
     },
     {
@@ -4323,7 +4529,8 @@
           "rank": 999,
           "times_drafted": 58
         },
-        "average_adp": 56.7
+        "average_adp": 56.7,
+        "matched_via": "nick chubb"
       }
     },
     {
@@ -4346,7 +4553,8 @@
           "rank": 999,
           "times_drafted": 16
         },
-        "average_adp": 162.7
+        "average_adp": 162.7,
+        "matched_via": "r pearsall"
       }
     },
     {
@@ -4416,7 +4624,8 @@
           "rank": 999,
           "times_drafted": 301
         },
-        "average_adp": 28.8
+        "average_adp": 28.8,
+        "matched_via": "n. collins"
       }
     },
     {
@@ -4521,7 +4730,8 @@
           "rank": 999,
           "times_drafted": 40
         },
-        "average_adp": 152.6
+        "average_adp": 152.6,
+        "matched_via": "j mason"
       }
     },
     {
@@ -4604,7 +4814,8 @@
           "rank": 999,
           "times_drafted": 47
         },
-        "average_adp": 155.5
+        "average_adp": 155.5,
+        "matched_via": "j. elliott"
       }
     },
     {
@@ -4635,7 +4846,8 @@
           "rank": 999,
           "times_drafted": 171
         },
-        "average_adp": 115.2
+        "average_adp": 115.2,
+        "matched_via": "r. dowdle"
       }
     },
     {
@@ -4718,7 +4930,8 @@
           "rank": 999,
           "times_drafted": 164
         },
-        "average_adp": 55.4
+        "average_adp": 55.4,
+        "matched_via": "g pickens"
       }
     },
     {
@@ -4806,7 +5019,8 @@
         },
         "half_ppr": {},
         "ppr": {},
-        "average_adp": 159.0
+        "average_adp": 159.0,
+        "matched_via": "braelon allen"
       }
     },
     {
@@ -4863,7 +5077,8 @@
           "rank": 999,
           "times_drafted": 311
         },
-        "average_adp": 13.3
+        "average_adp": 13.3,
+        "matched_via": "g wilson"
       }
     },
     {
@@ -4907,7 +5122,8 @@
           "rank": 999,
           "times_drafted": 113
         },
-        "average_adp": 89.9
+        "average_adp": 89.9,
+        "matched_via": "austin ekeler"
       }
     },
     {
@@ -5029,7 +5245,8 @@
           "rank": 999,
           "times_drafted": 181
         },
-        "average_adp": 105.4
+        "average_adp": 105.4,
+        "matched_via": "blake corum"
       }
     },
     {
@@ -5229,7 +5446,8 @@
           "rank": 999,
           "times_drafted": 144
         },
-        "average_adp": 3.6
+        "average_adp": 3.6,
+        "matched_via": "t. hill"
       }
     },
     {
@@ -5312,7 +5530,8 @@
           "rank": 999,
           "times_drafted": 241
         },
-        "average_adp": 29.5
+        "average_adp": 29.5,
+        "matched_via": "m. evans"
       }
     },
     {
@@ -5369,7 +5588,8 @@
           "rank": 999,
           "times_drafted": 79
         },
-        "average_adp": 120.5
+        "average_adp": 120.5,
+        "matched_via": "tyler allgeier"
       }
     },
     {
@@ -5699,7 +5919,8 @@
           "rank": 999,
           "times_drafted": 283
         },
-        "average_adp": 13.0
+        "average_adp": 13.0,
+        "matched_via": "d. henry"
       }
     },
     {
@@ -5769,7 +5990,8 @@
           "rank": 999,
           "times_drafted": 241
         },
-        "average_adp": 95.5
+        "average_adp": 95.5,
+        "matched_via": "j. ford"
       }
     },
     {
@@ -5783,7 +6005,26 @@
       "years_exp": 6,
       "height": "70",
       "weight": "208",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 97.5,
+          "rank": 999,
+          "times_drafted": 73
+        },
+        "half_ppr": {
+          "adp": 105.7,
+          "rank": 999,
+          "times_drafted": 118
+        },
+        "ppr": {
+          "adp": 92.1,
+          "rank": 999,
+          "times_drafted": 274
+        },
+        "average_adp": 98.4,
+        "matched_via": "d johnson"
+      }
     },
     {
       "sleeper_id": "12496",
@@ -5865,7 +6106,8 @@
           "rank": 999,
           "times_drafted": 136
         },
-        "average_adp": 15.6
+        "average_adp": 15.6,
+        "matched_via": "puka nacua"
       }
     },
     {
@@ -5987,7 +6229,8 @@
           "rank": 999,
           "times_drafted": 177
         },
-        "average_adp": 72.0
+        "average_adp": 72.0,
+        "matched_via": "c ridley"
       }
     },
     {
@@ -6148,7 +6391,8 @@
           "rank": 999,
           "times_drafted": 248
         },
-        "average_adp": 11.2
+        "average_adp": 11.2,
+        "matched_via": "aj brown"
       }
     },
     {
@@ -6179,7 +6423,8 @@
           "rank": 999,
           "times_drafted": 181
         },
-        "average_adp": 1.3
+        "average_adp": 1.3,
+        "matched_via": "christian mccaffrey"
       }
     },
     {
@@ -6223,7 +6468,8 @@
           "rank": 999,
           "times_drafted": 274
         },
-        "average_adp": 98.4
+        "average_adp": 98.4,
+        "matched_via": "d johnson"
       }
     },
     {
@@ -6272,7 +6518,8 @@
           "rank": 999,
           "times_drafted": 10
         },
-        "average_adp": 134.7
+        "average_adp": 134.7,
+        "matched_via": "j. fields"
       }
     },
     {
@@ -6316,7 +6563,8 @@
           "rank": 999,
           "times_drafted": 243
         },
-        "average_adp": 10.2
+        "average_adp": 10.2,
+        "matched_via": "saquon barkley"
       }
     },
     {
@@ -6399,7 +6647,8 @@
           "rank": 999,
           "times_drafted": 42
         },
-        "average_adp": 160.9
+        "average_adp": 160.9,
+        "matched_via": "j. sanders"
       }
     },
     {
@@ -6430,7 +6679,8 @@
           "rank": 999,
           "times_drafted": 183
         },
-        "average_adp": 78.1
+        "average_adp": 78.1,
+        "matched_via": "tony pollard"
       }
     },
     {
@@ -6552,7 +6802,8 @@
           "rank": 999,
           "times_drafted": 292
         },
-        "average_adp": 60.5
+        "average_adp": 60.5,
+        "matched_via": "t. mcbride"
       }
     },
     {
@@ -6674,7 +6925,8 @@
           "rank": 999,
           "times_drafted": 123
         },
-        "average_adp": 121.1
+        "average_adp": 121.1,
+        "matched_via": "trevor lawrence"
       }
     },
     {
@@ -6731,7 +6983,8 @@
           "rank": 999,
           "times_drafted": 208
         },
-        "average_adp": 90.2
+        "average_adp": 90.2,
+        "matched_via": "e. engram"
       }
     },
     {
@@ -6797,7 +7050,8 @@
           "rank": 999,
           "times_drafted": 25
         },
-        "average_adp": 153.2
+        "average_adp": 153.2,
+        "matched_via": "a. gibson"
       }
     },
     {
@@ -6811,7 +7065,26 @@
       "years_exp": 0,
       "height": "69",
       "weight": "210",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 89.9,
+          "rank": 999,
+          "times_drafted": 55
+        },
+        "half_ppr": {
+          "adp": 99.9,
+          "rank": 999,
+          "times_drafted": 45
+        },
+        "ppr": {
+          "adp": 107.8,
+          "rank": 999,
+          "times_drafted": 87
+        },
+        "average_adp": 99.2,
+        "matched_via": "j. williams"
+      }
     },
     {
       "sleeper_id": "8227",
@@ -6893,7 +7166,8 @@
           "rank": 999,
           "times_drafted": 35
         },
-        "average_adp": 129.6
+        "average_adp": 129.6,
+        "matched_via": "r shaheed"
       }
     },
     {
@@ -6998,7 +7272,26 @@
       "years_exp": 0,
       "height": "77",
       "weight": "258",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 25.8,
+          "rank": 999,
+          "times_drafted": 50
+        },
+        "half_ppr": {
+          "adp": 29.1,
+          "rank": 999,
+          "times_drafted": 83
+        },
+        "ppr": {
+          "adp": 33.5,
+          "rank": 999,
+          "times_drafted": 241
+        },
+        "average_adp": 29.5,
+        "matched_via": "m. evans"
+      }
     },
     {
       "sleeper_id": "12880",
@@ -7080,7 +7373,8 @@
           "rank": 999,
           "times_drafted": 263
         },
-        "average_adp": 39.6
+        "average_adp": 39.6,
+        "matched_via": "d moore"
       }
     },
     {
@@ -7124,7 +7418,8 @@
           "rank": 999,
           "times_drafted": 70
         },
-        "average_adp": 119.5
+        "average_adp": 119.5,
+        "matched_via": "d goedert"
       }
     },
     {
@@ -7207,7 +7502,8 @@
           "rank": 999,
           "times_drafted": 67
         },
-        "average_adp": 145.1
+        "average_adp": 145.1,
+        "matched_via": "adam thielen"
       }
     },
     {
@@ -7381,7 +7677,8 @@
           "rank": 999,
           "times_drafted": 24
         },
-        "average_adp": 128.5
+        "average_adp": 128.5,
+        "matched_via": "t. lockett"
       }
     },
     {
@@ -7408,7 +7705,18 @@
       "years_exp": 9,
       "height": "74",
       "weight": "209",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 159.0,
+          "rank": 999,
+          "times_drafted": 11
+        },
+        "half_ppr": {},
+        "ppr": {},
+        "average_adp": 159.0,
+        "matched_via": "b. allen"
+      }
     },
     {
       "sleeper_id": "6268",
@@ -7451,7 +7759,8 @@
           "rank": 999,
           "times_drafted": 454
         },
-        "average_adp": 64.0
+        "average_adp": 64.0,
+        "matched_via": "r rice"
       }
     },
     {
@@ -7521,7 +7830,8 @@
           "rank": 999,
           "times_drafted": 227
         },
-        "average_adp": 21.4
+        "average_adp": 21.4,
+        "matched_via": "d achane"
       }
     },
     {
@@ -7773,7 +8083,8 @@
           "rank": 999,
           "times_drafted": 281
         },
-        "average_adp": 3.1
+        "average_adp": 3.1,
+        "matched_via": "b. robinson"
       }
     },
     {
@@ -7804,7 +8115,8 @@
           "rank": 999,
           "times_drafted": 167
         },
-        "average_adp": 40.6
+        "average_adp": 40.6,
+        "matched_via": "devonta smith"
       }
     },
     {
@@ -8017,7 +8329,8 @@
           "rank": 999,
           "times_drafted": 229
         },
-        "average_adp": 63.3
+        "average_adp": 63.3,
+        "matched_via": "r. mostert"
       }
     },
     {
@@ -8048,7 +8361,8 @@
           "rank": 999,
           "times_drafted": 174
         },
-        "average_adp": 22.8
+        "average_adp": 22.8,
+        "matched_via": "d london"
       }
     },
     {
@@ -8079,7 +8393,8 @@
           "rank": 999,
           "times_drafted": 221
         },
-        "average_adp": 46.0
+        "average_adp": 46.0,
+        "matched_via": "m nabers"
       }
     },
     {
@@ -8253,7 +8568,8 @@
           "rank": 999,
           "times_drafted": 65
         },
-        "average_adp": 63.8
+        "average_adp": 63.8,
+        "matched_via": "j burrow"
       }
     },
     {
@@ -8284,7 +8600,8 @@
           "rank": 999,
           "times_drafted": 132
         },
-        "average_adp": 78.5
+        "average_adp": 78.5,
+        "matched_via": "xavier worthy"
       }
     },
     {
@@ -8471,7 +8788,8 @@
           "rank": 999,
           "times_drafted": 151
         },
-        "average_adp": 10.6
+        "average_adp": 10.6,
+        "matched_via": "j. gibbs"
       }
     },
     {
@@ -8528,7 +8846,8 @@
           "rank": 999,
           "times_drafted": 84
         },
-        "average_adp": 94.2
+        "average_adp": 94.2,
+        "matched_via": "jared goff"
       }
     },
     {
@@ -8598,7 +8917,8 @@
           "rank": 999,
           "times_drafted": 189
         },
-        "average_adp": 21.2
+        "average_adp": 21.2,
+        "matched_via": "cooper kupp"
       }
     },
     {
@@ -8785,7 +9105,8 @@
           "rank": 999,
           "times_drafted": 87
         },
-        "average_adp": 99.2
+        "average_adp": 99.2,
+        "matched_via": "jameson williams"
       }
     },
     {
@@ -8821,7 +9142,8 @@
           "rank": 999,
           "times_drafted": 56
         },
-        "average_adp": 161.8
+        "average_adp": 161.8,
+        "matched_via": "d. mooney"
       }
     },
     {
@@ -8878,7 +9200,8 @@
           "rank": 999,
           "times_drafted": 172
         },
-        "average_adp": 69.6
+        "average_adp": 69.6,
+        "matched_via": "g. kittle"
       }
     },
     {
@@ -9000,7 +9323,8 @@
           "rank": 999,
           "times_drafted": 56
         },
-        "average_adp": 66.2
+        "average_adp": 66.2,
+        "matched_via": "keenan allen"
       }
     },
     {
@@ -9043,21 +9367,22 @@
       "adp_data": {
         "source": "fantasyfootballcalculator.com",
         "standard": {
-          "adp": 130.7,
+          "adp": 4.4,
           "rank": 999,
-          "times_drafted": 12
+          "times_drafted": 141
         },
         "half_ppr": {
-          "adp": 129.9,
+          "adp": 3.9,
           "rank": 999,
-          "times_drafted": 15
+          "times_drafted": 108
         },
         "ppr": {
-          "adp": 155.9,
+          "adp": 2.6,
           "rank": 999,
-          "times_drafted": 99
+          "times_drafted": 144
         },
-        "average_adp": 138.8
+        "average_adp": 3.6,
+        "matched_via": "t. hill"
       }
     },
     {
@@ -9283,7 +9608,8 @@
           "rank": 999,
           "times_drafted": 96
         },
-        "average_adp": 80.9
+        "average_adp": 80.9,
+        "matched_via": "b. purdy"
       }
     },
     {
@@ -9535,7 +9861,8 @@
           "rank": 999,
           "times_drafted": 283
         },
-        "average_adp": 65.4
+        "average_adp": 65.4,
+        "matched_via": "dalton kincaid"
       }
     },
     {
@@ -9618,7 +9945,8 @@
           "rank": 999,
           "times_drafted": 261
         },
-        "average_adp": 6.7
+        "average_adp": 6.7,
+        "matched_via": "amon-ra st. brown"
       }
     },
     {
@@ -9714,7 +10042,8 @@
           "rank": 999,
           "times_drafted": 35
         },
-        "average_adp": 154.8
+        "average_adp": 154.8,
+        "matched_via": "l. musgrave"
       }
     },
     {
@@ -9754,7 +10083,8 @@
           "rank": 999,
           "times_drafted": 22
         },
-        "average_adp": 144.4
+        "average_adp": 144.4,
+        "matched_via": "d pierce"
       }
     },
     {
@@ -9785,7 +10115,8 @@
           "rank": 999,
           "times_drafted": 19
         },
-        "average_adp": 159.3
+        "average_adp": 159.3,
+        "matched_via": "m lloyd"
       }
     },
     {
@@ -9938,7 +10269,8 @@
           "rank": 999,
           "times_drafted": 35
         },
-        "average_adp": 137.1
+        "average_adp": 137.1,
+        "matched_via": "cole kmet"
       }
     },
     {
@@ -10108,7 +10440,8 @@
           "rank": 999,
           "times_drafted": 15
         },
-        "average_adp": 163.8
+        "average_adp": 163.8,
+        "matched_via": "bo nix"
       }
     },
     {
@@ -10139,7 +10472,8 @@
           "rank": 999,
           "times_drafted": 83
         },
-        "average_adp": 43.3
+        "average_adp": 43.3,
+        "matched_via": "stefon diggs"
       }
     },
     {
@@ -10287,7 +10621,8 @@
           "rank": 999,
           "times_drafted": 99
         },
-        "average_adp": 91.3
+        "average_adp": 91.3,
+        "matched_via": "tyjae spears"
       }
     },
     {
@@ -10448,7 +10783,8 @@
           "rank": 999,
           "times_drafted": 200
         },
-        "average_adp": 64.8
+        "average_adp": 64.8,
+        "matched_via": "d. montgomery"
       }
     },
     {
@@ -10531,7 +10867,8 @@
           "rank": 999,
           "times_drafted": 151
         },
-        "average_adp": 82.7
+        "average_adp": 82.7,
+        "matched_via": "j brooks"
       }
     },
     {
@@ -10545,7 +10882,26 @@
       "years_exp": 7,
       "height": "75",
       "weight": "210",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 73.1,
+          "rank": 999,
+          "times_drafted": 31
+        },
+        "half_ppr": {
+          "adp": 61.9,
+          "rank": 999,
+          "times_drafted": 22
+        },
+        "ppr": {
+          "adp": 63.5,
+          "rank": 999,
+          "times_drafted": 56
+        },
+        "average_adp": 66.2,
+        "matched_via": "k allen"
+      }
     },
     {
       "sleeper_id": "12497",
@@ -10597,7 +10953,26 @@
       "years_exp": 8,
       "height": "72",
       "weight": "220",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 37.1,
+          "rank": 999,
+          "times_drafted": 71
+        },
+        "half_ppr": {
+          "adp": 37.9,
+          "rank": 999,
+          "times_drafted": 69
+        },
+        "ppr": {
+          "adp": 43.7,
+          "rank": 999,
+          "times_drafted": 263
+        },
+        "average_adp": 39.6,
+        "matched_via": "d moore"
+      }
     },
     {
       "sleeper_id": "13179",
@@ -10610,7 +10985,26 @@
       "years_exp": 0,
       "height": "74",
       "weight": "195",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 60.2,
+          "rank": 999,
+          "times_drafted": 15
+        },
+        "half_ppr": {
+          "adp": 63.1,
+          "rank": 999,
+          "times_drafted": 30
+        },
+        "ppr": {
+          "adp": 65.1,
+          "rank": 999,
+          "times_drafted": 82
+        },
+        "average_adp": 62.8,
+        "matched_via": "j. reed"
+      }
     },
     {
       "sleeper_id": "8219",
@@ -10684,7 +11078,8 @@
           "rank": 999,
           "times_drafted": 10
         },
-        "average_adp": 169.6
+        "average_adp": 169.6,
+        "matched_via": "r. bateman"
       }
     },
     {
@@ -10819,7 +11214,8 @@
           "rank": 999,
           "times_drafted": 343
         },
-        "average_adp": 68.4
+        "average_adp": 68.4,
+        "matched_via": "t mclaurin"
       }
     },
     {
@@ -10863,7 +11259,8 @@
           "rank": 999,
           "times_drafted": 78
         },
-        "average_adp": 58.4
+        "average_adp": 58.4,
+        "matched_via": "c kirk"
       }
     },
     {
@@ -11102,7 +11499,8 @@
           "rank": 999,
           "times_drafted": 200
         },
-        "average_adp": 33.1
+        "average_adp": 33.1,
+        "matched_via": "joe mixon"
       }
     },
     {
@@ -11211,7 +11609,8 @@
           "rank": 999,
           "times_drafted": 197
         },
-        "average_adp": 121.1
+        "average_adp": 121.1,
+        "matched_via": "joshua palmer"
       }
     },
     {
@@ -11242,7 +11641,8 @@
           "rank": 999,
           "times_drafted": 174
         },
-        "average_adp": 61.7
+        "average_adp": 61.7,
+        "matched_via": "rhamondre stevenson"
       }
     },
     {
@@ -11256,7 +11656,26 @@
       "years_exp": 0,
       "height": "71",
       "weight": "190",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 12.1,
+          "rank": 999,
+          "times_drafted": 38
+        },
+        "half_ppr": {
+          "adp": 14.8,
+          "rank": 999,
+          "times_drafted": 57
+        },
+        "ppr": {
+          "adp": 15.9,
+          "rank": 999,
+          "times_drafted": 174
+        },
+        "average_adp": 14.3,
+        "matched_via": "k williams"
+      }
     },
     {
       "sleeper_id": "3333",
@@ -11299,7 +11718,8 @@
           "rank": 999,
           "times_drafted": 174
         },
-        "average_adp": 14.3
+        "average_adp": 14.3,
+        "matched_via": "kyren williams"
       }
     },
     {
@@ -11343,7 +11763,8 @@
           "rank": 999,
           "times_drafted": 61
         },
-        "average_adp": 99.3
+        "average_adp": 99.3,
+        "matched_via": "r doubs"
       }
     },
     {
@@ -11400,7 +11821,8 @@
           "rank": 999,
           "times_drafted": 71
         },
-        "average_adp": 128.2
+        "average_adp": 128.2,
+        "matched_via": "p. freiermuth"
       }
     },
     {
@@ -11587,7 +12009,8 @@
           "rank": 999,
           "times_drafted": 69
         },
-        "average_adp": 83.3
+        "average_adp": 83.3,
+        "matched_via": "j. warren"
       }
     },
     {
@@ -11631,7 +12054,8 @@
           "rank": 999,
           "times_drafted": 46
         },
-        "average_adp": 143.2
+        "average_adp": 143.2,
+        "matched_via": "ty chandler"
       }
     },
     {
@@ -11719,7 +12143,8 @@
           "rank": 999,
           "times_drafted": 23
         },
-        "average_adp": 141.3
+        "average_adp": 141.3,
+        "matched_via": "x legette"
       }
     },
     {
@@ -11763,7 +12188,8 @@
           "rank": 999,
           "times_drafted": 136
         },
-        "average_adp": 87.0
+        "average_adp": 87.0,
+        "matched_via": "keon coleman"
       }
     },
     {
@@ -11911,7 +12337,8 @@
           "rank": 999,
           "times_drafted": 167
         },
-        "average_adp": 91.1
+        "average_adp": 91.1,
+        "matched_via": "c brown"
       }
     },
     {
@@ -12020,7 +12447,8 @@
           "rank": 999,
           "times_drafted": 118
         },
-        "average_adp": 48.9
+        "average_adp": 48.9,
+        "matched_via": "mark andrews"
       }
     },
     {
@@ -12116,7 +12544,8 @@
           "rank": 999,
           "times_drafted": 242
         },
-        "average_adp": 8.1
+        "average_adp": 8.1,
+        "matched_via": "justin jefferson"
       }
     },
     {
@@ -12143,7 +12572,26 @@
       "years_exp": 1,
       "height": "76",
       "weight": "252",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 161.1,
+          "rank": 999,
+          "times_drafted": 16
+        },
+        "half_ppr": {
+          "adp": 160.2,
+          "rank": 999,
+          "times_drafted": 12
+        },
+        "ppr": {
+          "adp": 161.3,
+          "rank": 999,
+          "times_drafted": 42
+        },
+        "average_adp": 160.9,
+        "matched_via": "j. sanders"
+      }
     },
     {
       "sleeper_id": "12713",
@@ -12217,7 +12665,8 @@
           "rank": 999,
           "times_drafted": 22
         },
-        "average_adp": 152.2
+        "average_adp": 152.2,
+        "matched_via": "quentin johnston"
       }
     },
     {
@@ -12322,7 +12771,8 @@
           "rank": 999,
           "times_drafted": 35
         },
-        "average_adp": 159.6
+        "average_adp": 159.6,
+        "matched_via": "a mitchell"
       }
     },
     {
@@ -12457,7 +12907,8 @@
           "rank": 999,
           "times_drafted": 194
         },
-        "average_adp": 28.5
+        "average_adp": 28.5,
+        "matched_via": "chris olave"
       }
     },
     {
@@ -12514,7 +12965,8 @@
           "rank": 999,
           "times_drafted": 116
         },
-        "average_adp": 25.4
+        "average_adp": 25.4,
+        "matched_via": "j. allen"
       }
     },
     {
@@ -12593,7 +13045,8 @@
           "rank": 999,
           "times_drafted": 50
         },
-        "average_adp": 147.4
+        "average_adp": 147.4,
+        "matched_via": "josh downs"
       }
     },
     {
@@ -12728,7 +13181,8 @@
           "rank": 999,
           "times_drafted": 306
         },
-        "average_adp": 39.4
+        "average_adp": 39.4,
+        "matched_via": "b aiyuk"
       }
     },
     {
@@ -12772,7 +13226,8 @@
           "rank": 999,
           "times_drafted": 141
         },
-        "average_adp": 57.5
+        "average_adp": 57.5,
+        "matched_via": "zay flowers"
       }
     },
     {
@@ -13076,7 +13531,8 @@
           "rank": 999,
           "times_drafted": 185
         },
-        "average_adp": 102.5
+        "average_adp": 102.5,
+        "matched_via": "courtland sutton"
       }
     },
     {
@@ -13172,7 +13628,8 @@
           "rank": 999,
           "times_drafted": 123
         },
-        "average_adp": 114.3
+        "average_adp": 114.3,
+        "matched_via": "chuba hubbard"
       }
     },
     {
@@ -13411,7 +13868,8 @@
           "rank": 999,
           "times_drafted": 155
         },
-        "average_adp": 56.9
+        "average_adp": 56.9,
+        "matched_via": "najee harris"
       }
     },
     {
@@ -13525,7 +13983,8 @@
           "rank": 999,
           "times_drafted": 27
         },
-        "average_adp": 165.9
+        "average_adp": 165.9,
+        "matched_via": "tyler bass"
       }
     },
     {
@@ -13634,7 +14093,8 @@
           "rank": 999,
           "times_drafted": 30
         },
-        "average_adp": 150.2
+        "average_adp": 150.2,
+        "matched_via": "ka'imi fairbairn"
       }
     },
     {
@@ -13691,7 +14151,8 @@
           "rank": 999,
           "times_drafted": 182
         },
-        "average_adp": 111.0
+        "average_adp": 111.0,
+        "matched_via": "caleb williams"
       }
     },
     {
@@ -13774,7 +14235,8 @@
           "rank": 999,
           "times_drafted": 196
         },
-        "average_adp": 47.0
+        "average_adp": 47.0,
+        "matched_via": "a. kamara"
       }
     },
     {
@@ -14000,7 +14462,8 @@
           "rank": 999,
           "times_drafted": 155
         },
-        "average_adp": 45.0
+        "average_adp": 45.0,
+        "matched_via": "c. stroud"
       }
     },
     {
@@ -14174,7 +14637,8 @@
           "rank": 999,
           "times_drafted": 148
         },
-        "average_adp": 51.4
+        "average_adp": 51.4,
+        "matched_via": "t. dell"
       }
     },
     {
@@ -14223,7 +14687,8 @@
         },
         "half_ppr": {},
         "ppr": {},
-        "average_adp": 165.1
+        "average_adp": 165.1,
+        "matched_via": "j bates"
       }
     },
     {
@@ -14254,7 +14719,8 @@
           "rank": 999,
           "times_drafted": 104
         },
-        "average_adp": 30.0
+        "average_adp": 30.0,
+        "matched_via": "t kelce"
       }
     },
     {
@@ -14350,7 +14816,8 @@
           "rank": 999,
           "times_drafted": 38
         },
-        "average_adp": 156.2
+        "average_adp": 156.2,
+        "matched_via": "deshaun watson"
       }
     },
     {
@@ -14407,7 +14874,8 @@
           "rank": 999,
           "times_drafted": 186
         },
-        "average_adp": 62.8
+        "average_adp": 62.8,
+        "matched_via": "z white"
       }
     },
     {
@@ -14443,7 +14911,8 @@
           "rank": 999,
           "times_drafted": 20
         },
-        "average_adp": 160.2
+        "average_adp": 160.2,
+        "matched_via": "daniel carlson"
       }
     },
     {
@@ -14526,7 +14995,8 @@
           "rank": 999,
           "times_drafted": 101
         },
-        "average_adp": 94.4
+        "average_adp": 94.4,
+        "matched_via": "d. hopkins"
       }
     },
     {
@@ -14553,7 +15023,26 @@
       "years_exp": 2,
       "height": "74",
       "weight": "205",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 80.1,
+          "rank": 999,
+          "times_drafted": 61
+        },
+        "half_ppr": {
+          "adp": 82.7,
+          "rank": 999,
+          "times_drafted": 63
+        },
+        "ppr": {
+          "adp": 85.4,
+          "rank": 999,
+          "times_drafted": 151
+        },
+        "average_adp": 82.7,
+        "matched_via": "j brooks"
+      }
     },
     {
       "sleeper_id": "12045",
@@ -14817,7 +15306,8 @@
           "rank": 999,
           "times_drafted": 229
         },
-        "average_adp": 19.9
+        "average_adp": 19.9,
+        "matched_via": "josh jacobs"
       }
     },
     {
@@ -14848,7 +15338,8 @@
           "rank": 999,
           "times_drafted": 59
         },
-        "average_adp": 120.9
+        "average_adp": 120.9,
+        "matched_via": "z. charbonnet"
       }
     },
     {
@@ -14970,7 +15461,8 @@
           "rank": 999,
           "times_drafted": 202
         },
-        "average_adp": 115.7
+        "average_adp": 115.7,
+        "matched_via": "brock bowers"
       }
     },
     {
@@ -15014,7 +15506,8 @@
           "rank": 999,
           "times_drafted": 220
         },
-        "average_adp": 107.4
+        "average_adp": 107.4,
+        "matched_via": "j. daniels"
       }
     },
     {
@@ -15136,7 +15629,8 @@
           "rank": 999,
           "times_drafted": 46
         },
-        "average_adp": 131.3
+        "average_adp": 131.3,
+        "matched_via": "d. schultz"
       }
     },
     {
@@ -15167,7 +15661,8 @@
           "rank": 999,
           "times_drafted": 69
         },
-        "average_adp": 152.8
+        "average_adp": 152.8,
+        "matched_via": "jaylen wright"
       }
     },
     {
@@ -15268,7 +15763,8 @@
           "rank": 999,
           "times_drafted": 29
         },
-        "average_adp": 163.4
+        "average_adp": 163.4,
+        "matched_via": "j polk"
       }
     },
     {
@@ -15299,7 +15795,8 @@
           "rank": 999,
           "times_drafted": 49
         },
-        "average_adp": 135.5
+        "average_adp": 135.5,
+        "matched_via": "j. addison"
       }
     },
     {
@@ -15330,7 +15827,8 @@
           "rank": 999,
           "times_drafted": 83
         },
-        "average_adp": 102.9
+        "average_adp": 102.9,
+        "matched_via": "d njoku"
       }
     },
     {
@@ -15387,7 +15885,8 @@
           "rank": 999,
           "times_drafted": 276
         },
-        "average_adp": 74.2
+        "average_adp": 74.2,
+        "matched_via": "kyler murray"
       }
     },
     {
@@ -15509,7 +16008,8 @@
           "rank": 999,
           "times_drafted": 65
         },
-        "average_adp": 148.9
+        "average_adp": 148.9,
+        "matched_via": "r. davis"
       }
     },
     {
@@ -15588,7 +16088,26 @@
       "years_exp": 2,
       "height": "68",
       "weight": "176",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 73.1,
+          "rank": 999,
+          "times_drafted": 31
+        },
+        "half_ppr": {
+          "adp": 61.9,
+          "rank": 999,
+          "times_drafted": 22
+        },
+        "ppr": {
+          "adp": 63.5,
+          "rank": 999,
+          "times_drafted": 56
+        },
+        "average_adp": 66.2,
+        "matched_via": "k. allen"
+      }
     },
     {
       "sleeper_id": "5846",
@@ -15618,7 +16137,8 @@
           "rank": 999,
           "times_drafted": 333
         },
-        "average_adp": 35.5
+        "average_adp": 35.5,
+        "matched_via": "dk metcalf"
       }
     },
     {
@@ -15649,7 +16169,8 @@
           "rank": 999,
           "times_drafted": 68
         },
-        "average_adp": 3.5
+        "average_adp": 3.5,
+        "matched_via": "breece hall"
       }
     },
     {
@@ -15715,7 +16236,18 @@
       "years_exp": 4,
       "height": "78",
       "weight": "256",
-      "adp_data": null
+      "adp_data": {
+        "source": "fantasyfootballcalculator.com",
+        "standard": {
+          "adp": 165.1,
+          "rank": 999,
+          "times_drafted": 16
+        },
+        "half_ppr": {},
+        "ppr": {},
+        "average_adp": 165.1,
+        "matched_via": "j bates"
+      }
     },
     {
       "sleeper_id": "12762",
@@ -15797,7 +16329,8 @@
           "rank": 999,
           "times_drafted": 122
         },
-        "average_adp": 119.9
+        "average_adp": 119.9,
+        "matched_via": "jk dobbins"
       }
     },
     {
@@ -15828,7 +16361,8 @@
           "rank": 999,
           "times_drafted": 212
         },
-        "average_adp": 9.2
+        "average_adp": 9.2,
+        "matched_via": "j. taylor"
       }
     },
     {
@@ -15936,21 +16470,22 @@
       "adp_data": {
         "source": "fantasyfootballcalculator.com",
         "standard": {
-          "adp": 101.9,
+          "adp": 89.9,
           "rank": 999,
-          "times_drafted": 119
+          "times_drafted": 55
         },
         "half_ppr": {
-          "adp": 117.7,
+          "adp": 99.9,
           "rank": 999,
-          "times_drafted": 123
+          "times_drafted": 45
         },
         "ppr": {
-          "adp": 77.5,
+          "adp": 107.8,
           "rank": 999,
-          "times_drafted": 258
+          "times_drafted": 87
         },
-        "average_adp": 99.0
+        "average_adp": 99.2,
+        "matched_via": "j. williams"
       }
     },
     {

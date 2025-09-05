@@ -3,13 +3,13 @@
     "quality_score": 72,
     "total_players": 1016,
     "data_coverage_pct": 0.0,
-    "adp_coverage_pct": 16.8,
+    "adp_coverage_pct": 18.8,
     "performance_records": 0,
     "weeks_with_data": 0,
     "narrative_insights_available": false
   },
   "collection_info": {
-    "last_updated": "2025-09-05T05:05:21.084190",
+    "last_updated": "2025-09-05T05:18:28.411615",
     "season": 2025,
     "source": "Sleeper + nfl_data_py + FantasyFootballCalculator_ADP"
   }
