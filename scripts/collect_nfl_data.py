@@ -138,14 +138,14 @@ def load_adp_data():
     """Collect live ADP data from Fantasy Football Calculator API"""
     print("Collecting live ADP data from Fantasy Football Calculator...")
     
-    # API endpoints for different scoring formats - try multiple parameter combinations
+    # API endpoints for different scoring formats
     api_endpoints = {
         "standard": "https://fantasyfootballcalculator.com/api/v1/adp/standard?teams=12&year=2025",
         "ppr": "https://fantasyfootballcalculator.com/api/v1/adp/ppr?teams=12&year=2025",
         "half_ppr": "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?teams=12&year=2025"
     }
     
-    # Fallback URLs to try if 2025 doesn't work
+    # Fallback URLs to try if primary URLs fail
     fallback_endpoints = {
         "standard": [
             "https://fantasyfootballcalculator.com/api/v1/adp/standard?year=2025",
