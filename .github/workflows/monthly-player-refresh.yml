@@ -1,0 +1,150 @@
+# .github/workflows/monthly-player-refresh.yml
+name: Monthly Player Database Refresh
+
+on:
+  schedule:
+    # Run on the 1st of every month at 6:00 AM UTC
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+    # Allow manual trigger for immediate refresh
+    inputs:
+      force_refresh:
+        description: 'Force refresh even if data is recent'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  refresh-player-database:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        
+    - name: Check if refresh needed
+      id: check_refresh
+      run: |
+        # Check if forced refresh
+        if [ "${{ github.event.inputs.force_refresh }}" = "true" ]; then
+          echo "refresh_needed=true" >> $GITHUB_OUTPUT
+          echo "reason=Manual force refresh requested" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        
+        # Check if player database exists and age
+        if [ ! -f "player_database_clean.json" ]; then
+          echo "refresh_needed=true" >> $GITHUB_OUTPUT
+          echo "reason=No existing player database found" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        
+        # Check file age (refresh if older than 28 days)
+        file_age=$(( $(date +%s) - $(stat -f%m player_database_clean.json 2>/dev/null || stat -c%Y player_database_clean.json) ))
+        days_old=$(( file_age / 86400 ))
+        
+        if [ $days_old -gt 28 ]; then
+          echo "refresh_needed=true" >> $GITHUB_OUTPUT
+          echo "reason=Database is $days_old days old (>28 day threshold)" >> $GITHUB_OUTPUT
+        else
+          echo "refresh_needed=false" >> $GITHUB_OUTPUT
+          echo "reason=Database is only $days_old days old" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Refresh player database
+      if: steps.check_refresh.outputs.refresh_needed == 'true'
+      run: |
+        echo "Refreshing player database: ${{ steps.check_refresh.outputs.reason }}"
+        python scripts/refresh_player_database.py
+        
+    - name: Validate refreshed data
+      if: steps.check_refresh.outputs.refresh_needed == 'true'
+      run: |
+        echo "Validating refreshed player data..."
+        python -c "
+        import json
+        with open('player_database_clean.json', 'r') as f:
+            data = json.load(f)
+        
+        players = data.get('players', [])
+        metadata = data.get('metadata', {})
+        
+        print(f'Total players: {len(players)}')
+        print(f'Expected range: 800-1200')
+        print(f'Collection date: {metadata.get(\"last_updated\", \"Unknown\")}')
+        print(f'Source: {metadata.get(\"source\", \"Unknown\")}')
+        
+        # Basic validation
+        if len(players) < 500:
+            print('ERROR: Too few players collected')
+            exit(1)
+        if len(players) > 2000:
+            print('WARNING: More players than expected')
+            
+        # Check for required fields
+        sample_player = players[0] if players else {}
+        required_fields = ['sleeper_id', 'player_name', 'position', 'team']
+        missing_fields = [f for f in required_fields if f not in sample_player]
+        
+        if missing_fields:
+            print(f'ERROR: Missing required fields: {missing_fields}')
+            exit(1)
+            
+        print('Validation passed!')
+        "
+        
+    - name: Commit updated database
+      if: steps.check_refresh.outputs.refresh_needed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        git add player_database_clean.json
+        
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          # Get player count for commit message
+          PLAYER_COUNT=$(python -c "import json; data=json.load(open('player_database_clean.json')); print(len(data['players']))")
+          
+          git commit -m "Monthly player database refresh - $PLAYER_COUNT players"
+          git push
+          echo "Player database updated successfully"
+        fi
+        
+    - name: Skip refresh
+      if: steps.check_refresh.outputs.refresh_needed == 'false'
+      run: |
+        echo "Skipping refresh: ${{ steps.check_refresh.outputs.reason }}"
+        
+    - name: Update workflow summary
+      run: |
+        echo "## Monthly Player Database Refresh" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.check_refresh.outputs.refresh_needed }}" = "true" ]; then
+          echo "✅ **Status**: Database refreshed" >> $GITHUB_STEP_SUMMARY
+          echo "📅 **Reason**: ${{ steps.check_refresh.outputs.reason }}" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "player_database_clean.json" ]; then
+            PLAYER_COUNT=$(python -c "import json; data=json.load(open('player_database_clean.json')); print(len(data['players']))" 2>/dev/null || echo "Unknown")
+            echo "👥 **Players**: $PLAYER_COUNT" >> $GITHUB_STEP_SUMMARY
+          fi
+        else
+          echo "⏭️ **Status**: Refresh skipped" >> $GITHUB_STEP_SUMMARY
+          echo "📅 **Reason**: ${{ steps.check_refresh.outputs.reason }}" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Next scheduled refresh**: First of next month" >> $GITHUB_STEP_SUMMARY
