@@ -182,70 +182,215 @@ def filter_fantasy_players(players_array):
     print(f"Filtered to {len(fantasy_players)} fantasy-relevant players")
     return fantasy_players
 
-def match_players_to_adp(fantasy_players, adp_players):
-    """Match Sleeper players to ADP data with enhanced matching"""
+def generate_name_variations(name):
+    """
+    Generate comprehensive list of name variations for matching
+    """
+    if not name:
+        return []
+    
+    name = name.strip()
+    variations = set()
+    
+    # Original name
+    variations.add(name.lower())
+    
+    # Remove periods
+    no_periods = name.replace(".", "")
+    variations.add(no_periods.lower())
+    
+    # Remove apostrophes  
+    no_apostrophes = name.replace("'", "")
+    variations.add(no_apostrophes.lower())
+    
+    # Remove Jr/Sr suffixes
+    no_suffix = name
+    for suffix in [" jr", " jr.", " sr", " sr.", " ii", " iii", " iv"]:
+        no_suffix = no_suffix.replace(suffix, "").replace(suffix.upper(), "")
+    variations.add(no_suffix.lower().strip())
+    
+    # Handle first initial + last name patterns
+    name_parts = name.split()
+    if len(name_parts) >= 2:
+        first = name_parts[0]
+        last = " ".join(name_parts[1:])
+        
+        # "Christian McCaffrey" -> "C. McCaffrey", "C McCaffrey"
+        if len(first) > 1:
+            variations.add(f"{first[0]}. {last}".lower())
+            variations.add(f"{first[0]} {last}".lower())
+        
+        # "C. McCaffrey" -> "Christian McCaffrey" (reverse)
+        if len(first) == 2 and first.endswith('.'):
+            # Common first name mappings
+            first_name_map = {
+                'C.': ['Christian', 'Chris', 'Calvin', 'Cameron', 'Cam'],
+                'A.': ['Adrian', 'Antonio', 'Anthony', 'Aaron', 'Andre'],
+                'D.': ['David', 'Daniel', 'Dak', 'DK', 'Davante'],
+                'J.': ['James', 'Josh', 'Justin', 'Jaylen', 'Jalen'],
+                'T.': ['Tyler', 'Tua', 'Travis', 'Tyreek'],
+                'K.': ['Kyle', 'Kyler', 'Kenneth'],
+                'M.': ['Mike', 'Michael', 'Mark', 'Matt', 'Matthew'],
+                'R.': ['Robert', 'Ryan', 'Russell', 'Romeo'],
+                'S.': ['Sam', 'Samuel', 'Saquon', 'Stefan']
+            }
+            
+            if first in first_name_map:
+                for full_first in first_name_map[first]:
+                    variations.add(f"{full_first} {last}".lower())
+    
+    # Handle nickname patterns
+    nickname_map = {
+        'dk': 'D.K.',
+        'aj': 'A.J.',
+        'cj': 'C.J.',
+        'tj': 'T.J.',
+        'jj': 'J.J.',
+        'rj': 'R.J.',
+        'bj': 'B.J.',
+        'pj': 'P.J.',
+        'ceedee': 'CeeDee',
+        'cmc': 'Christian McCaffrey',
+        'cmac': 'Christian McCaffrey'
+    }
+    
+    # Apply nickname mappings
+    name_lower = name.lower()
+    for nick, full in nickname_map.items():
+        if nick in name_lower:
+            variations.add(name_lower.replace(nick, full.lower()))
+        if full.lower() in name_lower:
+            variations.add(name_lower.replace(full.lower(), nick))
+    
+    # Remove extra whitespace and empty strings
+    clean_variations = set()
+    for var in variations:
+        clean_var = ' '.join(var.split())  # Normalize whitespace
+        if clean_var:
+            clean_variations.add(clean_var)
+    
+    return list(clean_variations)
+
+def create_normalized_name_lookup(adp_players):
+    """
+    Create comprehensive lookup dictionary with aggressive name normalization
+    """
+    adp_lookup = {}
+    
+    for player_name, adp_player in adp_players.items():
+        if not isinstance(adp_player, dict):
+            continue
+            
+        original_name = str(adp_player.get("name", "")).strip()
+        if not original_name:
+            continue
+            
+        # Generate ALL possible name variations
+        name_variations = generate_name_variations(original_name)
+        
+        # Add all variations to lookup
+        for variation in name_variations:
+            if variation and variation not in adp_lookup:
+                adp_lookup[variation] = adp_player
+    
+    return adp_lookup
+
+def enhanced_match_players_to_adp(fantasy_players, adp_players):
+    """
+    Enhanced player matching with comprehensive name normalization
+    """
     if not adp_players:
         print("No ADP data available for matching")
         return fantasy_players
     
+    print("Creating enhanced name lookup...")
+    adp_lookup = create_normalized_name_lookup(adp_players)
+    
+    print(f"Generated {len(adp_lookup)} name variations from {len(adp_players)} ADP players")
+    
     matched_count = 0
-    adp_lookup = {}
+    unmatched_sleeper = []
+    unmatched_adp = set(adp_players.keys())
     
-    # Create comprehensive lookup from ADP data
-    for adp_id, adp_player in adp_players.items():
-        if not isinstance(adp_player, dict):
-            continue
-            
-        name = str(adp_player.get("name", "")).lower().strip()
-        if name:
-            # Multiple name variations for better matching
-            name_variations = [
-                name,
-                name.replace(".", ""),
-                name.replace(" jr", "").replace(" sr", ""),
-                name.replace("'", "")
-            ]
-            
-            for variation in name_variations:
-                if variation and variation not in adp_lookup:
-                    adp_lookup[variation] = adp_player
+    # Debug: Show sample ADP names
+    print("\nSample ADP player names:")
+    for i, name in enumerate(list(adp_players.keys())[:10]):
+        print(f"  {name}")
     
-    # Match players with multiple strategies
+    print(f"\nMatching {len(fantasy_players)} Sleeper players...")
+    
     for player in fantasy_players:
-        player_name = str(player["player_name"]).lower().strip()
-        first_name = str(player["first_name"]).lower().strip()
-        last_name = str(player["last_name"]).lower().strip()
+        sleeper_name = str(player["player_name"]).strip()
+        first_name = str(player.get("first_name", "")).strip()
+        last_name = str(player.get("last_name", "")).strip()
         
-        # Try different name combinations
-        name_candidates = [
-            player_name,
-            f"{first_name} {last_name}",
-            player_name.replace(".", ""),
-            player_name.replace(" jr", "").replace(" sr", ""),
-            player_name.replace("'", "")
-        ]
+        # Generate variations for Sleeper player
+        sleeper_variations = []
         
+        # Primary name variations
+        sleeper_variations.extend(generate_name_variations(sleeper_name))
+        
+        # First + Last name combinations
+        if first_name and last_name:
+            full_name = f"{first_name} {last_name}"
+            sleeper_variations.extend(generate_name_variations(full_name))
+        
+        # Try to find match
         adp_match = None
-        for candidate in name_candidates:
-            if candidate in adp_lookup:
-                adp_match = adp_lookup[candidate]
+        matched_variation = None
+        
+        for variation in sleeper_variations:
+            if variation in adp_lookup:
+                adp_match = adp_lookup[variation]
+                matched_variation = variation
                 break
         
-        # Add ADP data to player if found
-        if adp_match and isinstance(adp_match, dict):
+        if adp_match:
+            # Add ADP data to player
             player["adp_data"] = {
                 "source": "fantasyfootballcalculator.com",
                 "standard": adp_match.get("standard", {}),
                 "half_ppr": adp_match.get("half_ppr", {}),
                 "ppr": adp_match.get("ppr", {}),
-                "average_adp": adp_match.get("average_adp", 999)
+                "average_adp": adp_match.get("average_adp", 999),
+                "matched_via": matched_variation  # Debug info
             }
             matched_count += 1
+            
+            # Remove from unmatched ADP set
+            original_name = adp_match.get("name", "")
+            unmatched_adp.discard(original_name)
+            
         else:
             player["adp_data"] = None
+            unmatched_sleeper.append({
+                "sleeper_name": sleeper_name,
+                "position": player.get("position", ""),
+                "variations_tried": sleeper_variations[:3]  # First 3 for debugging
+            })
     
-    print(f"Matched {matched_count} players to ADP data")
+    print(f"\nMatching Results:")
+    print(f"  Matched: {matched_count}/{len(fantasy_players)} ({matched_count/len(fantasy_players)*100:.1f}%)")
+    print(f"  Unmatched Sleeper: {len(unmatched_sleeper)}")
+    print(f"  Unmatched ADP: {len(unmatched_adp)}")
+    
+    # Show some unmatched examples for debugging
+    if unmatched_sleeper:
+        print(f"\nSample unmatched Sleeper players:")
+        for player in unmatched_sleeper[:5]:
+            print(f"  {player['sleeper_name']} ({player['position']})")
+            print(f"    Tried: {player['variations_tried']}")
+    
+    if unmatched_adp:
+        print(f"\nSample unmatched ADP players:")
+        for name in list(unmatched_adp)[:5]:
+            print(f"  {name}")
+    
     return fantasy_players
+
+def match_players_to_adp(fantasy_players, adp_players):
+    """Updated function call - uses enhanced matching"""
+    return enhanced_match_players_to_adp(fantasy_players, adp_players)
 
 def get_adp_tier(adp_position):
     """Classify ADP into tiers"""
