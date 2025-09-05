@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Enhanced Player Database Refresh Script
-Updates Sleeper player database and integrates with ADP data collection
+Fixed Player Database Refresh Script
+Handles None values in fantasy_positions and other fields
 """
 
 import json
@@ -48,7 +48,7 @@ class PlayerDatabaseRefresher:
             return None
             
     def clean_player_data(self, raw_players):
-        """Clean and validate player data"""
+        """Clean and validate player data with robust None handling"""
         try:
             print("Cleaning and validating player data...")
             
@@ -59,34 +59,45 @@ class PlayerDatabaseRefresher:
                 if not isinstance(player_data, dict):
                     continue
                     
-                # Extract relevant fields
-                position = player_data.get('position', '')
-                fantasy_pos_list = player_data.get('fantasy_positions', [])
+                # Extract relevant fields with None safety
+                position = player_data.get('position') or ''
+                fantasy_pos_list = player_data.get('fantasy_positions') or []
                 
+                # Handle None values in fantasy_positions
+                if fantasy_pos_list is None:
+                    fantasy_pos_list = []
+                elif not isinstance(fantasy_pos_list, list):
+                    fantasy_pos_list = []
+                    
                 # Skip non-fantasy positions
-                if position not in fantasy_positions and not any(pos in fantasy_positions for pos in fantasy_pos_list):
+                is_fantasy_relevant = (
+                    position in fantasy_positions or 
+                    any(pos in fantasy_positions for pos in fantasy_pos_list if pos is not None)
+                )
+                
+                if not is_fantasy_relevant:
                     continue
                     
-                # Clean player record
+                # Clean player record with safe string handling
                 cleaned_player = {
                     'player_id': player_id,
-                    'first_name': player_data.get('first_name', ''),
-                    'last_name': player_data.get('last_name', ''),
-                    'full_name': player_data.get('full_name', ''),
-                    'position': position,
-                    'team': player_data.get('team', ''),
+                    'first_name': (player_data.get('first_name') or '').strip(),
+                    'last_name': (player_data.get('last_name') or '').strip(),
+                    'full_name': (player_data.get('full_name') or '').strip(),
+                    'position': position.strip() if position else '',
+                    'team': (player_data.get('team') or '').strip(),
                     'number': player_data.get('number'),
                     'age': player_data.get('age'),
-                    'height': player_data.get('height', ''),
-                    'weight': player_data.get('weight', ''),
-                    'college': player_data.get('college', ''),
+                    'height': (player_data.get('height') or '').strip(),
+                    'weight': (player_data.get('weight') or '').strip(),
+                    'college': (player_data.get('college') or '').strip(),
                     'years_exp': player_data.get('years_exp'),
-                    'status': player_data.get('status', 'Active'),
+                    'status': (player_data.get('status') or 'Active').strip(),
                     'injury_status': player_data.get('injury_status'),
-                    'fantasy_positions': fantasy_pos_list,
-                    'search_full_name': player_data.get('search_full_name', ''),
-                    'search_first_name': player_data.get('search_first_name', ''),
-                    'search_last_name': player_data.get('search_last_name', ''),
+                    'fantasy_positions': [pos for pos in fantasy_pos_list if pos is not None],
+                    'search_full_name': (player_data.get('search_full_name') or '').strip(),
+                    'search_first_name': (player_data.get('search_first_name') or '').strip(),
+                    'search_last_name': (player_data.get('search_last_name') or '').strip(),
                     'espn_id': player_data.get('espn_id'),
                     'yahoo_id': player_data.get('yahoo_id'),
                     'rotowire_id': player_data.get('rotowire_id'),
@@ -96,16 +107,27 @@ class PlayerDatabaseRefresher:
                 }
                 
                 # Ensure full_name is populated
-                if not cleaned_player['full_name'] and cleaned_player['first_name'] and cleaned_player['last_name']:
-                    cleaned_player['full_name'] = f"{cleaned_player['first_name']} {cleaned_player['last_name']}"
+                if not cleaned_player['full_name']:
+                    first = cleaned_player['first_name']
+                    last = cleaned_player['last_name']
+                    if first and last:
+                        cleaned_player['full_name'] = f"{first} {last}"
+                    elif first:
+                        cleaned_player['full_name'] = first
+                    elif last:
+                        cleaned_player['full_name'] = last
                     
-                cleaned_players[player_id] = cleaned_player
+                # Only include players with names
+                if cleaned_player['full_name'] or cleaned_player['last_name']:
+                    cleaned_players[player_id] = cleaned_player
                 
             print(f"Cleaned data for {len(cleaned_players)} fantasy-relevant players")
             return cleaned_players
             
         except Exception as e:
             print(f"Error cleaning player data: {e}")
+            import traceback
+            traceback.print_exc()
             return {}
             
     def validate_data_quality(self, players_data):
@@ -181,7 +203,7 @@ class PlayerDatabaseRefresher:
                 'players': players_data
             }
             
-            # Save main players file
+            # Save main players file (just the players dict for compatibility)
             with open(self.players_file, 'w') as f:
                 json.dump(players_data, f, indent=2)
                 
@@ -209,7 +231,7 @@ class PlayerDatabaseRefresher:
             fantasy_relevant = {}
             position_limits = {
                 'QB': 40,
-                'RB': 80,
+                'RB': 80, 
                 'WR': 100,
                 'TE': 30,
                 'K': 20,
@@ -263,50 +285,6 @@ class PlayerDatabaseRefresher:
         except Exception as e:
             print(f"Error creating filtered databases: {e}")
             return False
-            
-    def update_player_mapping(self, players_data):
-        """Create player ID mapping file for cross-platform integration"""
-        try:
-            print("Creating player ID mapping...")
-            
-            mapping = {
-                'meta': {
-                    'created_at': datetime.now().isoformat(),
-                    'total_players': len(players_data),
-                    'mapping_purpose': 'Cross-platform player ID integration'
-                },
-                'mappings': {}
-            }
-            
-            for player_id, player_data in players_data.items():
-                # Extract all available IDs
-                player_mapping = {
-                    'sleeper_id': player_id,
-                    'name': player_data.get('full_name', ''),
-                    'position': player_data.get('position', ''),
-                    'team': player_data.get('team', ''),
-                    'external_ids': {}
-                }
-                
-                # Add external IDs if available
-                for id_field in ['espn_id', 'yahoo_id', 'rotowire_id', 'rotoworld_id', 'fantasy_data_id']:
-                    external_id = player_data.get(id_field)
-                    if external_id:
-                        player_mapping['external_ids'][id_field] = external_id
-                        
-                mapping['mappings'][player_id] = player_mapping
-                
-            # Save mapping file
-            mapping_file = f"{self.data_dir}/player_id_mapping.json"
-            with open(mapping_file, 'w') as f:
-                json.dump(mapping, f, indent=2)
-                
-            print(f"Created player ID mapping for {len(mapping['mappings'])} players")
-            return True
-            
-        except Exception as e:
-            print(f"Error creating player mapping: {e}")
-            return False
 
 def main():
     """Main execution function"""
@@ -341,16 +319,12 @@ def main():
     # Create filtered databases
     filtered_success = refresher.create_filtered_databases(cleaned_players)
     
-    # Create player mapping
-    mapping_success = refresher.update_player_mapping(cleaned_players)
-    
     print("\nPlayer database refresh completed!")
     print(f"Main database: {'✓' if save_success else '✗'}")
     print(f"Filtered databases: {'✓' if filtered_success else '✗'}")
-    print(f"Player mapping: {'✓' if mapping_success else '✗'}")
     print(f"Data quality score: {validation_results.get('data_quality_score', 0)}%")
     
-    return save_success and filtered_success and mapping_success
+    return save_success and filtered_success
 
 if __name__ == "__main__":
     success = main()
