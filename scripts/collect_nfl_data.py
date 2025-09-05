@@ -278,22 +278,59 @@ def generate_name_variations(name):
     no_apostrophes = name.replace("'", "")
     variations.add(no_apostrophes.lower())
     
-    # Remove Jr/Sr suffixes
+    # Enhanced Jr/Sr suffix handling - bidirectional
+    suffixes = [" jr", " jr.", " sr", " sr.", " ii", " iii", " iv", " v"]
+    
+    # Remove suffixes (existing behavior)
     no_suffix = name
-    for suffix in [" jr", " jr.", " sr", " sr.", " ii", " iii", " iv"]:
+    for suffix in suffixes:
         no_suffix = no_suffix.replace(suffix, "").replace(suffix.upper(), "")
-    variations.add(no_suffix.lower().strip())
+    no_suffix_clean = no_suffix.strip()
+    variations.add(no_suffix_clean.lower())
+    
+    # Add suffixes if name doesn't have them (NEW - critical for American names)
+    name_lower = name.lower()
+    has_suffix = any(suffix.strip() in name_lower for suffix in suffixes)
+    
+    if not has_suffix:
+        # If name has no suffix, generate versions with common suffixes
+        base_name = name.strip()
+        variations.add(f"{base_name} jr".lower())
+        variations.add(f"{base_name} jr.".lower())
+        variations.add(f"{base_name} sr".lower()) 
+        variations.add(f"{base_name} sr.".lower())
+        variations.add(f"{base_name} ii".lower())
+        variations.add(f"{base_name} iii".lower())
+    else:
+        # If name has suffix, also generate version without it
+        for suffix in suffixes:
+            if suffix.strip() in name_lower:
+                base_without_suffix = name.replace(suffix, "").replace(suffix.upper(), "").strip()
+                variations.add(base_without_suffix.lower())
     
     # Handle first initial + last name patterns
     name_parts = name.split()
     if len(name_parts) >= 2:
         first = name_parts[0]
-        last = " ".join(name_parts[1:])
         
-        # "Christian McCaffrey" -> "C. McCaffrey", "C McCaffrey"
-        if len(first) > 1:
-            variations.add(f"{first[0]}. {last}".lower())
-            variations.add(f"{first[0]} {last}".lower())
+        # For names with suffixes, get the last name without suffix
+        if len(name_parts) >= 3 and name_parts[-1].lower() in ['jr', 'jr.', 'sr', 'sr.', 'ii', 'iii', 'iv', 'v']:
+            last = " ".join(name_parts[1:-1])  # Exclude suffix from last name
+            suffix = name_parts[-1]
+            
+            # Generate variations with and without suffix
+            if len(first) > 1:
+                variations.add(f"{first[0]}. {last}".lower())
+                variations.add(f"{first[0]} {last}".lower())
+                variations.add(f"{first[0]}. {last} {suffix}".lower())
+                variations.add(f"{first[0]} {last} {suffix}".lower())
+        else:
+            last = " ".join(name_parts[1:])
+            
+            # "Christian McCaffrey" -> "C. McCaffrey", "C McCaffrey"
+            if len(first) > 1:
+                variations.add(f"{first[0]}. {last}".lower())
+                variations.add(f"{first[0]} {last}".lower())
         
         # "C. McCaffrey" -> "Christian McCaffrey" (reverse)
         if len(first) == 2 and first.endswith('.'):
