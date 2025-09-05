@@ -1,1 +1,16 @@
-
+{
+  "data_health": {
+    "quality_score": 70,
+    "total_players": 1016,
+    "data_coverage_pct": 0.0,
+    "adp_coverage_pct": 0.0,
+    "performance_records": 0,
+    "weeks_with_data": 0,
+    "narrative_insights_available": false
+  },
+  "collection_info": {
+    "last_updated": "2025-09-05T04:32:28.228771",
+    "season": 2025,
+    "source": "Sleeper + nfl_data_py + FFC_ADP"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "ready_for_stories": false,
+    "weeks_available": [],
+    "total_performances": 0,
+    "includes_adp_analysis": false,
+    "last_updated": "2025-09-05T04:32:28.228638"
+  },
+  "narrative_insights": {
+    "draft_analysis": {
+      "steals": [],
+      "busts": [],
+      "surprises": []
+    },
+    "value_trends": {
+      "overperformers": [],
+      "underperformers": [],
+      "consistent": []
+    },
+    "positional_analysis": {},
+    "adp_accuracy": {}
+  },
+  "insights": {
+    "top_scorers": [],
+    "draft_steals": [],
+    "draft_busts": [],
+    "position_breakdown": {},
+    "team_breakdown": {}
+  }
+}
