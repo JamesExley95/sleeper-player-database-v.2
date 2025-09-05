@@ -22,11 +22,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests pandas nfl_data_py
         
+    - name: Create data directory
+      run: mkdir -p data/generated_content
+        
     - name: Refresh Sleeper player database
       run: python scripts/refresh_player_database.py
       
     - name: Collect current ADP data
       run: python scripts/collect_adp_data.py
+      
+    - name: Generate draft database
+      run: python scripts/generate_draft_database.py
       
     - name: Validate data integrity
       run: python scripts/validate_data.py
@@ -36,5 +42,9 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add data/
-        git diff --staged --quiet || git commit -m "Monthly refresh: Updated player database and ADP data $(date '+%Y-%m-%d')"
-        git push
+        if ! git diff --staged --quiet; then
+          git commit -m "Monthly refresh: Updated player database and ADP data $(date '+%Y-%m-%d')"
+          git push
+        else
+          echo "No changes to commit"
+        fi
