@@ -4,7 +4,7 @@ import json
 import os
 import sys
 import requests  # Added for ADP API calls
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Import with error handling
 try:
@@ -15,35 +15,153 @@ except ImportError as e:
     sys.exit(1)
 
 def load_sleeper_players():
-    """Load and process Sleeper player database"""
-    try:
-        with open("players_detailed.json", "r") as f:
-            raw_data = json.load(f)
-        
-        if "players" not in raw_data:
-            print("Error: Invalid players_detailed.json structure - missing 'players' key")
-            sys.exit(1)
+    """Load players from cached database with fallback to API"""
+    
+    cached_file = "player_database_clean.json"
+    
+    # Try to load from cached database first
+    if os.path.exists(cached_file):
+        try:
+            with open(cached_file, "r") as f:
+                database = json.load(f)
             
-        players_array = raw_data["players"]
-        print(f"Loaded {len(players_array)} total players from Sleeper database")
-        return players_array
+            players_list = database.get("players", [])
+            metadata = database.get("metadata", {})
+            
+            # Check cache age
+            last_updated = metadata.get("last_updated", "")
+            if last_updated:
+                try:
+                    updated_date = datetime.fromisoformat(last_updated.replace('Z', '+00:00'))
+                    age_days = (datetime.now() - updated_date).days
+                    
+                    if age_days > 35:
+                        print(f"WARNING: Player database is {age_days} days old - consider running monthly refresh")
+                    else:
+                        print(f"Using cached player database ({age_days} days old)")
+                        
+                except Exception:
+                    print("Using cached player database (age unknown)")
+            
+            print(f"Loaded {len(players_list)} players from cached database")
+            return players_list
+            
+        except (json.JSONDecodeError, KeyError) as e:
+            print(f"Error reading cached database: {e}")
+            print("Falling back to direct API call...")
+            
+    else:
+        print("No cached player database found - falling back to direct API call")
+    
+    # Fallback: Direct API call
+    try:
+        print("Fetching players directly from Sleeper API...")
+        headers = {'User-Agent': 'Byline-Content-MVP/1.0'}
+        response = requests.get("https://api.sleeper.app/v1/players/nfl", 
+                              headers=headers, timeout=30)
+        response.raise_for_status()
         
-    except FileNotFoundError:
-        print("Error: players_detailed.json not found")
+        all_players = response.json()
+        print(f"Fetched {len(all_players)} players from API")
+        
+        # Apply same filtering as refresh script
+        filtered_players = filter_sleeper_players_inline(all_players)
+        print(f"Filtered to {len(filtered_players)} fantasy-relevant players")
+        
+        return filtered_players
+        
+    except Exception as e:
+        print(f"CRITICAL ERROR: Both cached database and API fallback failed: {e}")
         sys.exit(1)
-    except json.JSONDecodeError as e:
-        print(f"Error parsing player data: {e}")
-        sys.exit(1)
+
+def filter_sleeper_players_inline(all_players):
+    """Inline filtering function for API fallback (simplified version)"""
+    
+    active_teams = {
+        "ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL", "DEN",
+        "DET", "GB", "HOU", "IND", "JAX", "KC", "LV", "LAC", "LAR", "MIA",
+        "MIN", "NE", "NO", "NYG", "NYJ", "PHI", "PIT", "SEA", "SF", "TB",
+        "TEN", "WAS"
+    }
+    
+    inactive_statuses = {
+        "Inactive", "Reserve/Injured", "Reserve/PUP", "Suspended", "Retired"
+    }
+    
+    filtered = []
+    
+    for player_id, player_data in all_players.items():
+        if not isinstance(player_data, dict):
+            continue
+            
+        fantasy_positions = player_data.get("fantasy_positions", [])
+        if not fantasy_positions:
+            continue
+            
+        valid_positions = {"QB", "RB", "WR", "TE", "K", "DEF"}
+        if not any(pos in valid_positions for pos in fantasy_positions):
+            continue
+            
+        team = player_data.get("team")
+        if not team or team not in active_teams:
+            continue
+            
+        status = player_data.get("status", "Active")
+        if status in inactive_statuses:
+            continue
+            
+        first_name = player_data.get("first_name", "")
+        last_name = player_data.get("last_name", "")
+        if not first_name or not last_name:
+            continue
+            
+        # Convert to expected format
+        player = {
+            "sleeper_id": str(player_id),
+            "player_name": f"{first_name} {last_name}",
+            "first_name": first_name,
+            "last_name": last_name,
+            "position": fantasy_positions[0],
+            "team": team,
+            "status": status,
+            "years_exp": int(player_data.get("years_exp", 0)),
+            "height": player_data.get("height", ""),
+            "weight": player_data.get("weight", ""),
+            "search_full_name": player_data.get("search_full_name", "").lower()
+        }
+        
+        filtered.append(player)
+    
+    return filtered
 
 def load_adp_data():
     """Collect live ADP data from Fantasy Football Calculator API"""
     print("Collecting live ADP data from Fantasy Football Calculator...")
     
-    # API endpoints for different scoring formats
+    # API endpoints for different scoring formats - try multiple parameter combinations
     api_endpoints = {
-        "standard": "https://fantasyfootballcalculator.com/api/v1/adp/standard?teams=12&year=2024",
-        "ppr": "https://fantasyfootballcalculator.com/api/v1/adp/ppr?teams=12&year=2024",
-        "half_ppr": "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?teams=12&year=2024"
+        "standard": "https://fantasyfootballcalculator.com/api/v1/adp/standard?teams=12&year=2025",
+        "ppr": "https://fantasyfootballcalculator.com/api/v1/adp/ppr?teams=12&year=2025",
+        "half_ppr": "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?teams=12&year=2025"
+    }
+    
+    # Fallback URLs to try if 2025 doesn't work
+    fallback_endpoints = {
+        "standard": [
+            "https://fantasyfootballcalculator.com/api/v1/adp/standard?year=2025",
+            "https://fantasyfootballcalculator.com/api/v1/adp/standard?teams=12&year=2024",
+            "https://fantasyfootballcalculator.com/api/v1/adp/standard"
+        ],
+        "ppr": [
+            "https://fantasyfootballcalculator.com/api/v1/adp/ppr?year=2025",
+            "https://fantasyfootballcalculator.com/api/v1/adp/ppr?teams=12&year=2024",
+            "https://fantasyfootballcalculator.com/api/v1/adp/ppr"
+        ],
+        "half_ppr": [
+            "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?year=2025",
+            "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr?teams=12&year=2024",
+            "https://fantasyfootballcalculator.com/api/v1/adp/half-ppr"
+        ]
     }
     
     adp_database = {
@@ -55,53 +173,609 @@ def load_adp_data():
     successful_formats = 0
     
     for format_name, api_url in api_endpoints.items():
-        try:
-            print(f"  Fetching {format_name} ADP...")
-            
-            headers = {'User-Agent': 'Byline-Content-MVP/1.0'}
-            response = requests.get(api_url, headers=headers, timeout=15)
-            response.raise_for_status()
-            
-            api_data = response.json()
-            players_data = api_data.get("players", [])
-            
-            if not players_data:
-                print(f"    ⚠️  {format_name}: No players data returned")
-                continue
-            
-            # Process each player
-            for player_data in players_data:
-                player_name = player_data.get("name", "").strip()
-                if not player_name:
+        success = False
+        urls_to_try = [api_url] + fallback_endpoints.get(format_name, [])
+        
+        for attempt, url in enumerate(urls_to_try):
+            try:
+                print(f"  Fetching {format_name} ADP (attempt {attempt + 1})...")
+                
+                headers = {'User-Agent': 'Byline-Content-MVP/1.0'}
+                response = requests.get(url, headers=headers, timeout=15)
+                response.raise_for_status()
+                
+                api_data = response.json()
+                players_data = api_data.get("players", [])
+                
+                if not players_data:
+                    print(f"    ⚠️  {format_name}: No players data returned from {url}")
                     continue
                 
-                # Initialize player entry if first time seeing them
-                if player_name not in adp_database["players"]:
-                    adp_database["players"][player_name] = {
-                        "name": player_name,
-                        "position": player_data.get("position", ""),
-                        "team": player_data.get("team", "")
+                # Passing statistics
+                "completions": safe_int_conversion(nfl_row.get("completions")),
+                "attempts": safe_int_conversion(nfl_row.get("attempts")),
+                "passing_yards": safe_int_conversion(nfl_row.get("passing_yards")),
+                "passing_tds": safe_int_conversion(nfl_row.get("passing_tds")),
+                "interceptions": safe_int_conversion(nfl_row.get("interceptions")),
+                
+                # Rushing statistics
+                "carries": safe_int_conversion(nfl_row.get("carries")),
+                "rushing_yards": safe_int_conversion(nfl_row.get("rushing_yards")),
+                "rushing_tds": safe_int_conversion(nfl_row.get("rushing_tds")),
+                
+                # Receiving statistics
+                "targets": safe_int_conversion(nfl_row.get("targets")),
+                "receptions": safe_int_conversion(nfl_row.get("receptions")),
+                "receiving_yards": safe_int_conversion(nfl_row.get("receiving_yards")),
+                "receiving_tds": safe_int_conversion(nfl_row.get("receiving_tds")),
+                
+                # Fantasy points
+                "fantasy_points": safe_float_conversion(nfl_row.get("fantasy_points")),
+                "fantasy_points_ppr": safe_float_conversion(nfl_row.get("fantasy_points_ppr")),
+                
+                # Include ADP data for value analysis
+                "adp_data": matched_player.get("adp_data"),
+                
+                "last_updated": datetime.now().isoformat()
+            }
+            
+            matched_records.append(performance_record)
+        else:
+            # Track unmatched NFL players in fantasy positions
+            position = str(nfl_row.get("position", ""))
+            if position in ["QB", "RB", "WR", "TE", "K"]:
+                unmatched_sleeper.append({
+                    "nfl_name": nfl_name,
+                    "position": position,
+                    "team": str(nfl_row.get("team", "")),
+                    "week": safe_int_conversion(nfl_row.get("week"))
+                })
+    
+    print(f"Successfully matched {len(matched_records)} performance records")
+    print(f"Unmatched NFL players: {len(unmatched_nfl)}")
+    print(f"Fantasy-relevant unmatched: {len(unmatched_sleeper)}")
+    
+    return matched_records, list(unmatched_nfl), unmatched_sleeper
+
+def generate_narrative_insights(fantasy_players, matched_records):
+    """Generate narrative insights for story templates"""
+    insights = {
+        "draft_analysis": {
+            "steals": [],
+            "busts": [],
+            "surprises": []
+        },
+        "value_trends": {
+            "overperformers": [],
+            "underperformers": [],
+            "consistent": []
+        },
+        "positional_analysis": {},
+        "adp_accuracy": {}
+    }
+    
+    if not matched_records:
+        return insights
+    
+    # Group performance by player
+    player_performances = {}
+    for record in matched_records:
+        sleeper_id = record.get("sleeper_id", "")
+        if sleeper_id:
+            if sleeper_id not in player_performances:
+                player_performances[sleeper_id] = []
+            player_performances[sleeper_id].append(record)
+    
+    # Calculate value metrics for each player with performance data
+    for player in fantasy_players:
+        sleeper_id = player.get("sleeper_id", "")
+        if not sleeper_id:
+            continue
+            
+        player_records = player_performances.get(sleeper_id, [])
+        
+        if not player_records:
+            continue
+            
+        value_metrics = calculate_adp_value_metrics(player, player_records)
+        if not value_metrics:
+            continue
+            
+        player_summary = {
+            "name": player["player_name"],
+            "position": player["position"],
+            "team": player["team"],
+            "metrics": value_metrics
+        }
+        
+        # Categorize based on value status
+        value_status = value_metrics.get("value_status")
+        if value_status == "Draft Steal":
+            insights["draft_analysis"]["steals"].append(player_summary)
+        elif value_status == "Underperforming":
+            insights["draft_analysis"]["busts"].append(player_summary)
+            
+        # Track over/underperformers (require at least 3 games)
+        games_played = value_metrics.get("games_played", 0)
+        try:
+            games_played = int(games_played)
+        except (ValueError, TypeError):
+            games_played = 0
+            
+        if games_played >= 3:
+            if value_status == "Draft Steal":
+                insights["value_trends"]["overperformers"].append(player_summary)
+            elif value_status == "Underperforming":
+                insights["value_trends"]["underperformers"].append(player_summary)
+            else:
+                insights["value_trends"]["consistent"].append(player_summary)
+    
+    # Sort by significance (safely handle missing keys)
+    def safe_sort_key_points(x):
+        try:
+            return float(x.get("metrics", {}).get("avg_points_standard", 0))
+        except (ValueError, TypeError):
+            return 0
+    
+    def safe_sort_key_adp(x):
+        try:
+            return float(x.get("metrics", {}).get("adp_standard", 999))
+        except (ValueError, TypeError):
+            return 999
+    
+    insights["draft_analysis"]["steals"].sort(key=safe_sort_key_points, reverse=True)
+    insights["draft_analysis"]["busts"].sort(key=safe_sort_key_adp)
+    
+    print(f"Generated insights: {len(insights['draft_analysis']['steals'])} steals, {len(insights['draft_analysis']['busts'])} busts")
+    return insights
+
+def save_performance_data(matched_records):
+    """Save performance data with deduplication"""
+    performance_file = "season_2025_performances.json"
+    existing_records = []
+    
+    # Load existing data if available
+    if os.path.exists(performance_file):
+        try:
+            with open(performance_file, "r") as f:
+                existing_data = json.load(f)
+                if isinstance(existing_data, list):
+                    existing_records = existing_data
+                elif isinstance(existing_data, dict) and "performances" in existing_data:
+                    existing_records = existing_data["performances"]
+            print(f"Loaded {len(existing_records)} existing performance records")
+        except (json.JSONDecodeError, KeyError):
+            print("Starting with fresh performance data")
+            existing_records = []
+    
+    # Create deduplication keys (sleeper_id + week)
+    existing_keys = set()
+    for record in existing_records:
+        if isinstance(record, dict):
+            sleeper_id = str(record.get("sleeper_id", ""))
+            week = str(record.get("week", 0))
+            key = f"{sleeper_id}_{week}"
+            existing_keys.add(key)
+    
+    # Add only new records
+    new_records = []
+    duplicates = 0
+    
+    for record in matched_records:
+        if not isinstance(record, dict):
+            continue
+            
+        sleeper_id = str(record.get("sleeper_id", ""))
+        week = str(record.get("week", 0))
+        key = f"{sleeper_id}_{week}"
+        
+        if key not in existing_keys:
+            new_records.append(record)
+            existing_keys.add(key)
+        else:
+            duplicates += 1
+    
+    # Combine and save all data
+    all_records = existing_records + new_records
+    
+    # Save with metadata wrapper
+    output_data = {
+        "metadata": {
+            "season": 2025,
+            "last_updated": datetime.now().isoformat(),
+            "total_records": len(all_records),
+            "new_records_added": len(new_records),
+            "includes_adp_analysis": True
+        },
+        "performances": all_records
+    }
+    
+    with open(performance_file, "w") as f:
+        json.dump(output_data, f, indent=2, default=str)
+    
+    print(f"Saved {len(all_records)} total performance records")
+    print(f"Added {len(new_records)} new records, skipped {duplicates} duplicates")
+    
+    return len(new_records)
+
+def create_weekly_snapshots(matched_records):
+    """Create individual week snapshots for Pipedream consumption"""
+    if not matched_records:
+        print("No performance data to snapshot")
+        return
+        
+    os.makedirs("weekly_snapshots", exist_ok=True)
+    
+    # Group by week
+    weeks_data = {}
+    for record in matched_records:
+        if not isinstance(record, dict):
+            continue
+            
+        week = record.get("week")
+        try:
+            week = int(week)
+        except (ValueError, TypeError):
+            continue
+            
+        if week not in weeks_data:
+            weeks_data[week] = []
+        weeks_data[week].append(record)
+    
+    # Save individual week files
+    for week, week_records in weeks_data.items():
+        # Calculate ADP-based insights for this week (with safe access)
+        draft_steals = []
+        high_adp_busts = []
+        
+        for record in week_records:
+            adp_data = record.get("adp_data")
+            fantasy_points = safe_float_conversion(record.get("fantasy_points", 0))
+            
+            if adp_data and fantasy_points > 15:
+                draft_steals.append(record)
+                
+            if (adp_data and isinstance(adp_data, dict) and 
+                isinstance(adp_data.get("standard"), dict)):
+                try:
+                    adp_val = float(adp_data["standard"].get("adp", 999))
+                    if adp_val <= 36 and fantasy_points < 8:
+                        high_adp_busts.append(record)
+                except (ValueError, TypeError):
+                    pass
+        
+        # Create snapshot with safe data access
+        snapshot = {
+            "week": week,
+            "season": 2025,
+            "generated_at": datetime.now().isoformat(),
+            "player_count": len(week_records),
+            "performances": week_records,
+            "adp_insights": {
+                "potential_steals": len(draft_steals),
+                "high_pick_disappointments": len(high_adp_busts)
+            },
+            "summary": {
+                "positions": {},
+                "teams": {},
+                "top_scorers": []
+            }
+        }
+        
+        # Add position/team summaries and top scorers with safe access
+        valid_records = []
+        for record in week_records:
+            if isinstance(record, dict):
+                pos = str(record.get("position", ""))
+                team = str(record.get("team", ""))
+                
+                if pos:
+                    snapshot["summary"]["positions"][pos] = snapshot["summary"]["positions"].get(pos, 0) + 1
+                if team:
+                    snapshot["summary"]["teams"][team] = snapshot["summary"]["teams"].get(team, 0) + 1
+                
+                valid_records.append(record)
+        
+        # Sort top scorers safely
+        def safe_ppr_sort(record):
+            try:
+                return float(record.get("fantasy_points_ppr", 0))
+            except (ValueError, TypeError):
+                return 0
+        
+        snapshot["summary"]["top_scorers"] = sorted(
+            valid_records, key=safe_ppr_sort, reverse=True
+        )[:10]
+        
+        snapshot_file = f"weekly_snapshots/week_{week}_2025.json"
+        with open(snapshot_file, "w") as f:
+            json.dump(snapshot, f, indent=2, default=str)
+        
+        print(f"Created snapshot for Week {week}: {len(week_records)} players")
+
+def create_output_files(fantasy_players, matched_records, narrative_insights):
+    """Create the data files expected by the workflow"""
+    os.makedirs("data", exist_ok=True)
+    
+    # Calculate metrics for reporting
+    total_players = len(fantasy_players)
+    unique_performers = set()
+    players_with_adp = 0
+    
+    for record in matched_records:
+        if isinstance(record, dict) and record.get("sleeper_id"):
+            unique_performers.add(record["sleeper_id"])
+    
+    for player in fantasy_players:
+        if isinstance(player, dict) and player.get("adp_data"):
+            players_with_adp += 1
+    
+    players_with_data = len(unique_performers)
+    data_coverage = (players_with_data / total_players * 100) if total_players > 0 else 0
+    adp_coverage = (players_with_adp / total_players * 100) if total_players > 0 else 0
+    
+    # data/players.json - Full player database with ADP data
+    players_data = {
+        "metadata": {
+            "total_players": total_players,
+            "fantasy_relevant": total_players,
+            "players_with_adp": players_with_adp,
+            "last_updated": datetime.now().isoformat(),
+            "data_coverage_pct": round(data_coverage, 1),
+            "adp_coverage_pct": round(adp_coverage, 1)
+        },
+        "players": fantasy_players
+    }
+    
+    with open("data/players.json", "w") as f:
+        json.dump(players_data, f, indent=2)
+    
+    # data/weekly_insights.json - Analysis for story generation with ADP insights
+    weeks_available = []
+    for record in matched_records:
+        if isinstance(record, dict):
+            week = record.get("week")
+            try:
+                week = int(week)
+                if week not in weeks_available:
+                    weeks_available.append(week)
+            except (ValueError, TypeError):
+                pass
+    
+    weeks_available.sort()
+    
+    # Safe access to narrative insights
+    steals_count = 0
+    busts_count = 0
+    if isinstance(narrative_insights, dict):
+        draft_analysis = narrative_insights.get("draft_analysis", {})
+        if isinstance(draft_analysis, dict):
+            steals = draft_analysis.get("steals", [])
+            busts = draft_analysis.get("busts", [])
+            steals_count = len(steals) if isinstance(steals, list) else 0
+            busts_count = len(busts) if isinstance(busts, list) else 0
+    
+    insights_data = {
+        "metadata": {
+            "ready_for_stories": len(matched_records) > 0 and steals_count > 0,
+            "weeks_available": weeks_available,
+            "total_performances": len(matched_records),
+            "includes_adp_analysis": players_with_adp > 0,
+            "last_updated": datetime.now().isoformat()
+        },
+        "narrative_insights": narrative_insights,
+        "insights": {
+            "top_scorers": [],
+            "draft_steals": [],
+            "draft_busts": [],
+            "position_breakdown": {},
+            "team_breakdown": {}
+        }
+    }
+    
+    # Safely populate top scorers
+    def safe_ppr_sort(record):
+        try:
+            return float(record.get("fantasy_points_ppr", 0))
+        except (ValueError, TypeError):
+            return 0
+    
+    valid_records = [r for r in matched_records if isinstance(r, dict)]
+    insights_data["insights"]["top_scorers"] = sorted(
+        valid_records, key=safe_ppr_sort, reverse=True
+    )[:20]
+    
+    # Safely populate draft insights
+    if isinstance(narrative_insights, dict):
+        draft_analysis = narrative_insights.get("draft_analysis", {})
+        if isinstance(draft_analysis, dict):
+            steals = draft_analysis.get("steals", [])
+            busts = draft_analysis.get("busts", [])
+            
+            if isinstance(steals, list):
+                insights_data["insights"]["draft_steals"] = steals[:10]
+            if isinstance(busts, list):
+                insights_data["insights"]["draft_busts"] = busts[:10]
+    
+    # Calculate breakdowns
+    for record in matched_records:
+        if isinstance(record, dict):
+            pos = str(record.get("position", ""))
+            team = str(record.get("team", ""))
+            
+            if pos:
+                insights_data["insights"]["position_breakdown"][pos] = insights_data["insights"]["position_breakdown"].get(pos, 0) + 1
+            if team:
+                insights_data["insights"]["team_breakdown"][team] = insights_data["insights"]["team_breakdown"].get(team, 0) + 1
+    
+    with open("data/weekly_insights.json", "w") as f:
+        json.dump(insights_data, f, indent=2)
+    
+    # data/metadata.json - System health metrics with enhanced ADP scoring
+    base_score = 70  # Your current score
+    adp_bonus = min(15, (adp_coverage / 100) * 15)  # Up to 15 points for ADP coverage
+    data_bonus = min(10, (data_coverage / 100) * 10)  # Up to 10 points for data coverage
+    quality_score = min(100, base_score + adp_bonus + data_bonus)
+    
+    metadata = {
+        "data_health": {
+            "quality_score": int(quality_score),
+            "total_players": total_players,
+            "data_coverage_pct": round(data_coverage, 1),
+            "adp_coverage_pct": round(adp_coverage, 1),
+            "performance_records": len(matched_records),
+            "weeks_with_data": len(weeks_available),
+            "narrative_insights_available": steals_count > 0
+        },
+        "collection_info": {
+            "last_updated": datetime.now().isoformat(),
+            "season": 2025,
+            "source": "Sleeper_Cached + nfl_data_py + FantasyFootballCalculator_ADP"
+        }
+    }
+    
+    with open("data/metadata.json", "w") as f:
+        json.dump(metadata, f, indent=2)
+    
+    print(f"Created output files: {total_players} players, {len(matched_records)} performances, {players_with_adp} with ADP")
+    return total_players
+
+def main():
+    """Main execution function with enhanced ADP integration"""
+    print("Starting NFL data collection with ADP analysis for Byline Content MVP...")
+    
+    try:
+        # Load player database (cached or direct API)
+        sleeper_players = load_sleeper_players()
+        
+        # Load live ADP data
+        adp_data, adp_players = load_adp_data()
+        
+        # Match players to ADP data (enhanced matching)
+        fantasy_players = match_players_to_adp(sleeper_players, adp_players)
+        
+        # Attempt NFL data collection
+        nfl_stats = collect_nfl_stats(2025)
+        
+        # Match players to NFL performance data
+        matched_records, unmatched_nfl, unmatched_sleeper = match_sleeper_to_nfl(fantasy_players, nfl_stats)
+        
+        # Generate narrative insights for story templates
+        narrative_insights = generate_narrative_insights(fantasy_players, matched_records)
+        
+        # Save performance data
+        if matched_records:
+            new_records = save_performance_data(matched_records)
+            create_weekly_snapshots(matched_records)
+        else:
+            print("No NFL performance data available - creating empty structure")
+            new_records = 0
+        
+        # Create workflow output files
+        total_players = create_output_files(fantasy_players, matched_records, narrative_insights)
+        
+        # Enhanced summary report
+        print(f"\n=== COLLECTION COMPLETE ===")
+        print(f"Fantasy players processed: {len(fantasy_players)}")
+        
+        players_with_adp = len([p for p in fantasy_players if isinstance(p, dict) and p.get("adp_data")])
+        print(f"Players with ADP data: {players_with_adp}")
+        print(f"NFL records collected: {len(nfl_stats)}")
+        print(f"Matched performances: {len(matched_records)}")
+        print(f"New records added: {new_records}")
+        
+        # Safe access to narrative insights for summary
+        steals_count = 0
+        busts_count = 0
+        if isinstance(narrative_insights, dict):
+            draft_analysis = narrative_insights.get("draft_analysis", {})
+            if isinstance(draft_analysis, dict):
+                steals = draft_analysis.get("steals", [])
+                busts = draft_analysis.get("busts", [])
+                steals_count = len(steals) if isinstance(steals, list) else 0
+                busts_count = len(busts) if isinstance(busts, list) else 0
+        
+        print(f"Draft steals identified: {steals_count}")
+        print(f"Draft busts identified: {busts_count}")
+        
+        if matched_records:
+            weeks = []
+            for record in matched_records:
+                if isinstance(record, dict):
+                    week = record.get("week")
+                    try:
+                        week = int(week)
+                        if week not in weeks:
+                            weeks.append(week)
+                    except (ValueError, TypeError):
+                        pass
+            weeks.sort()
+            print(f"Weeks with data: {weeks}")
+        
+        # Show ADP coverage stats
+        if players_with_adp > 0:
+            adp_coverage_pct = (players_with_adp / len(fantasy_players)) * 100
+            print(f"\nADP Integration Success:")
+            print(f"  Coverage: {players_with_adp}/{len(fantasy_players)} players ({adp_coverage_pct:.1f}%)")
+            print(f"  Quality boost: 70 → {70 + min(15, adp_coverage_pct * 0.15):.0f} points")
+        
+        # Show sample unmatched for debugging
+        if unmatched_sleeper:
+            print(f"\nSample unmatched NFL players:")
+            for i, player in enumerate(unmatched_sleeper[:5]):
+                if isinstance(player, dict):
+                    name = player.get("nfl_name", "Unknown")
+                    position = player.get("position", "")
+                    team = player.get("team", "")
+                    print(f"  {name} ({position}, {team})")
+        
+        print("Data collection completed successfully")
+        
+    except Exception as e:
+        print(f"CRITICAL ERROR: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main() Success! Process the data
+                for player_data in players_data:
+                    player_name = player_data.get("name", "").strip()
+                    if not player_name:
+                        continue
+                    
+                    # Initialize player entry if first time seeing them
+                    if player_name not in adp_database["players"]:
+                        adp_database["players"][player_name] = {
+                            "name": player_name,
+                            "position": player_data.get("position", ""),
+                            "team": player_data.get("team", "")
+                        }
+                    
+                    # Add this format's ADP data
+                    adp_database["players"][player_name][format_name] = {
+                        "adp": float(player_data.get("adp", 999)),
+                        "rank": int(player_data.get("rank", 999)),
+                        "times_drafted": int(player_data.get("times_drafted", 0))
                     }
                 
-                # Add this format's ADP data
-                adp_database["players"][player_name][format_name] = {
-                    "adp": float(player_data.get("adp", 999)),
-                    "rank": int(player_data.get("rank", 999)),
-                    "times_drafted": int(player_data.get("times_drafted", 0))
-                }
-            
-            successful_formats += 1
-            print(f"    ✅ {format_name}: {len(players_data)} players collected")
-            
-        except requests.exceptions.RequestException as e:
-            print(f"    ❌ {format_name}: API request failed - {str(e)}")
-            continue
-        except json.JSONDecodeError as e:
-            print(f"    ❌ {format_name}: Invalid JSON response - {str(e)}")
-            continue
-        except Exception as e:
-            print(f"    ❌ {format_name}: Unexpected error - {str(e)}")
-            continue
+                successful_formats += 1
+                print(f"    ✅ {format_name}: {len(players_data)} players collected from {url}")
+                success = True
+                break
+                
+            except requests.exceptions.RequestException as e:
+                print(f"    ❌ {format_name}: API request failed ({url}) - {str(e)}")
+                continue
+            except json.JSONDecodeError as e:
+                print(f"    ❌ {format_name}: Invalid JSON response ({url}) - {str(e)}")
+                continue
+            except Exception as e:
+                print(f"    ❌ {format_name}: Unexpected error ({url}) - {str(e)}")
+                continue
+        
+        if not success:
+            print(f"    ❌ {format_name}: All URL attempts failed")
     
     # Calculate average ADP across formats for each player
     for player_name, player_data in adp_database["players"].items():
@@ -131,56 +805,6 @@ def load_adp_data():
     else:
         print("Warning: ADP collection failed - proceeding without ADP data")
         return None, {}
-
-def filter_fantasy_players(players_array):
-    """Filter to fantasy-relevant players with active status"""
-    fantasy_positions = ["QB", "RB", "WR", "TE", "K", "DEF"]
-    inactive_statuses = ["Inactive", "Reserve/Injured", "Reserve/PUP", "Suspended"]
-    
-    fantasy_players = []
-    
-    for player in players_array:
-        if not isinstance(player, dict):
-            continue
-            
-        position = player.get("position")
-        team = player.get("team")
-        status = player.get("status", "Active")
-        
-        # Must have fantasy-relevant position
-        if position not in fantasy_positions:
-            continue
-            
-        # Must have active NFL team
-        if not team:
-            continue
-            
-        # Must not be inactive/injured
-        if status in inactive_statuses:
-            continue
-            
-        # Ensure required fields exist
-        if not player.get("player_id") or not player.get("name"):
-            continue
-            
-        # Convert to consistent format for NFL matching
-        fantasy_player = {
-            "sleeper_id": str(player["player_id"]),
-            "player_name": str(player["name"]),
-            "first_name": str(player.get("first_name", "")),
-            "last_name": str(player.get("last_name", "")),
-            "position": str(position),
-            "team": str(team),
-            "status": str(status),
-            "years_exp": int(player.get("years_exp", 0)),
-            "height": str(player.get("height", "")),
-            "weight": str(player.get("weight", ""))
-        }
-        
-        fantasy_players.append(fantasy_player)
-    
-    print(f"Filtered to {len(fantasy_players)} fantasy-relevant players")
-    return fantasy_players
 
 def generate_name_variations(name):
     """
@@ -656,571 +1280,4 @@ def match_sleeper_to_nfl(fantasy_players, nfl_stats):
                 "season": safe_int_conversion(nfl_row.get("season", 2025)),
                 "match_method": match_method,
                 
-                # Passing statistics
-                "completions": safe_int_conversion(nfl_row.get("completions")),
-                "attempts": safe_int_conversion(nfl_row.get("attempts")),
-                "passing_yards": safe_int_conversion(nfl_row.get("passing_yards")),
-                "passing_tds": safe_int_conversion(nfl_row.get("passing_tds")),
-                "interceptions": safe_int_conversion(nfl_row.get("interceptions")),
-                
-                # Rushing statistics
-                "carries": safe_int_conversion(nfl_row.get("carries")),
-                "rushing_yards": safe_int_conversion(nfl_row.get("rushing_yards")),
-                "rushing_tds": safe_int_conversion(nfl_row.get("rushing_tds")),
-                
-                # Receiving statistics
-                "targets": safe_int_conversion(nfl_row.get("targets")),
-                "receptions": safe_int_conversion(nfl_row.get("receptions")),
-                "receiving_yards": safe_int_conversion(nfl_row.get("receiving_yards")),
-                "receiving_tds": safe_int_conversion(nfl_row.get("receiving_tds")),
-                
-                # Fantasy points
-                "fantasy_points": safe_float_conversion(nfl_row.get("fantasy_points")),
-                "fantasy_points_ppr": safe_float_conversion(nfl_row.get("fantasy_points_ppr")),
-                
-                # Include ADP data for value analysis
-                "adp_data": matched_player.get("adp_data"),
-                
-                "last_updated": datetime.now().isoformat()
-            }
-            
-            matched_records.append(performance_record)
-        else:
-            # Track unmatched NFL players in fantasy positions
-            position = str(nfl_row.get("position", ""))
-            if position in ["QB", "RB", "WR", "TE", "K"]:
-                unmatched_sleeper.append({
-                    "nfl_name": nfl_name,
-                    "position": position,
-                    "team": str(nfl_row.get("team", "")),
-                    "week": safe_int_conversion(nfl_row.get("week"))
-                })
-    
-    print(f"Successfully matched {len(matched_records)} performance records")
-    print(f"Unmatched NFL players: {len(unmatched_nfl)}")
-    print(f"Fantasy-relevant unmatched: {len(unmatched_sleeper)}")
-    
-    return matched_records, list(unmatched_nfl), unmatched_sleeper
-
-def generate_narrative_insights(fantasy_players, matched_records):
-    """Generate narrative insights for story templates"""
-    insights = {
-        "draft_analysis": {
-            "steals": [],
-            "busts": [],
-            "surprises": []
-        },
-        "value_trends": {
-            "overperformers": [],
-            "underperformers": [],
-            "consistent": []
-        },
-        "positional_analysis": {},
-        "adp_accuracy": {}
-    }
-    
-    if not matched_records:
-        return insights
-    
-    # Group performance by player
-    player_performances = {}
-    for record in matched_records:
-        sleeper_id = record.get("sleeper_id", "")
-        if sleeper_id:
-            if sleeper_id not in player_performances:
-                player_performances[sleeper_id] = []
-            player_performances[sleeper_id].append(record)
-    
-    # Calculate value metrics for each player with performance data
-    for player in fantasy_players:
-        sleeper_id = player.get("sleeper_id", "")
-        if not sleeper_id:
-            continue
-            
-        player_records = player_performances.get(sleeper_id, [])
-        
-        if not player_records:
-            continue
-            
-        value_metrics = calculate_adp_value_metrics(player, player_records)
-        if not value_metrics:
-            continue
-            
-        player_summary = {
-            "name": player["player_name"],
-            "position": player["position"],
-            "team": player["team"],
-            "metrics": value_metrics
-        }
-        
-        # Categorize based on value status
-        value_status = value_metrics.get("value_status")
-        if value_status == "Draft Steal":
-            insights["draft_analysis"]["steals"].append(player_summary)
-        elif value_status == "Underperforming":
-            insights["draft_analysis"]["busts"].append(player_summary)
-            
-        # Track over/underperformers (require at least 3 games)
-        games_played = value_metrics.get("games_played", 0)
-        try:
-            games_played = int(games_played)
-        except (ValueError, TypeError):
-            games_played = 0
-            
-        if games_played >= 3:
-            if value_status == "Draft Steal":
-                insights["value_trends"]["overperformers"].append(player_summary)
-            elif value_status == "Underperforming":
-                insights["value_trends"]["underperformers"].append(player_summary)
-            else:
-                insights["value_trends"]["consistent"].append(player_summary)
-    
-    # Sort by significance (safely handle missing keys)
-    def safe_sort_key_points(x):
-        try:
-            return float(x.get("metrics", {}).get("avg_points_standard", 0))
-        except (ValueError, TypeError):
-            return 0
-    
-    def safe_sort_key_adp(x):
-        try:
-            return float(x.get("metrics", {}).get("adp_standard", 999))
-        except (ValueError, TypeError):
-            return 999
-    
-    insights["draft_analysis"]["steals"].sort(key=safe_sort_key_points, reverse=True)
-    insights["draft_analysis"]["busts"].sort(key=safe_sort_key_adp)
-    
-    print(f"Generated insights: {len(insights['draft_analysis']['steals'])} steals, {len(insights['draft_analysis']['busts'])} busts")
-    return insights
-
-def save_performance_data(matched_records):
-    """Save performance data with deduplication"""
-    performance_file = "season_2025_performances.json"
-    existing_records = []
-    
-    # Load existing data if available
-    if os.path.exists(performance_file):
-        try:
-            with open(performance_file, "r") as f:
-                existing_data = json.load(f)
-                if isinstance(existing_data, list):
-                    existing_records = existing_data
-                elif isinstance(existing_data, dict) and "performances" in existing_data:
-                    existing_records = existing_data["performances"]
-            print(f"Loaded {len(existing_records)} existing performance records")
-        except (json.JSONDecodeError, KeyError):
-            print("Starting with fresh performance data")
-            existing_records = []
-    
-    # Create deduplication keys (sleeper_id + week)
-    existing_keys = set()
-    for record in existing_records:
-        if isinstance(record, dict):
-            sleeper_id = str(record.get("sleeper_id", ""))
-            week = str(record.get("week", 0))
-            key = f"{sleeper_id}_{week}"
-            existing_keys.add(key)
-    
-    # Add only new records
-    new_records = []
-    duplicates = 0
-    
-    for record in matched_records:
-        if not isinstance(record, dict):
-            continue
-            
-        sleeper_id = str(record.get("sleeper_id", ""))
-        week = str(record.get("week", 0))
-        key = f"{sleeper_id}_{week}"
-        
-        if key not in existing_keys:
-            new_records.append(record)
-            existing_keys.add(key)
-        else:
-            duplicates += 1
-    
-    # Combine and save all data
-    all_records = existing_records + new_records
-    
-    # Save with metadata wrapper
-    output_data = {
-        "metadata": {
-            "season": 2025,
-            "last_updated": datetime.now().isoformat(),
-            "total_records": len(all_records),
-            "new_records_added": len(new_records),
-            "includes_adp_analysis": True
-        },
-        "performances": all_records
-    }
-    
-    with open(performance_file, "w") as f:
-        json.dump(output_data, f, indent=2, default=str)
-    
-    print(f"Saved {len(all_records)} total performance records")
-    print(f"Added {len(new_records)} new records, skipped {duplicates} duplicates")
-    
-    return len(new_records)
-
-def create_weekly_snapshots(matched_records):
-    """Create individual week snapshots for Pipedream consumption"""
-    if not matched_records:
-        print("No performance data to snapshot")
-        return
-        
-    os.makedirs("weekly_snapshots", exist_ok=True)
-    
-    # Group by week
-    weeks_data = {}
-    for record in matched_records:
-        if not isinstance(record, dict):
-            continue
-            
-        week = record.get("week")
-        try:
-            week = int(week)
-        except (ValueError, TypeError):
-            continue
-            
-        if week not in weeks_data:
-            weeks_data[week] = []
-        weeks_data[week].append(record)
-    
-    # Save individual week files
-    for week, week_records in weeks_data.items():
-        # Calculate ADP-based insights for this week (with safe access)
-        draft_steals = []
-        high_adp_busts = []
-        
-        for record in week_records:
-            adp_data = record.get("adp_data")
-            fantasy_points = safe_float_conversion(record.get("fantasy_points", 0))
-            
-            if adp_data and fantasy_points > 15:
-                draft_steals.append(record)
-                
-            if (adp_data and isinstance(adp_data, dict) and 
-                isinstance(adp_data.get("standard"), dict)):
-                try:
-                    adp_val = float(adp_data["standard"].get("adp", 999))
-                    if adp_val <= 36 and fantasy_points < 8:
-                        high_adp_busts.append(record)
-                except (ValueError, TypeError):
-                    pass
-        
-        # Create snapshot with safe data access
-        snapshot = {
-            "week": week,
-            "season": 2025,
-            "generated_at": datetime.now().isoformat(),
-            "player_count": len(week_records),
-            "performances": week_records,
-            "adp_insights": {
-                "potential_steals": len(draft_steals),
-                "high_pick_disappointments": len(high_adp_busts)
-            },
-            "summary": {
-                "positions": {},
-                "teams": {},
-                "top_scorers": []
-            }
-        }
-        
-        # Add position/team summaries and top scorers with safe access
-        valid_records = []
-        for record in week_records:
-            if isinstance(record, dict):
-                pos = str(record.get("position", ""))
-                team = str(record.get("team", ""))
-                
-                if pos:
-                    snapshot["summary"]["positions"][pos] = snapshot["summary"]["positions"].get(pos, 0) + 1
-                if team:
-                    snapshot["summary"]["teams"][team] = snapshot["summary"]["teams"].get(team, 0) + 1
-                
-                valid_records.append(record)
-        
-        # Sort top scorers safely
-        def safe_ppr_sort(record):
-            try:
-                return float(record.get("fantasy_points_ppr", 0))
-            except (ValueError, TypeError):
-                return 0
-        
-        snapshot["summary"]["top_scorers"] = sorted(
-            valid_records, key=safe_ppr_sort, reverse=True
-        )[:10]
-        
-        snapshot_file = f"weekly_snapshots/week_{week}_2025.json"
-        with open(snapshot_file, "w") as f:
-            json.dump(snapshot, f, indent=2, default=str)
-        
-        print(f"Created snapshot for Week {week}: {len(week_records)} players")
-
-def create_output_files(fantasy_players, matched_records, narrative_insights):
-    """Create the data files expected by the workflow"""
-    os.makedirs("data", exist_ok=True)
-    
-    # Calculate metrics for reporting
-    total_players = len(fantasy_players)
-    unique_performers = set()
-    players_with_adp = 0
-    
-    for record in matched_records:
-        if isinstance(record, dict) and record.get("sleeper_id"):
-            unique_performers.add(record["sleeper_id"])
-    
-    for player in fantasy_players:
-        if isinstance(player, dict) and player.get("adp_data"):
-            players_with_adp += 1
-    
-    players_with_data = len(unique_performers)
-    data_coverage = (players_with_data / total_players * 100) if total_players > 0 else 0
-    adp_coverage = (players_with_adp / total_players * 100) if total_players > 0 else 0
-    
-    # data/players.json - Full player database with ADP data
-    players_data = {
-        "metadata": {
-            "total_players": total_players,
-            "fantasy_relevant": total_players,
-            "players_with_adp": players_with_adp,
-            "last_updated": datetime.now().isoformat(),
-            "data_coverage_pct": round(data_coverage, 1),
-            "adp_coverage_pct": round(adp_coverage, 1)
-        },
-        "players": fantasy_players
-    }
-    
-    with open("data/players.json", "w") as f:
-        json.dump(players_data, f, indent=2)
-    
-    # data/weekly_insights.json - Analysis for story generation with ADP insights
-    weeks_available = []
-    for record in matched_records:
-        if isinstance(record, dict):
-            week = record.get("week")
-            try:
-                week = int(week)
-                if week not in weeks_available:
-                    weeks_available.append(week)
-            except (ValueError, TypeError):
-                pass
-    
-    weeks_available.sort()
-    
-    # Safe access to narrative insights
-    steals_count = 0
-    busts_count = 0
-    if isinstance(narrative_insights, dict):
-        draft_analysis = narrative_insights.get("draft_analysis", {})
-        if isinstance(draft_analysis, dict):
-            steals = draft_analysis.get("steals", [])
-            busts = draft_analysis.get("busts", [])
-            steals_count = len(steals) if isinstance(steals, list) else 0
-            busts_count = len(busts) if isinstance(busts, list) else 0
-    
-    insights_data = {
-        "metadata": {
-            "ready_for_stories": len(matched_records) > 0 and steals_count > 0,
-            "weeks_available": weeks_available,
-            "total_performances": len(matched_records),
-            "includes_adp_analysis": players_with_adp > 0,
-            "last_updated": datetime.now().isoformat()
-        },
-        "narrative_insights": narrative_insights,
-        "insights": {
-            "top_scorers": [],
-            "draft_steals": [],
-            "draft_busts": [],
-            "position_breakdown": {},
-            "team_breakdown": {}
-        }
-    }
-    
-    # Safely populate top scorers
-    def safe_ppr_sort(record):
-        try:
-            return float(record.get("fantasy_points_ppr", 0))
-        except (ValueError, TypeError):
-            return 0
-    
-    valid_records = [r for r in matched_records if isinstance(r, dict)]
-    insights_data["insights"]["top_scorers"] = sorted(
-        valid_records, key=safe_ppr_sort, reverse=True
-    )[:20]
-    
-    # Safely populate draft insights
-    if isinstance(narrative_insights, dict):
-        draft_analysis = narrative_insights.get("draft_analysis", {})
-        if isinstance(draft_analysis, dict):
-            steals = draft_analysis.get("steals", [])
-            busts = draft_analysis.get("busts", [])
-            
-            if isinstance(steals, list):
-                insights_data["insights"]["draft_steals"] = steals[:10]
-            if isinstance(busts, list):
-                insights_data["insights"]["draft_busts"] = busts[:10]
-    
-    # Calculate breakdowns
-    for record in matched_records:
-        if isinstance(record, dict):
-            pos = str(record.get("position", ""))
-            team = str(record.get("team", ""))
-            
-            if pos:
-                insights_data["insights"]["position_breakdown"][pos] = insights_data["insights"]["position_breakdown"].get(pos, 0) + 1
-            if team:
-                insights_data["insights"]["team_breakdown"][team] = insights_data["insights"]["team_breakdown"].get(team, 0) + 1
-    
-    with open("data/weekly_insights.json", "w") as f:
-        json.dump(insights_data, f, indent=2)
-    
-    # data/metadata.json - System health metrics with enhanced ADP scoring
-    base_score = 70  # Your current score
-    adp_bonus = min(15, (adp_coverage / 100) * 15)  # Up to 15 points for ADP coverage
-    data_bonus = min(10, (data_coverage / 100) * 10)  # Up to 10 points for data coverage
-    quality_score = min(100, base_score + adp_bonus + data_bonus)
-    
-    metadata = {
-        "data_health": {
-            "quality_score": int(quality_score),
-            "total_players": total_players,
-            "data_coverage_pct": round(data_coverage, 1),
-            "adp_coverage_pct": round(adp_coverage, 1),
-            "performance_records": len(matched_records),
-            "weeks_with_data": len(weeks_available),
-            "narrative_insights_available": steals_count > 0
-        },
-        "collection_info": {
-            "last_updated": datetime.now().isoformat(),
-            "season": 2025,
-            "source": "Sleeper + nfl_data_py + FantasyFootballCalculator_ADP"
-        }
-    }
-    
-    with open("data/metadata.json", "w") as f:
-        json.dump(metadata, f, indent=2)
-    
-    print(f"Created output files: {total_players} players, {len(matched_records)} performances, {players_with_adp} with ADP")
-    return total_players
-
-def main():
-    """Main execution function with enhanced ADP integration"""
-    print("Starting NFL data collection with ADP analysis for Byline Content MVP...")
-    
-    try:
-        # Load player database
-        sleeper_players = load_sleeper_players()
-        
-        # Load live ADP data (enhanced function)
-        adp_data, adp_players = load_adp_data()
-        
-        # Filter to fantasy-relevant players
-        fantasy_players = filter_fantasy_players(sleeper_players)
-        
-        # Match players to ADP data (enhanced matching)
-        fantasy_players = match_players_to_adp(fantasy_players, adp_players)
-        
-        # Attempt NFL data collection
-        nfl_stats = collect_nfl_stats(2025)
-        
-        # Match players to NFL performance data
-        matched_records, unmatched_nfl, unmatched_sleeper = match_sleeper_to_nfl(fantasy_players, nfl_stats)
-        
-        # Generate narrative insights for story templates
-        narrative_insights = generate_narrative_insights(fantasy_players, matched_records)
-        
-        # Save performance data
-        if matched_records:
-            new_records = save_performance_data(matched_records)
-            create_weekly_snapshots(matched_records)
-        else:
-            print("No NFL performance data available - creating empty structure")
-            new_records = 0
-        
-        # Create workflow output files
-        total_players = create_output_files(fantasy_players, matched_records, narrative_insights)
-        
-        # Enhanced summary report
-        print(f"\n=== COLLECTION COMPLETE ===")
-        print(f"Fantasy players processed: {len(fantasy_players)}")
-        
-        players_with_adp = len([p for p in fantasy_players if isinstance(p, dict) and p.get("adp_data")])
-        print(f"Players with ADP data: {players_with_adp}")
-        print(f"NFL records collected: {len(nfl_stats)}")
-        print(f"Matched performances: {len(matched_records)}")
-        print(f"New records added: {new_records}")
-        
-        # Safe access to narrative insights for summary
-        steals_count = 0
-        busts_count = 0
-        if isinstance(narrative_insights, dict):
-            draft_analysis = narrative_insights.get("draft_analysis", {})
-            if isinstance(draft_analysis, dict):
-                steals = draft_analysis.get("steals", [])
-                busts = draft_analysis.get("busts", [])
-                steals_count = len(steals) if isinstance(steals, list) else 0
-                busts_count = len(busts) if isinstance(busts, list) else 0
-        
-        print(f"Draft steals identified: {steals_count}")
-        print(f"Draft busts identified: {busts_count}")
-        
-        if matched_records:
-            weeks = []
-            for record in matched_records:
-                if isinstance(record, dict):
-                    week = record.get("week")
-                    try:
-                        week = int(week)
-                        if week not in weeks:
-                            weeks.append(week)
-                    except (ValueError, TypeError):
-                        pass
-            weeks.sort()
-            print(f"Weeks with data: {weeks}")
-        
-        # Show sample insights if available
-        if steals_count > 0:
-            print(f"\nTop draft steals:")
-            draft_analysis = narrative_insights.get("draft_analysis", {})
-            steals = draft_analysis.get("steals", [])
-            
-            for i, steal in enumerate(steals[:3]):
-                if isinstance(steal, dict):
-                    name = steal.get("name", "Unknown")
-                    position = steal.get("position", "")
-                    metrics = steal.get("metrics", {})
-                    
-                    if isinstance(metrics, dict):
-                        adp = metrics.get("adp_standard", "N/A")
-                        avg_pts = metrics.get("avg_points_standard", "N/A")
-                        print(f"  {name} ({position}) - ADP {adp}, Avg {avg_pts} pts")
-        
-        # Show ADP coverage stats
-        if players_with_adp > 0:
-            adp_coverage_pct = (players_with_adp / len(fantasy_players)) * 100
-            print(f"\nADP Integration Success:")
-            print(f"  Coverage: {players_with_adp}/{len(fantasy_players)} players ({adp_coverage_pct:.1f}%)")
-            print(f"  Quality boost: 70 → {70 + min(15, adp_coverage_pct * 0.15):.0f} points")
-        
-        # Show sample unmatched for debugging
-        if unmatched_sleeper:
-            print(f"\nSample unmatched NFL players:")
-            for i, player in enumerate(unmatched_sleeper[:5]):
-                if isinstance(player, dict):
-                    name = player.get("nfl_name", "Unknown")
-                    position = player.get("position", "")
-                    team = player.get("team", "")
-                    print(f"  {name} ({position}, {team})")
-        
-        print("Data collection completed successfully")
-        
-    except Exception as e:
-        print(f"CRITICAL ERROR: {e}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
-
-if __name__ == "__main__":
-    main()
+                #
