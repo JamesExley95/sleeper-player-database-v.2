@@ -1,13 +1,13 @@
 {
   "data_health": {
-    "quality_score": 73,
+    "quality_score": 74,
     "total_players": 816,
-    "adp_coverage_pct": 25.1,
+    "adp_coverage_pct": 27.0,
     "performance_records": 0,
     "narrative_insights_available": false
   },
   "collection_info": {
-    "last_updated": "2025-09-05T13:29:52.649238",
+    "last_updated": "2025-09-05T13:35:50.114440",
     "season": 2025,
     "source": "Sleeper_Cached + FantasyFootballCalculator_ADP"
   }
