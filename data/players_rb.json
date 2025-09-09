@@ -25,7 +25,7 @@
     "rotowire_id": 4400,
     "rotoworld_id": 3205,
     "fantasy_data_id": 5820,
-    "last_updated": "2025-09-05T17:58:19.831554"
+    "last_updated": "2025-09-09T06:33:19.299316"
   },
   "184": {
     "player_id": "184",
@@ -53,7 +53,7 @@
     "rotowire_id": 5215,
     "rotoworld_id": 4169,
     "fantasy_data_id": 4807,
-    "last_updated": "2025-09-05T17:58:19.838110"
+    "last_updated": "2025-09-09T06:33:19.305687"
   },
   "1034": {
     "player_id": "1034",
@@ -81,7 +81,7 @@
     "rotowire_id": 8077,
     "rotoworld_id": 8119,
     "fantasy_data_id": 13741,
-    "last_updated": "2025-09-05T17:58:19.825292"
+    "last_updated": "2025-09-09T06:33:19.293235"
   },
   "1535": {
     "player_id": "1535",
@@ -109,7 +109,7 @@
     "rotowire_id": 8792,
     "rotoworld_id": 8327,
     "fantasy_data_id": 15150,
-    "last_updated": "2025-09-05T17:58:19.829965"
+    "last_updated": "2025-09-09T06:33:19.297765"
   },
   "886": {
     "player_id": "886",
@@ -137,7 +137,7 @@
     "rotowire_id": 7324,
     "rotoworld_id": null,
     "fantasy_data_id": 13063,
-    "last_updated": "2025-09-05T17:58:19.846674"
+    "last_updated": "2025-09-09T06:33:19.314119"
   },
   "818": {
     "player_id": "818",
@@ -165,7 +165,7 @@
     "rotowire_id": 7367,
     "rotoworld_id": 6594,
     "fantasy_data_id": 12800,
-    "last_updated": "2025-09-05T17:58:19.837659"
+    "last_updated": "2025-09-09T06:33:19.305250"
   },
   "2200": {
     "player_id": "2200",
@@ -193,7 +193,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 16571,
-    "last_updated": "2025-09-05T17:58:19.837827"
+    "last_updated": "2025-09-09T06:33:19.305410"
   },
   "1476": {
     "player_id": "1476",
@@ -221,7 +221,7 @@
     "rotowire_id": 8772,
     "rotoworld_id": 8585,
     "fantasy_data_id": 15071,
-    "last_updated": "2025-09-05T17:58:19.839021"
+    "last_updated": "2025-09-09T06:33:19.306585"
   },
   "1387": {
     "player_id": "1387",
@@ -249,7 +249,35 @@
     "rotowire_id": 8765,
     "rotoworld_id": 8466,
     "fantasy_data_id": 14917,
-    "last_updated": "2025-09-05T17:58:19.822569"
+    "last_updated": "2025-09-09T06:33:19.290519"
+  },
+  "2359": {
+    "player_id": "2359",
+    "first_name": "Ameer",
+    "last_name": "Abdullah",
+    "full_name": "Ameer Abdullah",
+    "position": "RB",
+    "team": "IND",
+    "number": 26,
+    "age": 32,
+    "height": "69",
+    "weight": "203",
+    "college": "Nebraska",
+    "years_exp": 10,
+    "status": "Active",
+    "injury_status": "Questionable",
+    "fantasy_positions": [
+      "RB"
+    ],
+    "search_full_name": "ameerabdullah",
+    "search_first_name": "ameer",
+    "search_last_name": "abdullah",
+    "espn_id": 2576336,
+    "yahoo_id": 28442,
+    "rotowire_id": 10126,
+    "rotoworld_id": 10338,
+    "fantasy_data_id": 16815,
+    "last_updated": "2025-09-09T06:33:19.291075"
   },
   "2581": {
     "player_id": "2581",
@@ -277,7 +305,7 @@
     "rotowire_id": 10199,
     "rotoworld_id": null,
     "fantasy_data_id": 17046,
-    "last_updated": "2025-09-05T17:58:19.825093"
+    "last_updated": "2025-09-09T06:33:19.293037"
   },
   "2767": {
     "player_id": "2767",
@@ -305,7 +333,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17235,
-    "last_updated": "2025-09-05T17:58:19.827578"
+    "last_updated": "2025-09-09T06:33:19.295449"
   },
   "2161": {
     "player_id": "2161",
@@ -333,7 +361,7 @@
     "rotowire_id": 9529,
     "rotoworld_id": 9651,
     "fantasy_data_id": 16510,
-    "last_updated": "2025-09-05T17:58:19.831498"
+    "last_updated": "2025-09-09T06:33:19.299263"
   },
   "2820": {
     "player_id": "2820",
@@ -361,7 +389,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17288,
-    "last_updated": "2025-09-05T17:58:19.831584"
+    "last_updated": "2025-09-09T06:33:19.299341"
   },
   "2875": {
     "player_id": "2875",
@@ -389,7 +417,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17343,
-    "last_updated": "2025-09-05T17:58:19.833626"
+    "last_updated": "2025-09-09T06:33:19.301329"
   },
   "2945": {
     "player_id": "2945",
@@ -417,7 +445,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17416,
-    "last_updated": "2025-09-05T17:58:19.834648"
+    "last_updated": "2025-09-09T06:33:19.302333"
   },
   "2923": {
     "player_id": "2923",
@@ -445,7 +473,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17392,
-    "last_updated": "2025-09-05T17:58:19.834726"
+    "last_updated": "2025-09-09T06:33:19.302405"
   },
   "1170": {
     "player_id": "1170",
@@ -473,7 +501,7 @@
     "rotowire_id": 8089,
     "rotoworld_id": 7618,
     "fantasy_data_id": 14269,
-    "last_updated": "2025-09-05T17:58:19.835092"
+    "last_updated": "2025-09-09T06:33:19.302754"
   },
   "2632": {
     "player_id": "2632",
@@ -501,7 +529,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17100,
-    "last_updated": "2025-09-05T17:58:19.836247"
+    "last_updated": "2025-09-09T06:33:19.303896"
   },
   "2749": {
     "player_id": "2749",
@@ -517,7 +545,7 @@
     "college": "Purdue",
     "years_exp": 10,
     "status": "Active",
-    "injury_status": null,
+    "injury_status": "Out",
     "fantasy_positions": [
       "RB"
     ],
@@ -529,7 +557,7 @@
     "rotowire_id": 10604,
     "rotoworld_id": 10744,
     "fantasy_data_id": 17217,
-    "last_updated": "2025-09-05T17:58:19.836619"
+    "last_updated": "2025-09-09T06:33:19.304245"
   },
   "2900": {
     "player_id": "2900",
@@ -557,7 +585,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17368,
-    "last_updated": "2025-09-05T17:58:19.838915"
+    "last_updated": "2025-09-09T06:33:19.306472"
   },
   "1386": {
     "player_id": "1386",
@@ -585,7 +613,7 @@
     "rotowire_id": 8622,
     "rotoworld_id": 8389,
     "fantasy_data_id": 14916,
-    "last_updated": "2025-09-05T17:58:19.840886"
+    "last_updated": "2025-09-09T06:33:19.308386"
   },
   "2600": {
     "player_id": "2600",
@@ -613,7 +641,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17068,
-    "last_updated": "2025-09-05T17:58:19.841321"
+    "last_updated": "2025-09-09T06:33:19.308821"
   },
   "2597": {
     "player_id": "2597",
@@ -641,7 +669,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17065,
-    "last_updated": "2025-09-05T17:58:19.842647"
+    "last_updated": "2025-09-09T06:33:19.310103"
   },
   "2943": {
     "player_id": "2943",
@@ -669,7 +697,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17414,
-    "last_updated": "2025-09-05T17:58:19.844340"
+    "last_updated": "2025-09-09T06:33:19.311803"
   },
   "1048": {
     "player_id": "1048",
@@ -697,7 +725,7 @@
     "rotowire_id": 8008,
     "rotoworld_id": 7408,
     "fantasy_data_id": 13791,
-    "last_updated": "2025-09-05T17:58:19.845364"
+    "last_updated": "2025-09-09T06:33:19.312823"
   },
   "2914": {
     "player_id": "2914",
@@ -725,7 +753,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17382,
-    "last_updated": "2025-09-05T17:58:19.845702"
+    "last_updated": "2025-09-09T06:33:19.313152"
   },
   "2981": {
     "player_id": "2981",
@@ -753,7 +781,7 @@
     "rotowire_id": 10201,
     "rotoworld_id": null,
     "fantasy_data_id": 17481,
-    "last_updated": "2025-09-05T17:58:19.846264"
+    "last_updated": "2025-09-09T06:33:19.313712"
   },
   "2927": {
     "player_id": "2927",
@@ -781,7 +809,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17396,
-    "last_updated": "2025-09-05T17:58:19.847085"
+    "last_updated": "2025-09-09T06:33:19.314530"
   },
   "1232": {
     "player_id": "1232",
@@ -809,7 +837,7 @@
     "rotowire_id": 8028,
     "rotoworld_id": 7423,
     "fantasy_data_id": 14533,
-    "last_updated": "2025-09-05T17:58:19.847762"
+    "last_updated": "2025-09-09T06:33:19.315255"
   },
   "2768": {
     "player_id": "2768",
@@ -837,7 +865,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17236,
-    "last_updated": "2025-09-05T17:58:19.849111"
+    "last_updated": "2025-09-09T06:33:19.316669"
   },
   "2730": {
     "player_id": "2730",
@@ -865,7 +893,7 @@
     "rotowire_id": null,
     "rotoworld_id": null,
     "fantasy_data_id": 17198,
-    "last_updated": "2025-09-05T17:58:19.850382"
+    "last_updated": "2025-09-09T06:33:19.318020"
   },
   "1408": {
     "player_id": "1408",
@@ -893,7 +921,7 @@
     "rotowire_id": 8617,
     "rotoworld_id": 8390,
     "fantasy_data_id": 14967,
-    "last_updated": "2025-09-05T17:58:19.821852"
+    "last_updated": "2025-09-09T06:33:19.289811"
   },
   "2320": {
     "player_id": "2320",
@@ -921,7 +949,7 @@
     "rotowire_id": 10064,
     "rotoworld_id": 10284,
     "fantasy_data_id": 16776,
-    "last_updated": "2025-09-05T17:58:19.822479"
+    "last_updated": "2025-09-09T06:33:19.290425"
   },
   "3615": {
     "player_id": "3615",
@@ -949,7 +977,7 @@
     "rotowire_id": 11505,
     "rotoworld_id": null,
     "fantasy_data_id": 18402,
-    "last_updated": "2025-09-05T17:58:19.825172"
+    "last_updated": "2025-09-09T06:33:19.293119"
   },
   "3531": {
     "player_id": "3531",
@@ -977,7 +1005,7 @@
     "rotowire_id": 10980,
     "rotoworld_id": null,
     "fantasy_data_id": 18298,
-    "last_updated": "2025-09-05T17:58:19.826220"
+    "last_updated": "2025-09-09T06:33:19.294117"
   },
   "1502": {
     "player_id": "1502",
@@ -1005,7 +1033,7 @@
     "rotowire_id": 8773,
     "rotoworld_id": 8563,
     "fantasy_data_id": 15102,
-    "last_updated": "2025-09-05T17:58:19.829901"
+    "last_updated": "2025-09-09T06:33:19.297709"
   },
   "3556": {
     "player_id": "3556",
@@ -1033,7 +1061,7 @@
     "rotowire_id": 11648,
     "rotoworld_id": null,
     "fantasy_data_id": 18329,
-    "last_updated": "2025-09-05T17:58:19.830559"
+    "last_updated": "2025-09-09T06:33:19.298352"
   },
   "3198": {
     "player_id": "3198",
@@ -1061,7 +1089,7 @@
     "rotowire_id": 10819,
     "rotoworld_id": 11238,
     "fantasy_data_id": 17959,
-    "last_updated": "2025-09-05T17:58:19.832078"
+    "last_updated": "2025-09-09T06:33:19.299811"
   },
   "3164": {
     "player_id": "3164",
@@ -1089,7 +1117,7 @@
     "rotowire_id": 10736,
     "rotoworld_id": 11265,
     "fantasy_data_id": 17923,
-    "last_updated": "2025-09-05T17:58:19.834032"
+    "last_updated": "2025-09-09T06:33:19.301737"
   },
   "1451": {
     "player_id": "1451",
@@ -1117,7 +1145,7 @@
     "rotowire_id": 8931,
     "rotoworld_id": 8694,
     "fantasy_data_id": 15020,
-    "last_updated": "2025-09-05T17:58:19.835554"
+    "last_updated": "2025-09-09T06:33:19.303180"
   },
   "3811": {
     "player_id": "3811",
@@ -1145,7 +1173,7 @@
     "rotowire_id": 11598,
     "rotoworld_id": null,
     "fantasy_data_id": 18627,
-    "last_updated": "2025-09-05T17:58:19.846387"
+    "last_updated": "2025-09-09T06:33:19.313836"
   },
   "3570": {
     "player_id": "3570",
@@ -1173,7 +1201,7 @@
     "rotowire_id": 11211,
     "rotoworld_id": null,
     "fantasy_data_id": 18345,
-    "last_updated": "2025-09-05T17:58:19.847541"
+    "last_updated": "2025-09-09T06:33:19.315015"
   },
   "3402": {
     "player_id": "3402",
@@ -1201,7 +1229,7 @@
     "rotowire_id": 11245,
     "rotoworld_id": null,
     "fantasy_data_id": 18163,
-    "last_updated": "2025-09-05T17:58:19.850052"
+    "last_updated": "2025-09-09T06:33:19.317667"
   },
   "2391": {
     "player_id": "2391",
@@ -1229,7 +1257,7 @@
     "rotowire_id": 10148,
     "rotoworld_id": 10404,
     "fantasy_data_id": 16847,
-    "last_updated": "2025-09-05T17:58:19.825920"
+    "last_updated": "2025-09-09T06:33:19.293812"
   },
   "2257": {
     "player_id": "2257",
@@ -1257,7 +1285,7 @@
     "rotowire_id": 9516,
     "rotoworld_id": 9381,
     "fantasy_data_id": 16668,
-    "last_updated": "2025-09-05T17:58:19.826935"
+    "last_updated": "2025-09-09T06:33:19.294816"
   },
   "4111": {
     "player_id": "4111",
@@ -1285,7 +1313,7 @@
     "rotowire_id": 11685,
     "rotoworld_id": 12282,
     "fantasy_data_id": 18957,
-    "last_updated": "2025-09-05T17:58:19.828546"
+    "last_updated": "2025-09-09T06:33:19.296384"
   },
   "2399": {
     "player_id": "2399",
@@ -1313,7 +1341,7 @@
     "rotowire_id": 10216,
     "rotoworld_id": 10413,
     "fantasy_data_id": 16855,
-    "last_updated": "2025-09-05T17:58:19.828640"
+    "last_updated": "2025-09-09T06:33:19.296476"
   },
   "4219": {
     "player_id": "4219",
@@ -1341,7 +1369,7 @@
     "rotowire_id": 11767,
     "rotoworld_id": 12174,
     "fantasy_data_id": 19065,
-    "last_updated": "2025-09-05T17:58:19.829025"
+    "last_updated": "2025-09-09T06:33:19.296854"
   },
   "4137": {
     "player_id": "4137",
@@ -1369,7 +1397,7 @@
     "rotowire_id": 11691,
     "rotoworld_id": null,
     "fantasy_data_id": 18983,
-    "last_updated": "2025-09-05T17:58:19.829235"
+    "last_updated": "2025-09-09T06:33:19.297077"
   },
   "4663": {
     "player_id": "4663",
@@ -1385,7 +1413,7 @@
     "college": "Western Colorado",
     "years_exp": 8,
     "status": "Active",
-    "injury_status": null,
+    "injury_status": "Questionable",
     "fantasy_positions": [
       "RB"
     ],
@@ -1397,7 +1425,7 @@
     "rotowire_id": 12401,
     "rotoworld_id": 12563,
     "fantasy_data_id": 19562,
-    "last_updated": "2025-09-05T17:58:19.830631"
+    "last_updated": "2025-09-09T06:33:19.298421"
   },
   "2142": {
     "player_id": "2142",
@@ -1425,7 +1453,7 @@
     "rotowire_id": 9527,
     "rotoworld_id": null,
     "fantasy_data_id": 16485,
-    "last_updated": "2025-09-05T17:58:19.830964"
+    "last_updated": "2025-09-09T06:33:19.298750"
   },
   "2262": {
     "player_id": "2262",
@@ -1453,7 +1481,7 @@
     "rotowire_id": 9700,
     "rotoworld_id": null,
     "fantasy_data_id": 16673,
-    "last_updated": "2025-09-05T17:58:19.832151"
+    "last_updated": "2025-09-09T06:33:19.299875"
   },
   "3312": {
     "player_id": "3312",
@@ -1481,7 +1509,7 @@
     "rotowire_id": 10851,
     "rotoworld_id": 11405,
     "fantasy_data_id": 18073,
-    "last_updated": "2025-09-05T17:58:19.832403"
+    "last_updated": "2025-09-09T06:33:19.300137"
   },
   "4034": {
     "player_id": "4034",
@@ -1497,7 +1525,7 @@
     "college": "Stanford",
     "years_exp": 8,
     "status": "Active",
-    "injury_status": "Questionable",
+    "injury_status": null,
     "fantasy_positions": [
       "RB"
     ],
@@ -1509,7 +1537,7 @@
     "rotowire_id": 11690,
     "rotoworld_id": 12198,
     "fantasy_data_id": 18877,
-    "last_updated": "2025-09-05T17:58:19.832793"
+    "last_updated": "2025-09-09T06:33:19.300500"
   },
   "2378": {
     "player_id": "2378",
@@ -1537,7 +1565,7 @@
     "rotowire_id": 10081,
     "rotoworld_id": 10359,
     "fantasy_data_id": 16834,
-    "last_updated": "2025-09-05T17:58:19.833081"
+    "last_updated": "2025-09-09T06:33:19.300769"
   },
   "1794": {
     "player_id": "1794",
@@ -1565,7 +1593,7 @@
     "rotowire_id": 9534,
     "rotoworld_id": null,
     "fantasy_data_id": 15966,
-    "last_updated": "2025-09-05T17:58:19.835245"
+    "last_updated": "2025-09-09T06:33:19.302896"
   },
   "2382": {
     "player_id": "2382",
@@ -1593,7 +1621,7 @@
     "rotowire_id": 10084,
     "rotoworld_id": 10358,
     "fantasy_data_id": 16838,
-    "last_updated": "2025-09-05T17:58:19.835663"
+    "last_updated": "2025-09-09T06:33:19.303285"
   },
   "4147": {
     "player_id": "4147",
@@ -1621,7 +1649,7 @@
     "rotowire_id": 11698,
     "rotoworld_id": 12255,
     "fantasy_data_id": 18993,
-    "last_updated": "2025-09-05T17:58:19.840013"
+    "last_updated": "2025-09-09T06:33:19.307545"
   },
   "1841": {
     "player_id": "1841",
@@ -1649,7 +1677,7 @@
     "rotowire_id": 9713,
     "rotoworld_id": null,
     "fantasy_data_id": 16046,
-    "last_updated": "2025-09-05T17:58:19.840777"
+    "last_updated": "2025-09-09T06:33:19.308276"
   },
   "4199": {
     "player_id": "4199",
@@ -1677,7 +1705,7 @@
     "rotowire_id": 11763,
     "rotoworld_id": 12388,
     "fantasy_data_id": 19045,
-    "last_updated": "2025-09-05T17:58:19.842424"
+    "last_updated": "2025-09-09T06:33:19.309862"
   },
   "4018": {
     "player_id": "4018",
@@ -1705,7 +1733,7 @@
     "rotowire_id": 11707,
     "rotoworld_id": 12147,
     "fantasy_data_id": 18858,
-    "last_updated": "2025-09-05T17:58:19.842815"
+    "last_updated": "2025-09-09T06:33:19.310274"
   },
   "1848": {
     "player_id": "1848",
@@ -1733,7 +1761,7 @@
     "rotowire_id": 9524,
     "rotoworld_id": 9426,
     "fantasy_data_id": 16056,
-    "last_updated": "2025-09-05T17:58:19.845153"
+    "last_updated": "2025-09-09T06:33:19.312614"
   },
   "4098": {
     "player_id": "4098",
@@ -1761,7 +1789,7 @@
     "rotowire_id": 11739,
     "rotoworld_id": 12295,
     "fantasy_data_id": 18944,
-    "last_updated": "2025-09-05T17:58:19.846395"
+    "last_updated": "2025-09-09T06:33:19.313844"
   },
   "4718": {
     "player_id": "4718",
@@ -1789,7 +1817,7 @@
     "rotowire_id": 11768,
     "rotoworld_id": 12943,
     "fantasy_data_id": 19626,
-    "last_updated": "2025-09-05T17:58:19.846589"
+    "last_updated": "2025-09-09T06:33:19.314040"
   },
   "2588": {
     "player_id": "2588",
@@ -1817,7 +1845,7 @@
     "rotowire_id": 10202,
     "rotoworld_id": 10674,
     "fantasy_data_id": 17053,
-    "last_updated": "2025-09-05T17:58:19.846636"
+    "last_updated": "2025-09-09T06:33:19.314085"
   },
   "4035": {
     "player_id": "4035",
@@ -1845,7 +1873,7 @@
     "rotowire_id": 11732,
     "rotoworld_id": 12172,
     "fantasy_data_id": 18878,
-    "last_updated": "2025-09-05T17:58:19.847274"
+    "last_updated": "2025-09-09T06:33:19.314717"
   },
   "4149": {
     "player_id": "4149",
@@ -1873,7 +1901,7 @@
     "rotowire_id": 11777,
     "rotoworld_id": 12298,
     "fantasy_data_id": 18995,
-    "last_updated": "2025-09-05T17:58:19.848331"
+    "last_updated": "2025-09-09T06:33:19.315835"
   },
   "3391": {
     "player_id": "3391",
@@ -1901,7 +1929,7 @@
     "rotowire_id": 10737,
     "rotoworld_id": 11518,
     "fantasy_data_id": 18152,
-    "last_updated": "2025-09-05T17:58:19.848862"
+    "last_updated": "2025-09-09T06:33:19.316378"
   },
   "2168": {
     "player_id": "2168",
@@ -1929,7 +1957,7 @@
     "rotowire_id": 9326,
     "rotoworld_id": 9423,
     "fantasy_data_id": 16524,
-    "last_updated": "2025-09-05T17:58:19.849162"
+    "last_updated": "2025-09-09T06:33:19.316722"
   },
   "4029": {
     "player_id": "4029",
@@ -1957,7 +1985,7 @@
     "rotowire_id": 11700,
     "rotoworld_id": 12138,
     "fantasy_data_id": 18872,
-    "last_updated": "2025-09-05T17:58:19.849623"
+    "last_updated": "2025-09-09T06:33:19.317211"
   },
   "3242": {
     "player_id": "3242",
@@ -1985,7 +2013,7 @@
     "rotowire_id": 11002,
     "rotoworld_id": 11263,
     "fantasy_data_id": 18003,
-    "last_updated": "2025-09-05T17:58:19.851126"
+    "last_updated": "2025-09-09T06:33:19.318766"
   },
   "2948": {
     "player_id": "2948",
@@ -2013,7 +2041,7 @@
     "rotowire_id": 10842,
     "rotoworld_id": null,
     "fantasy_data_id": 17419,
-    "last_updated": "2025-09-05T17:58:19.822968"
+    "last_updated": "2025-09-09T06:33:19.290917"
   },
   "5284": {
     "player_id": "5284",
@@ -2041,7 +2069,7 @@
     "rotowire_id": 12932,
     "rotoworld_id": 13578,
     "fantasy_data_id": 20360,
-    "last_updated": "2025-09-05T17:58:19.826713"
+    "last_updated": "2025-09-09T06:33:19.294596"
   },
   "4157": {
     "player_id": "4157",
@@ -2069,7 +2097,7 @@
     "rotowire_id": 11758,
     "rotoworld_id": 12322,
     "fantasy_data_id": 19003,
-    "last_updated": "2025-09-05T17:58:19.827426"
+    "last_updated": "2025-09-09T06:33:19.295297"
   },
   "2315": {
     "player_id": "2315",
@@ -2097,7 +2125,7 @@
     "rotowire_id": 10147,
     "rotoworld_id": 10288,
     "fantasy_data_id": 16771,
-    "last_updated": "2025-09-05T17:58:19.827993"
+    "last_updated": "2025-09-09T06:33:19.295857"
   },
   "2785": {
     "player_id": "2785",
@@ -2125,7 +2153,7 @@
     "rotowire_id": 10607,
     "rotoworld_id": null,
     "fantasy_data_id": 17253,
-    "last_updated": "2025-09-05T17:58:19.828597"
+    "last_updated": "2025-09-09T06:33:19.296435"
   },
   "5347": {
     "player_id": "5347",
@@ -2153,7 +2181,7 @@
     "rotowire_id": 12630,
     "rotoworld_id": 13209,
     "fantasy_data_id": 19912,
-    "last_updated": "2025-09-05T17:58:19.829435"
+    "last_updated": "2025-09-09T06:33:19.297252"
   },
   "4988": {
     "player_id": "4988",
@@ -2181,7 +2209,7 @@
     "rotowire_id": 12886,
     "rotoworld_id": 13161,
     "fantasy_data_id": 19798,
-    "last_updated": "2025-09-05T17:58:19.829955"
+    "last_updated": "2025-09-09T06:33:19.297756"
   },
   "5076": {
     "player_id": "5076",
@@ -2209,34 +2237,6 @@
     "rotowire_id": 12555,
     "rotoworld_id": 13212,
     "fantasy_data_id": 19957,
-    "last_updated": "2025-09-05T17:58:19.830546"
-  },
-  "5209": {
-    "player_id": "5209",
-    "first_name": "Mike",
-    "last_name": "Boone",
-    "full_name": "Mike Boone",
-    "position": "RB",
-    "team": "",
-    "number": 16,
-    "age": 30,
-    "height": "70",
-    "weight": "206",
-    "college": "Cincinnati",
-    "years_exp": 7,
-    "status": "Active",
-    "injury_status": null,
-    "fantasy_positions": [
-      "RB"
-    ],
-    "search_full_name": "mikeboone",
-    "search_first_name": "mike",
-    "search_last_name": "boone",
-    "espn_id": 3139033,
-    "yahoo_id": 31228,
-    "rotowire_id": 13067,
-    "rotoworld_id": 13438,
-    "fantasy_data_id": 20159,
-    "last_updated": "2025-09-05T17:58:19.830624"
+    "last_updated": "2025-09-09T06:33:19.298340"
   }
 }
